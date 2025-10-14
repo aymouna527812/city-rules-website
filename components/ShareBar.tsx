@@ -27,8 +27,8 @@ export function ShareBar({ url, title }: ShareBarProps) {
   const encodedTitle = encodeURIComponent(title);
 
   return (
-    <div className="flex flex-wrap items-center gap-2 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-      <span className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+    <div className="flex flex-wrap items-center gap-2 rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+      <span className="text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-300">
         Share this guide
       </span>
       <div className="flex flex-wrap items-center gap-2">

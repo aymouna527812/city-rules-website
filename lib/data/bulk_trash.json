@@ -1,0 +1,35 @@
+[
+  {
+    "country": "US",
+    "region": "Arizona",
+    "city": "Phoenix",
+    "country_slug": "united-states",
+    "region_slug": "arizona",
+    "city_slug": "phoenix",
+    "timezone": "America/Phoenix",
+    "last_verified": "2025-02-01",
+    "source_title": "City of Phoenix Public Works - Bulk Trash",
+    "source_url": "https://example.com/source-bulk",
+    "complaint_channel": "Phoenix Public Works",
+    "complaint_url": "https://example.com/phoenix-report",
+    "fine_range": "Varies by violation",
+    "notes_admin": "Demo record for bulk trash documentation.",
+    "service_type": "appointment",
+    "schedule_pattern": "By appointment via city portal",
+    "request_url": "https://example.com/phoenix-bulk",
+    "eligible_items": [
+      "Furniture",
+      "Appliances (no refrigerants)"
+    ],
+    "not_accepted_items": [
+      "Tires",
+      "Paint",
+      "Hazardous waste"
+    ],
+    "limits": "Max 10 cubic yards; separate metal and green waste",
+    "fees": "Included in base service; surcharges for special items",
+    "holiday_shifts": "Collections shift to next business day",
+    "illegal_dumping_reporting": "https://example.com/phoenix-report",
+    "notes_public": "Schedule pickup at least seven days in advance."
+  }
+]

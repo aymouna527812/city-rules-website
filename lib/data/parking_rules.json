@@ -1,0 +1,30 @@
+[
+  {
+    "country": "US",
+    "region": "Illinois",
+    "city": "Chicago",
+    "country_slug": "united-states",
+    "region_slug": "illinois",
+    "city_slug": "chicago",
+    "timezone": "America/Chicago",
+    "last_verified": "2025-01-15",
+    "source_title": "City of Chicago Winter Overnight Parking",
+    "source_url": "https://example.com/source-parking",
+    "complaint_channel": "311",
+    "complaint_url": "https://example.com/chicago-311",
+    "fine_range": "$60-$150",
+    "notes_admin": "Demo record for parking rules documentation.",
+    "overnight_parking_allowed": "varies",
+    "overnight_hours": "03:00-07:00 restrictions on signed streets",
+    "permit_required": true,
+    "permit_url": "https://example.com/chicago-permit",
+    "winter_ban": true,
+    "winter_ban_months": "Dec 1-Mar 31",
+    "winter_ban_hours": "03:00-07:00 on designated routes",
+    "snow_emergency_rules": "Additional bans during 2 or more inches of snow",
+    "towing_enforced": true,
+    "tow_zones_map_url": "https://example.com/chicago-tow-map",
+    "ticket_amounts": "$60 ticket; $150 towing fee",
+    "notes_public": "Applies to 107 miles of designated arterial streets."
+  }
+]

@@ -69,6 +69,7 @@ export default async function RegionPage({ params }: { params: RegionParams }) {
       <Breadcrumbs
         items={[
           { label: "Home", href: "/" },
+          { label: "Quiet Hours", href: "/quiet-hours" },
           { label: countryName, href: `/${params.country}` },
           { label: match.region, href: `/${params.country}/${params.region}` },
         ]}
@@ -102,3 +103,8 @@ export default async function RegionPage({ params }: { params: RegionParams }) {
     </div>
   );
 }
+
+
+
+
+

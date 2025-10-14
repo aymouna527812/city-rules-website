@@ -1,7 +1,7 @@
 
 import { describe, expect, it } from "vitest";
 
-import { buildSlugKey, ensureUniqueSlug, slugify } from "@/lib/slugify";
+import { buildSlugKey, ensureUniqueSlug, slugify } from "@/lib/slug";
 
 describe("slugify utilities", () => {
   it("slugifies strings with accents and punctuation", () => {
@@ -11,6 +11,9 @@ describe("slugify utilities", () => {
 
   it("builds consistent slug keys", () => {
     expect(buildSlugKey("canada", "ontario", "toronto")).toBe("canada__ontario__toronto");
+    expect(buildSlugKey("united-states", "massachusetts")).toBe(
+      "united-states__massachusetts__region-root",
+    );
   });
 
   it("ensures unique slugs by appending suffixes", () => {

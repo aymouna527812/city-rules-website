@@ -3,12 +3,67 @@ import path from "node:path";
 import { parse } from "csv-parse/sync";
 import chalk from "chalk";
 
-import { normalizeRecord } from "@/lib/dataClient";
-import { QuietHoursDatasetSchema } from "@/lib/types";
+import {
+  normalizeBulkTrashRecord,
+  normalizeFireworksRecord,
+  normalizeParkingRecord,
+  normalizeRecord,
+} from "@/lib/dataClient";
+import {
+  BulkTrashDatasetSchema,
+  FireworksDatasetSchema,
+  ParkingRulesDatasetSchema,
+  QuietHoursDatasetSchema,
+} from "@/lib/types";
 
 const DATA_DIR = path.join(process.cwd(), "lib", "data");
-const CSV_PATH = path.join(DATA_DIR, "quiet_hours.csv");
-const JSON_PATH = path.join(DATA_DIR, "quiet_hours.json");
+
+type DatasetDefinition = {
+  name: string;
+  csvFilename: string;
+  jsonFilename: string;
+  normalize: (record: Record<string, unknown>) => unknown;
+  validate: (records: unknown) => void;
+};
+
+const DATASETS: DatasetDefinition[] = [
+  {
+    name: "quiet_hours",
+    csvFilename: "quiet_hours.csv",
+    jsonFilename: "quiet_hours.json",
+    normalize: normalizeRecord,
+    validate: (records) => {
+      QuietHoursDatasetSchema.parse(records);
+    },
+  },
+  {
+    name: "parking_rules",
+    csvFilename: "parking_rules.csv",
+    jsonFilename: "parking_rules.json",
+    normalize: normalizeParkingRecord,
+    validate: (records) => {
+      ParkingRulesDatasetSchema.parse(records);
+    },
+  },
+  {
+    name: "bulk_trash",
+    csvFilename: "bulk_trash.csv",
+    jsonFilename: "bulk_trash.json",
+    normalize: normalizeBulkTrashRecord,
+    validate: (records) => {
+      BulkTrashDatasetSchema.parse(records);
+    },
+  },
+  {
+    name: "fireworks",
+    csvFilename: "fireworks.csv",
+    jsonFilename: "fireworks.json",
+    normalize: normalizeFireworksRecord,
+    validate: (records) => {
+      FireworksDatasetSchema.parse(records);
+    },
+  },
+];
 
 async function fileExists(target: string): Promise<boolean> {
   try {
@@ -20,37 +75,53 @@ async function fileExists(target: string): Promise<boolean> {
 }
 
 async function main(): Promise<void> {
-  const csvExists = await fileExists(CSV_PATH);
-  if (!csvExists) {
-    console.log(chalk.gray("No CSV source detected, skipping CSV → JSON conversion."));
-    return;
-  }
-
   const forceWrite = process.env.FORCE_CSV_EXPORT === "true";
-  const jsonExists = await fileExists(JSON_PATH);
-  if (jsonExists && !forceWrite) {
+  const completed: string[] = [];
+
+  for (const dataset of DATASETS) {
+    const csvPath = path.join(DATA_DIR, dataset.csvFilename);
+    const jsonPath = path.join(DATA_DIR, dataset.jsonFilename);
+
+    if (!(await fileExists(csvPath))) {
+      console.log(
+        chalk.gray(
+          `[${dataset.name}] No CSV source detected at ${dataset.csvFilename}, skipping conversion.`,
+        ),
+      );
+      continue;
+    }
+
+    if ((await fileExists(jsonPath)) && !forceWrite) {
+      console.log(
+        chalk.gray(
+          `[${dataset.name}] ${dataset.jsonFilename} already exists. Set FORCE_CSV_EXPORT=true to overwrite.`,
+        ),
+      );
+      continue;
+    }
+
+    const csvContent = await fs.readFile(csvPath, "utf-8");
+    const records = parse(csvContent, {
+      columns: true,
+      skip_empty_lines: true,
+      trim: true,
+    }) as Record<string, unknown>[];
+
+    const normalized = records.map((record) => dataset.normalize(record));
+    dataset.validate(normalized);
+
+    await fs.writeFile(jsonPath, JSON.stringify(normalized, null, 2));
+    completed.push(dataset.name);
     console.log(
-      chalk.gray("quiet_hours.json already exists. Set FORCE_CSV_EXPORT=true to overwrite."),
+      chalk.green(
+        `[${dataset.name}] Converted ${normalized.length} record(s) from ${dataset.csvFilename} to ${dataset.jsonFilename}.`,
+      ),
     );
-    return;
   }
 
-  const csvContent = await fs.readFile(CSV_PATH, "utf-8");
-  const records = parse(csvContent, {
-    columns: true,
-    skip_empty_lines: true,
-    trim: true,
-  }) as Record<string, unknown>[];
-
-  const dataset = records.map((record) => normalizeRecord(record));
-  QuietHoursDatasetSchema.parse(dataset);
-
-  await fs.writeFile(JSON_PATH, JSON.stringify(dataset, null, 2));
-  console.log(
-    chalk.green(
-      `Converted ${dataset.length} record(s) from quiet_hours.csv to quiet_hours.json successfully.`,
-    ),
-  );
+  if (completed.length === 0) {
+    console.log(chalk.yellow("No CSV datasets converted. Nothing to do."));
+  }
 }
 
 void main().catch((error) => {

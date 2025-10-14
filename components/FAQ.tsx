@@ -31,7 +31,7 @@ export function FAQ({ items }: FAQProps) {
       <Accordion
         type="single"
         collapsible
-        className="divide-y divide-slate-200 rounded-xl border border-slate-200 bg-white"
+        className="divide-y divide-slate-200 rounded-xl border border-slate-200 bg-white px-2"
       >
         {items.map((item, index) => (
           <AccordionItem key={item.question} value={`faq-${index + 1}`}>

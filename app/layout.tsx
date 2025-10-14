@@ -7,6 +7,7 @@ import "./globals.css";
 import { Analytics } from "@/components/Analytics";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import { buildBaseMetadata, buildOrganizationJsonLd, buildWebsiteJsonLd } from "@/lib/seo";
 
 const inter = Inter({
@@ -19,24 +20,26 @@ export const metadata: Metadata = buildBaseMetadata();
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} bg-slate-50 text-slate-900`}>
-        <SiteHeader />
-        <main className="mx-auto min-h-screen w-full max-w-5xl px-4 py-8 sm:px-6">
-          {children}
-        </main>
-        <SiteFooter />
-        <Analytics />
-        <Script
-          id="website-json-ld"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: buildWebsiteJsonLd() }}
-        />
-        <Script
-          id="organization-json-ld"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: buildOrganizationJsonLd() }}
-        />
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.variable} bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100`}>
+        <ThemeProvider>
+          <SiteHeader />
+          <main className="mx-auto min-h-screen w-full max-w-5xl px-4 py-8 sm:px-6">
+            {children}
+          </main>
+          <SiteFooter />
+          <Analytics />
+          <Script
+            id="website-json-ld"
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: buildWebsiteJsonLd() }}
+          />
+          <Script
+            id="organization-json-ld"
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: buildOrganizationJsonLd() }}
+          />
+        </ThemeProvider>
       </body>
     </html>
   );

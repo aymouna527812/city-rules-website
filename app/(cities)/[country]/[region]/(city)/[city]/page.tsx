@@ -19,10 +19,12 @@ import { FAQ } from "@/components/FAQ";
 import { RuleCard } from "@/components/RuleCard";
 import { ShareBar } from "@/components/ShareBar";
 import { CopySnippet } from "@/components/CopySnippet";
+import { TopicNav } from "@/components/TopicNav";
+import { UpdateNotice } from "@/components/UpdateNotice";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { buildFaqItems, buildRelatedLinks, buildSuggestUpdateEmail } from "@/lib/city";
-import { getCityRecord, getDataset } from "@/lib/dataClient";
+import { getCityRecord, getDataset, getTopicNavEntries } from "@/lib/dataClient";
 import { buildCityMetadata, buildFaqJsonLd, buildBreadcrumbJsonLd, getSiteUrl } from "@/lib/seo";
 import { formatDate, getCountryName } from "@/lib/utils";
 
@@ -74,11 +76,18 @@ export default async function CityPage({ params }: { params: CityPageParams }) {
     notFound();
   }
 
+  const topicNavEntries = await getTopicNavEntries({
+    countrySlug: params.country,
+    regionSlug: params.region,
+    citySlug: params.city,
+  });
+
   const path = `/${params.country}/${params.region}/${params.city}`;
   const canonical = `${getSiteUrl()}${path}`;
   const faqs = buildFaqItems(record);
   const breadcrumbItems = [
     { label: "Home", href: "/" },
+    { label: "Quiet Hours", href: "/quiet-hours" },
     { label: getCountryName(record.country), href: `/${params.country}` },
     { label: record.region, href: `/${params.country}/${params.region}` },
     { label: record.city, href: path },
@@ -91,6 +100,8 @@ export default async function CityPage({ params }: { params: CityPageParams }) {
       <div className="space-y-6">
         <Breadcrumbs items={breadcrumbItems} />
         <CityHero record={record} />
+
+        <TopicNav activeTopic="quiet-hours" entries={topicNavEntries} />
 
         <section className="grid gap-4 md:grid-cols-2">
           <RuleCard
@@ -217,6 +228,11 @@ export default async function CityPage({ params }: { params: CityPageParams }) {
           </Card>
         </section>
 
+        <UpdateNotice>
+          Noise bylaws are updated by municipal councils. Confirm details with the latest city
+          notices before relying on this summary.
+        </UpdateNotice>
+
         <AdPlaceholder slot="city-mid-content" />
 
         <section
@@ -302,4 +318,7 @@ export default async function CityPage({ params }: { params: CityPageParams }) {
     </>
   );
 }
+
+
+
 

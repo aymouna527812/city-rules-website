@@ -1,0 +1,27 @@
+[
+  {
+    "country": "US",
+    "region": "Massachusetts",
+    "country_slug": "united-states",
+    "region_slug": "massachusetts",
+    "timezone": "America/New_York",
+    "last_verified": "2025-05-20",
+    "source_title": "State Fire Marshal - Fireworks Law",
+    "source_url": "https://example.com/source-fireworks-ma",
+    "complaint_channel": "State Fire Marshal Hotline",
+    "complaint_url": "https://example.com/fireworks-report",
+    "fine_range": "$100-$1000",
+    "notes_admin": "Demo record for fireworks legality documentation.",
+    "jurisdiction_level": "state",
+    "allowed_consumer_fireworks": false,
+    "sale_periods": "Not permitted",
+    "use_hours": "Not permitted",
+    "permit_required": false,
+    "age_restrictions": "N/A",
+    "prohibited_types": [
+      "All consumer fireworks"
+    ],
+    "enforcement_notes": "Fines and confiscation apply",
+    "notes_public": "Only licensed public displays are allowed statewide."
+  }
+]
