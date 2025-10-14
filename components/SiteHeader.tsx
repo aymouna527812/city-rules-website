@@ -16,34 +16,34 @@ export function SiteHeader() {
         </Link>
         <div className="flex items-center gap-2">
           <nav aria-label="Primary" className="hidden md:block">
-            <ul className="flex items-center gap-4 text-sm font-medium text-slate-700 dark:text-slate-300">
+            <ul className="flex items-center gap-4 text-sm font-medium text-black dark:text-white">
               <li>
-                <Link className="hover:text-primary dark:hover:text-sky-400" href="/quiet-hours">
+                <Link className="hover:text-black dark:hover:text-white" href="/quiet-hours">
                   Quiet Hours
                 </Link>
               </li>
-            <li>
-              <Link className="hover:text-primary dark:hover:text-sky-400" href="/parking-rules">
-                Parking
-              </Link>
-            </li>
-            <li>
-              <Link className="hover:text-primary dark:hover:text-sky-400" href="/bulk-trash">
-                Bulk Trash
-              </Link>
-            </li>
-            <li>
-              <Link className="hover:text-primary dark:hover:text-sky-400" href="/fireworks">
-                Fireworks
-              </Link>
-            </li>
-            <li>
-              <Link className="hover:text-primary dark:hover:text-sky-400" href="/about">
-                About
-              </Link>
-            </li>
               <li>
-                <Link className="hover:text-primary dark:hover:text-sky-400" href="/contact">
+                <Link className="hover:text-black dark:hover:text-white" href="/parking-rules">
+                  Parking
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:text-black dark:hover:text-white" href="/bulk-trash">
+                  Bulk Trash
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:text-black dark:hover:text-white" href="/fireworks">
+                  Fireworks
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:text-black dark:hover:text-white" href="/about">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:text-black dark:hover:text-white" href="/contact">
                   Contact
                 </Link>
               </li>
