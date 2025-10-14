@@ -66,8 +66,8 @@ export default function AboutPage() {
         </Card>
       </section>
 
-      <section className="space-y-4 rounded-2xl border border-slate-200 bg-white p-6 text-sm text-slate-600">
-        <h2 className="text-lg font-semibold text-slate-900">Coverage roadmap</h2>
+      <section className="space-y-4 rounded-2xl border border-slate-200 bg-white p-6 text-sm text-slate-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">
+        <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Coverage roadmap</h2>
         <ul className="list-disc space-y-1 pl-5">
           <li>Phase 1: 100+ Canadian and US cities with population over 200,000.</li>
           <li>Phase 2: Suburban hubs and fast-growing commuter regions.</li>

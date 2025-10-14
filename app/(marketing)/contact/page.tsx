@@ -26,7 +26,7 @@ export default function ContactPage() {
         </p>
       </header>
 
-      <form className="grid gap-4 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8" aria-describedby="form-help">
+      <form className="grid gap-4 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8 dark:border-slate-800 dark:bg-slate-900" aria-describedby="form-help">
         <div className="grid gap-2">
           <label className="text-sm font-medium text-slate-700" htmlFor="name">
             Name
@@ -78,7 +78,7 @@ export default function ContactPage() {
         </div>
       </form>
 
-      <section className="space-y-2 rounded-2xl border border-slate-200 bg-white p-6 text-sm text-slate-600">
+      <section className="space-y-2 rounded-2xl border border-slate-200 bg-white p-6 text-sm text-slate-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">
         <h2 className="text-lg font-semibold text-slate-900">Other ways to reach us</h2>
         <ul className="list-disc space-y-1 pl-5">
           <li>

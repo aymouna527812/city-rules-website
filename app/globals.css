@@ -54,3 +54,12 @@ a {
     padding: 0 !important;
   }
 }
+/* Dark mode readability overrides for common text classes */
+@layer utilities {
+  /* Only apply when no explicit dark:text-* class is present */
+  .dark [class~="text-slate-900"]:not([class*="dark:text-"]) { color: theme("colors.slate.100"); }
+  .dark [class~="text-slate-800"]:not([class*="dark:text-"]) { color: theme("colors.slate.100"); }
+  .dark [class~="text-slate-700"]:not([class*="dark:text-"]) { color: theme("colors.slate.200"); }
+  .dark [class~="text-slate-600"]:not([class*="dark:text-"]) { color: theme("colors.slate.300"); }
+  .dark [class~="text-slate-500"]:not([class*="dark:text-"]) { color: theme("colors.slate.400"); }
+}

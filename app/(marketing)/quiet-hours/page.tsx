@@ -109,7 +109,7 @@ export default async function QuietHoursDirectory() {
         {enrichedCountries.map((country) => (
           <Card key={country.countrySlug}>
             <CardHeader>
-              <CardTitle className="text-2xl text-slate-900">
+              <CardTitle className="text-2xl text-slate-900 dark:text-slate-100">
                 {getCountryName(country.countryCode)}
               </CardTitle>
             </CardHeader>
@@ -126,7 +126,7 @@ export default async function QuietHoursDirectory() {
                     {region.cities.map((city) => (
                       <li key={city.slug}>
                         <Link
-                          className="flex items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-primary hover:border-primary hover:bg-primary/5 hover:underline"
+                          className="flex items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-primary hover:border-primary hover:bg-primary/5 hover:underline dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800"
                           href={`/${country.countrySlug}/${region.slug}/${city.slug}`}
                         >
                           {city.image ? (

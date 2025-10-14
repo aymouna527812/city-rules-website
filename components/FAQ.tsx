@@ -22,8 +22,8 @@ export function FAQ({ items }: FAQProps) {
   return (
     <section className="space-y-4">
       <div>
-        <h2 className="text-2xl font-semibold text-slate-900">Frequently asked questions</h2>
-        <p className="text-sm text-slate-600">
+        <h2 className="text-2xl font-semibold text-slate-900 dark:text-slate-100">Frequently asked questions</h2>
+        <p className="text-sm text-slate-600 dark:text-slate-300">
           Answers are summarized from the city bylaw for quick reference. For the full context,
           follow the official links below.
         </p>
@@ -31,7 +31,7 @@ export function FAQ({ items }: FAQProps) {
       <Accordion
         type="single"
         collapsible
-        className="divide-y divide-slate-200 rounded-xl border border-slate-200 bg-white px-2"
+        className="divide-y divide-slate-200 rounded-xl border border-slate-200 bg-white px-2 dark:divide-slate-800 dark:border-slate-800 dark:bg-slate-900"
       >
         {items.map((item, index) => (
           <AccordionItem key={item.question} value={`faq-${index + 1}`}>
