@@ -1,6 +1,6 @@
 "use client";
 
-import { Monitor, MoonStar, SunMedium } from "lucide-react";
+import { MoonStar, SunMedium } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
@@ -9,7 +9,6 @@ import { cn } from "@/lib/utils";
 const OPTIONS = [
   { value: "light", label: "Light", icon: SunMedium },
   { value: "dark", label: "Dark", icon: MoonStar },
-  { value: "system", label: "System", icon: Monitor },
 ] as const;
 
 export function ThemeToggle() {
@@ -33,7 +32,8 @@ export function ThemeToggle() {
     );
   }
 
-  const active = theme ?? resolvedTheme ?? "system";
+  // When theme is "system", highlight the resolved value (light/dark)
+  const active = theme === "system" ? resolvedTheme ?? "light" : theme ?? resolvedTheme ?? "light";
   const values = OPTIONS.map((option) => option.value);
   const currentIndex = Math.max(values.indexOf(active), 0);
   const CycleIcon = OPTIONS[currentIndex]?.icon ?? SunMedium;
