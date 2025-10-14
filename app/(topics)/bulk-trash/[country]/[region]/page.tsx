@@ -8,6 +8,7 @@ import {
   getBulkTrashCitiesByRegion,
   getBulkTrashCountries,
   getBulkTrashRegionsByCountry,
+  getHeroImagePath,
 } from "@/lib/dataClient";
 import { buildCanonicalPath } from "@/lib/seo";
 import { formatDate, getCountryName } from "@/lib/utils";
@@ -69,7 +70,13 @@ export default async function BulkRegionPage({ params }: { params: RegionParams 
     notFound();
   }
 
-  const cities = await getBulkTrashCitiesByRegion(params.country, params.region);
+  const citiesBase = await getBulkTrashCitiesByRegion(params.country, params.region);
+  const cities = await Promise.all(
+    citiesBase.map(async (c) => ({
+      ...c,
+      image: await getHeroImagePath({ countrySlug: params.country, regionSlug: params.region, citySlug: c.citySlug }),
+    })),
+  );
   const countryName = getCountryName(countryMatch.country);
 
   return (
@@ -100,16 +107,18 @@ export default async function BulkRegionPage({ params }: { params: RegionParams 
         <CardContent>
           <ul className="space-y-2 text-sm">
             {cities.map((city) => (
-              <li key={city.citySlug} className="flex items-center justify-between">
+              <li key={city.citySlug} className="flex items-center justify-between gap-3">
                 <Link
                   href={`/bulk-trash/${params.country}/${params.region}/${city.citySlug}`}
-                  className="font-medium text-primary hover:underline"
+                  className="flex items-center gap-3 font-medium text-primary hover:underline"
                 >
-                  {city.city}
+                  {city.image ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={city.image} alt="" className="h-8 w-12 rounded object-cover" loading="lazy" />
+                  ) : null}
+                  <span>{city.city}</span>
                 </Link>
-                <span className="text-xs text-slate-500">
-                  Updated {formatDate(city.lastVerified)}
-                </span>
+                <span className="text-xs text-slate-500">Updated {formatDate(city.lastVerified)}</span>
               </li>
             ))}
           </ul>

@@ -101,6 +101,7 @@ const QuietHoursRecordObject = CityTopicRecordBase.extend({
   }),
   lat: z.number().optional(),
   lng: z.number().optional(),
+  hero_image_url: UrlSchema.optional(),
 });
 
 export const QuietHoursRecordSchema = QuietHoursRecordObject.superRefine(

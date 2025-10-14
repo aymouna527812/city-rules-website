@@ -4,6 +4,7 @@ import { getCountryName, getFlagEmoji } from "@/lib/utils";
 
 type CityHeroProps = {
   record: QuietHoursRecord;
+  imageSrc?: string;
 };
 
 function formatLocalTime(timezone: string): string {
@@ -18,7 +19,7 @@ function formatLocalTime(timezone: string): string {
   }
 }
 
-export function CityHero({ record }: CityHeroProps) {
+export function CityHero({ record, imageSrc }: CityHeroProps) {
   const countryName = getCountryName(record.country);
   const flag = getFlagEmoji(record.country);
   const localTime = formatLocalTime(record.timezone);
@@ -57,6 +58,19 @@ export function CityHero({ record }: CityHeroProps) {
           </p>
         </div>
       </div>
+      {imageSrc ? (
+        <div className="mt-4 overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={imageSrc}
+            alt={`${record.city}, ${record.region} skyline`}
+            className="h-40 w-full object-cover md:h-48"
+            loading="lazy"
+          />
+        </div>
+      ) : null}
     </section>
   );
 }
+
+

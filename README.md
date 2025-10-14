@@ -1,4 +1,4 @@
-# Quiet Hours & Noise Rules
+ï»¿# Quiet Hours & Noise Rules
 
 Quiet Hours & Noise Rules is a programmatically generated Next.js 15 site that publishes verified quiet-hour, overnight parking, bulk trash, and fireworks guidance for cities and regions. The project produces SEO-friendly static pages from structured JSON/CSV sources and is optimised for Vercel deployment.
 
@@ -49,11 +49,11 @@ The site runs at `http://localhost:3000`. Programmatic city pages are available 
 
 Source files live in `lib/data/`:
 
-- `quiet_hours.json` / `.csv` – quiet hour bylaws and enforcement data
-- `parking_rules.json` / `.csv` – overnight parking and winter ban data
-- `bulk_trash.json` / `.csv` – bulk trash and large-item pickup schedules
-- `fireworks.json` / `.csv` – fireworks legality by jurisdiction
-- `quietHoursSlugIndex.json`, `parkingSlugIndex.json`, `bulkTrashSlugIndex.json`, `fireworksSlugIndex.json` – optional build artefacts created by `pnpm pages:cache`
+- `quiet_hours.json` / `.csv` â€“ quiet hour bylaws and enforcement data
+- `parking_rules.json` / `.csv` â€“ overnight parking and winter ban data
+- `bulk_trash.json` / `.csv` â€“ bulk trash and large-item pickup schedules
+- `fireworks.json` / `.csv` â€“ fireworks legality by jurisdiction
+- `quietHoursSlugIndex.json`, `parkingSlugIndex.json`, `bulkTrashSlugIndex.json`, `fireworksSlugIndex.json` â€“ optional build artefacts created by `pnpm pages:cache`
 
 ### Base fields (all topics)
 
@@ -85,6 +85,7 @@ Source files live in `lib/data/`:
 | `tips` | string[] | 1+ practical tips |
 | `templates.neighbor_message`, `templates.landlord_message` | string | Copy-ready messages |
 | `lat?`, `lng?` | number | Optional coordinates |
+| `hero_image_url?` | string (URL) | Optional hero image URL for the city. If present, build fetches and stores a local copy used on city pages and tiles |
 
 ### Parking rules schema
 
@@ -135,7 +136,8 @@ Source files live in `lib/data/`:
 
 1. Use the CSV headers that match each dataset's JSON schema. For array fields, separate values with the `|` pipe (`Furniture|Mattresses`).
 2. Run `pnpm csv2json` to regenerate JSON. Set `FORCE_CSV_EXPORT=true` to overwrite existing JSON when the CSV is the source of truth.
-3. Run `pnpm pages:cache` to write fresh slug index files for faster builds (optional during development, recommended before production builds).
+3. Run `pnpm fetch:heroes` to download any `hero_image_url` images into `public/hero` and generate `lib/data/heroImages.json` mapping.
+4. Run `pnpm pages:cache` to write fresh slug index files for faster builds (optional during development, recommended before production builds).
 
 ### Validation workflow
 
@@ -175,10 +177,10 @@ CI (GitHub Actions) runs linting, tests, and data validation on pushes and pull 
 1. Push the repository to GitHub.
 2. Create a Vercel project and import the repo.
 3. Set environment variables (recommended):
-   * `SITE_URL` – production canonical URL (e.g. `https://quiet-hours.example.com`)
-   * `NEXT_PUBLIC_GA_ID` – optional GA4 measurement ID
-   * `NEXT_PUBLIC_ADSENSE` – optional AdSense publisher ID to enable ad placeholders
-4. Vercel will run `pnpm install && pnpm build`. The output directory is `.next`.
+   * `SITE_URL` â€“ production canonical URL (e.g. `https://quiet-hours.example.com`)
+   * `NEXT_PUBLIC_GA_ID` â€“ optional GA4 measurement ID
+   * `NEXT_PUBLIC_ADSENSE` â€“ optional AdSense publisher ID to enable ad placeholders
+ Vercel will run `pnpm install && pnpm build`. The output directory is `.next`.
 
 ## Content policy & disclaimers
 
@@ -192,3 +194,6 @@ CI (GitHub Actions) runs linting, tests, and data validation on pushes and pull 
 1. Add or update data in `lib/data/`.
 2. Run `pnpm validate && pnpm test` before committing.
 3. Include clear descriptions of bylaw sources in commit messages or PR descriptions.
+
+
+

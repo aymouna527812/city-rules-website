@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
-import { getCitiesByRegion, getDataset } from "@/lib/dataClient";
+import { getCitiesByRegion, getDataset, getHeroImagePath } from "@/lib/dataClient";
 import { buildCanonicalPath } from "@/lib/seo";
 import { formatDate, getCountryName } from "@/lib/utils";
 
@@ -63,6 +63,16 @@ export default async function RegionPage({ params }: { params: RegionParams }) {
   }
   const countryName = getCountryName(match.country);
   const cities = await getCitiesByRegion(params.country, params.region);
+  const citiesWithImages = await Promise.all(
+    cities.map(async (city) => ({
+      ...city,
+      image: await getHeroImagePath({
+        countrySlug: params.country,
+        regionSlug: params.region,
+        citySlug: city.citySlug,
+      }),
+    })),
+  );
 
   return (
     <div className="space-y-8">
@@ -83,8 +93,14 @@ export default async function RegionPage({ params }: { params: RegionParams }) {
         </p>
       </header>
       <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {cities.map((city) => (
+        {citiesWithImages.map((city) => (
           <Card key={city.citySlug}>
+            {city.image ? (
+              <div className="overflow-hidden rounded-t-xl">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={city.image} alt={`${city.city} preview`} className="h-28 w-full object-cover" loading="lazy" />
+              </div>
+            ) : null}
             <CardContent className="space-y-1 p-5">
               <CardTitle className="text-lg text-slate-900">{city.city}</CardTitle>
               <p className="text-xs uppercase tracking-wide text-slate-400">
@@ -103,6 +119,7 @@ export default async function RegionPage({ params }: { params: RegionParams }) {
     </div>
   );
 }
+
 
 
 

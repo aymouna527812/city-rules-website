@@ -24,7 +24,7 @@ import { UpdateNotice } from "@/components/UpdateNotice";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { buildFaqItems, buildRelatedLinks, buildSuggestUpdateEmail } from "@/lib/city";
-import { getCityRecord, getDataset, getTopicNavEntries } from "@/lib/dataClient";
+import { getCityRecord, getDataset, getTopicNavEntries, getHeroImagePath } from "@/lib/dataClient";
 import { buildCityMetadata, buildFaqJsonLd, buildBreadcrumbJsonLd, getSiteUrl } from "@/lib/seo";
 import { formatDate, getCountryName } from "@/lib/utils";
 
@@ -84,6 +84,11 @@ export default async function CityPage({ params }: { params: CityPageParams }) {
 
   const path = `/${params.country}/${params.region}/${params.city}`;
   const canonical = `${getSiteUrl()}${path}`;
+  const heroImage = await getHeroImagePath({
+    countrySlug: params.country,
+    regionSlug: params.region,
+    citySlug: params.city,
+  });
   const faqs = buildFaqItems(record);
   const breadcrumbItems = [
     { label: "Home", href: "/" },
@@ -99,7 +104,7 @@ export default async function CityPage({ params }: { params: CityPageParams }) {
     <>
       <div className="space-y-6">
         <Breadcrumbs items={breadcrumbItems} />
-        <CityHero record={record} />
+        <CityHero record={record} imageSrc={heroImage} />
 
         <TopicNav activeTopic="quiet-hours" entries={topicNavEntries} />
 

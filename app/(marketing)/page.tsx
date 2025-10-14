@@ -2,13 +2,23 @@ import Link from "next/link";
 
 import { CitySearch } from "@/components/CitySearch";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getDataset, getTopicSearchIndex } from "@/lib/dataClient";
+import { getDataset, getHeroImagePath, getTopicSearchIndex } from "@/lib/dataClient";
 import { formatDate } from "@/lib/utils";
 
 export default async function MarketingHome() {
   const searchItems = await getTopicSearchIndex();
   const { records } = await getDataset();
-  const featuredCities = records.slice(0, 4);
+  const featuredCitiesRaw = records.slice(0, 4);
+  const featuredCities = await Promise.all(
+    featuredCitiesRaw.map(async (city) => ({
+      ...city,
+      image: await getHeroImagePath({
+        countrySlug: city.country_slug,
+        regionSlug: city.region_slug,
+        citySlug: city.city_slug,
+      }),
+    })),
+  );
 
   return (
     <div className="space-y-16">
@@ -44,6 +54,12 @@ export default async function MarketingHome() {
         <div className="grid gap-4 sm:grid-cols-2">
           {featuredCities.map((city) => (
             <Card key={city.city_slug}>
+              {city.image ? (
+                <div className="overflow-hidden rounded-t-xl">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={city.image} alt="" className="h-32 w-full object-cover" loading="lazy" />
+                </div>
+              ) : null}
               <CardHeader>
                 <CardTitle className="text-xl text-slate-900">
                   {city.city}, {city.region}

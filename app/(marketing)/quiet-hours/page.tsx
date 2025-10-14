@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getDataset } from "@/lib/dataClient";
+import { getDataset, getHeroImagePath } from "@/lib/dataClient";
 import { formatDate, getCountryName } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -68,6 +68,32 @@ export default async function QuietHoursDirectory() {
     getCountryName(a.countryCode).localeCompare(getCountryName(b.countryCode)),
   );
 
+  // Precompute images for all city tiles to avoid awaiting inside JSX
+  const enrichedCountries = await Promise.all(
+    countries.map(async (country) => {
+      const regions = await Promise.all(
+        Array.from(country.regions.values())
+          .sort((a, b) => a.name.localeCompare(b.name))
+          .map(async (region) => {
+            const cities = await Promise.all(
+              region.cities
+                .sort((a, b) => a.name.localeCompare(b.name))
+                .map(async (city) => ({
+                  ...city,
+                  image: await getHeroImagePath({
+                    countrySlug: country.countrySlug,
+                    regionSlug: region.slug,
+                    citySlug: city.slug,
+                  }),
+                })),
+            );
+            return { ...region, cities };
+          }),
+      );
+      return { ...country, regions };
+    }),
+  );
+
   return (
     <div className="space-y-10">
       <header className="space-y-3">
@@ -80,7 +106,7 @@ export default async function QuietHoursDirectory() {
       </header>
 
       <div className="space-y-6">
-        {countries.map((country) => (
+        {enrichedCountries.map((country) => (
           <Card key={country.countrySlug}>
             <CardHeader>
               <CardTitle className="text-2xl text-slate-900">
@@ -88,9 +114,7 @@ export default async function QuietHoursDirectory() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
-              {Array.from(country.regions.values())
-                .sort((a, b) => a.name.localeCompare(b.name))
-                .map((region) => (
+              {country.regions.map((region) => (
                 <div key={region.slug} className="space-y-2">
                   <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
                     <div className="text-lg font-semibold text-slate-800">{region.name}</div>
@@ -99,23 +123,27 @@ export default async function QuietHoursDirectory() {
                     </p>
                   </div>
                   <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-                    {region.cities
-                      .sort((a, b) => a.name.localeCompare(b.name))
-                      .map((city) => (
-                        <li key={city.slug}>
-                          <Link
-                            className="flex items-center justify-between rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-primary hover:border-primary hover:bg-primary/5 hover:underline"
-                            href={`/${country.countrySlug}/${region.slug}/${city.slug}`}
-                          >
+                    {region.cities.map((city) => (
+                      <li key={city.slug}>
+                        <Link
+                          className="flex items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-primary hover:border-primary hover:bg-primary/5 hover:underline"
+                          href={`/${country.countrySlug}/${region.slug}/${city.slug}`}
+                        >
+                          {city.image ? (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img src={city.image} alt="" className="h-10 w-16 rounded object-cover" />
+                          ) : null}
+                          <span className="flex w-full items-center justify-between">
                             <span>{city.name}</span>
                             <span className="text-xs text-slate-400">
                               <time dateTime={city.lastVerified}>
                                 {formatDate(city.lastVerified)}
                               </time>
                             </span>
-                          </Link>
-                        </li>
-                      ))}
+                          </span>
+                        </Link>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               ))}

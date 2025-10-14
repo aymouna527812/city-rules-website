@@ -71,6 +71,7 @@
     },
     "lat": 40.7128,
     "lng": -74.006,
+    "hero_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Manhattan_at_night_south_of_Rockefeller_Center_panorama_(11256p).jpg",
     "notes_admin": "Example record for documentation purposes."
   }
 ]

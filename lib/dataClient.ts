@@ -27,6 +27,7 @@ import {
 } from "@/lib/types";
 
 const DATA_DIR = path.join(process.cwd(), "lib", "data");
+const HERO_MAP_PATH = path.join(DATA_DIR, "heroImages.json");
 
 type DatasetCache<TDataset> = {
   dataset: TDataset;
@@ -422,6 +423,7 @@ export function normalizeRecord(record: Record<string, unknown>): QuietHoursReco
     },
     lat: toOptionalNumber(record.lat),
     lng: toOptionalNumber(record.lng),
+    hero_image_url: toOptionalUrl(record.hero_image_url),
   };
 
   const parsed = QuietHoursRecordSchema.safeParse(candidate);
@@ -1298,3 +1300,46 @@ export async function getTopicSearchIndex(): Promise<TopicSearchEntry[]> {
 
   return [...quietEntries, ...parkingEntries, ...bulkEntries, ...fireworksEntries];
 }
+
+
+let heroMapPromise: Promise<Record<string, string>> | null = null;
+
+async function ensureHeroMap(): Promise<Record<string, string>> {
+  if (!heroMapPromise) {
+    heroMapPromise = (async () => {
+      try {
+        const fileOk = await (async () => { try { await fs.access(HERO_MAP_PATH); return true; } catch { return false; } })();
+        if (!fileOk) return {};
+        const raw = await fs.readFile(HERO_MAP_PATH, "utf-8");
+        return JSON.parse(raw) as Record<string, string>;
+      } catch {
+        return {};
+      }
+    })();
+  }
+  return heroMapPromise;
+}
+
+export async function getHeroImagePath(params: {
+  countrySlug: string;
+  regionSlug: string;
+  citySlug: string;
+}): Promise<string | undefined> {
+  const map = await ensureHeroMap();
+  const key = buildSlugKey(params.countrySlug, params.regionSlug, params.citySlug);
+  const local = map[key];
+  if (local) return local;
+  try {
+    const { dataset } = await quietHoursLoader.ensureDataset();
+    const rec = dataset.find(
+      (r) =>
+        r.country_slug === params.countrySlug &&
+        r.region_slug === params.regionSlug &&
+        r.city_slug === params.citySlug,
+    );
+    return rec?.hero_image_url;
+  } catch {
+    return undefined;
+  }
+}
+
