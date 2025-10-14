@@ -21,7 +21,10 @@ export const metadata: Metadata = buildBaseMetadata();
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100`}>
+      <body
+        suppressHydrationWarning
+        className={`${inter.variable} bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100`}
+      >
         <ThemeProvider>
           <SiteHeader />
           <main className="mx-auto min-h-screen w-full max-w-5xl px-4 py-8 sm:px-6">
