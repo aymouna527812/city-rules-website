@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { MobileMenu } from "@/components/MobileMenu";
 
 export function SiteHeader() {
   return (
@@ -13,13 +14,14 @@ export function SiteHeader() {
           <span aria-hidden="true">QH</span>
           Quiet Hours & Noise Rules
         </Link>
-        <nav aria-label="Primary">
-          <ul className="flex items-center gap-4 text-sm font-medium text-slate-700 dark:text-slate-300">
-            <li>
-              <Link className="hover:text-primary dark:hover:text-sky-400" href="/quiet-hours">
-                Quiet Hours
-              </Link>
-            </li>
+        <div className="flex items-center gap-2">
+          <nav aria-label="Primary" className="hidden md:block">
+            <ul className="flex items-center gap-4 text-sm font-medium text-slate-700 dark:text-slate-300">
+              <li>
+                <Link className="hover:text-primary dark:hover:text-sky-400" href="/quiet-hours">
+                  Quiet Hours
+                </Link>
+              </li>
             <li>
               <Link className="hover:text-primary dark:hover:text-sky-400" href="/parking-rules">
                 Parking
@@ -40,16 +42,18 @@ export function SiteHeader() {
                 About
               </Link>
             </li>
-            <li>
-              <Link className="hover:text-primary dark:hover:text-sky-400" href="/contact">
-                Contact
-              </Link>
-            </li>
-            <li>
-              <ThemeToggle />
-            </li>
-          </ul>
-        </nav>
+              <li>
+                <Link className="hover:text-primary dark:hover:text-sky-400" href="/contact">
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </nav>
+          {/* Theme toggle (mobile shows cycle button; desktop shows segmented options) */}
+          <ThemeToggle />
+          {/* Mobile burger menu */}
+          <MobileMenu />
+        </div>
       </div>
     </header>
   );
