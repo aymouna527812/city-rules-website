@@ -18,32 +18,32 @@ export function SiteHeader() {
           <nav aria-label="Primary" className="hidden md:block">
             <ul className="flex items-center gap-4 text-sm font-medium text-black dark:text-white">
               <li>
-                <Link className="hover:text-black dark:hover:text-white" href="/quiet-hours">
+                <Link className="!no-underline !text-black dark:!text-white hover:!text-black dark:hover:!text-white" href="/quiet-hours">
                   Quiet Hours
                 </Link>
               </li>
               <li>
-                <Link className="hover:text-black dark:hover:text-white" href="/parking-rules">
+                <Link className="!no-underline !text-black dark:!text-white hover:!text-black dark:hover:!text-white" href="/parking-rules">
                   Parking
                 </Link>
               </li>
               <li>
-                <Link className="hover:text-black dark:hover:text-white" href="/bulk-trash">
+                <Link className="!no-underline !text-black dark:!text-white hover:!text-black dark:hover:!text-white" href="/bulk-trash">
                   Bulk Trash
                 </Link>
               </li>
               <li>
-                <Link className="hover:text-black dark:hover:text-white" href="/fireworks">
+                <Link className="!no-underline !text-black dark:!text-white hover:!text-black dark:hover:!text-white" href="/fireworks">
                   Fireworks
                 </Link>
               </li>
               <li>
-                <Link className="hover:text-black dark:hover:text-white" href="/about">
+                <Link className="!no-underline !text-black dark:!text-white hover:!text-black dark:hover:!text-white" href="/about">
                   About
                 </Link>
               </li>
               <li>
-                <Link className="hover:text-black dark:hover:text-white" href="/contact">
+                <Link className="!no-underline !text-black dark:!text-white hover:!text-black dark:hover:!text-white" href="/contact">
                   Contact
                 </Link>
               </li>
