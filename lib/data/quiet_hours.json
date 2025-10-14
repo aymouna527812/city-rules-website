@@ -1,0 +1,77 @@
+[
+  {
+    "country": "CA",
+    "region": "Ontario",
+    "city": "Toronto",
+    "country_slug": "canada",
+    "region_slug": "ontario",
+    "city_slug": "toronto",
+    "timezone": "America/Toronto",
+    "default_quiet_hours": "23:00–07:00",
+    "weekend_quiet_hours": "23:00–09:00",
+    "holiday_quiet_hours": "23:00–09:00",
+    "residential_decibel_limit_day": 55,
+    "residential_decibel_limit_night": 50,
+    "construction_hours_weekday": "07:00–19:00",
+    "construction_hours_weekend": "09:00–19:00",
+    "lawn_equipment_hours": "09:00–21:00 daily",
+    "party_music_rules": "Amplified music must stay under the decibel limits and wind down by 23:00.",
+    "complaint_channel": "311",
+    "complaint_url": "https://www.toronto.ca/community-people/employment-social-support/housing-support/tenant-resources/reporting-noise-complaints/",
+    "fine_range": "$100–$500",
+    "first_offense_fine": 200,
+    "bylaw_title": "Toronto Municipal Code Chapter 591 - Noise",
+    "bylaw_url": "https://www.toronto.ca/legdocs/municode/1184_591.pdf",
+    "last_verified": "2024-09-15",
+    "tips": [
+      "Document recurring disturbances with dates and times before contacting 311.",
+      "Add felt pads or rugs to dampen footsteps in older buildings.",
+      "Politely notify neighbours ahead of planned gatherings."
+    ],
+    "templates": {
+      "neighbor_message": "Hi there, just a quick note that Toronto's quiet hours start at 11 p.m. Could we turn the music down a touch tonight? Thanks so much!",
+      "landlord_message": "Hello, I'm experiencing regular noise in my unit after 11 p.m., which is outside Toronto's quiet hours. Could you please help address this with the neighbouring tenants?"
+    },
+    "lat": 43.6532,
+    "lng": -79.3832,
+    "notes_admin": "Example record for documentation purposes."
+  },
+  {
+    "country": "US",
+    "region": "New York",
+    "city": "New York",
+    "country_slug": "united-states",
+    "region_slug": "new-york",
+    "city_slug": "new-york",
+    "timezone": "America/New_York",
+    "default_quiet_hours": "22:00–07:00",
+    "weekend_quiet_hours": "23:00–08:00",
+    "holiday_quiet_hours": "23:00–08:00",
+    "residential_decibel_limit_day": 55,
+    "residential_decibel_limit_night": 45,
+    "construction_hours_weekday": "07:00–18:00 (after-hours permit required otherwise)",
+    "construction_hours_weekend": "Permits required outside 08:00–17:00",
+    "lawn_equipment_hours": "08:00–19:00 weekdays, 09:00–18:00 weekends",
+    "party_music_rules": "Sound must be under 42 dBA inside neighbouring apartments between 22:00–07:00.",
+    "complaint_channel": "311",
+    "complaint_url": "https://portal.311.nyc.gov/article/?kanumber=KA-01052",
+    "fine_range": "$100–$1,000",
+    "first_offense_fine": 250,
+    "bylaw_title": "New York City Administrative Code §24-218 Noise Control",
+    "bylaw_url": "https://www.nyc.gov/assets/dep/downloads/pdf/air/noise-code/noise-code-plain-language.pdf",
+    "last_verified": "2024-09-10",
+    "tips": [
+      "File 311 complaints within 24 hours so enforcement can follow up promptly.",
+      "Use white-noise or sound machines to mask unavoidable hallway noise.",
+      "Remind guests to exit quietly after 10 p.m. to avoid fines."
+    ],
+    "templates": {
+      "neighbor_message": "Hi neighbor! NYC quiet hours kick in at 10 p.m. Would you mind lowering the volume tonight? I appreciate it.",
+      "landlord_message": "Hello, I'm hearing elevated noise levels after 10 p.m. contrary to NYC's quiet hours. Could you please reach out to the tenant to resolve it?"
+    },
+    "lat": 40.7128,
+    "lng": -74.006,
+    "notes_admin": "Example record for documentation purposes."
+  }
+]
+
