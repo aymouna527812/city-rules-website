@@ -408,6 +408,7 @@ export function normalizeRecord(record: Record<string, unknown>): QuietHoursReco
     first_offense_fine: toOptionalNumber(record.first_offense_fine),
     bylaw_title: requireString(record.bylaw_title, "bylaw_title"),
     bylaw_url: requireString(record.bylaw_url, "bylaw_url"),
+    seo_text: maybeString(record.seo_text),
     tips: toTips(record.tips),
     templates: {
       neighbor_message: requireString(

@@ -94,6 +94,8 @@ const QuietHoursRecordObject = CityTopicRecordBase.extend({
   first_offense_fine: z.number().nonnegative().optional(),
   bylaw_title: NonEmptyString,
   bylaw_url: UrlSchema,
+  // Optional SEO copy rendered under the header image on city pages
+  seo_text: NonEmptyString.optional(),
   tips: z.array(NonEmptyString).min(1),
   templates: z.object({
     neighbor_message: NonEmptyString,

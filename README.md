@@ -82,6 +82,7 @@ Source files live in `lib/data/`:
 | `complaint_channel`, `complaint_url` | string | Required for quiet hours records |
 | `fine_range`, `first_offense_fine?` | string, number | Typical penalties |
 | `bylaw_title`, `bylaw_url` | string | Citation details |
+| `seo_text?` | string (HTML allowed) | Optional SEO copy shown under the header image on city pages |
 | `tips` | string[] | 1+ practical tips |
 | `templates.neighbor_message`, `templates.landlord_message` | string | Copy-ready messages |
 | `lat?`, `lng?` | number | Optional coordinates |
