@@ -14,8 +14,7 @@ export function SiteHeader() {
             href="/"
             className="flex items-center gap-2 text-lg font-semibold text-slate-900 dark:text-slate-100"
           >
-            <span aria-hidden="true">QH</span>
-            Quiet Hours & Noise Rules
+            Quiet Hours & City Rules
           </Link>
           <div className="flex items-center gap-2">
             {/* Primary nav on desktop */}
