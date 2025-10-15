@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 
 import { AdPlaceholder } from "@/components/AdPlaceholder";
@@ -12,7 +12,7 @@ import {
 import { buildCanonicalPath } from "@/lib/seo";
 import { formatDate, getCountryName } from "@/lib/utils";
 
-export const revalidate = 60 * 60 * 24 * 7;
+export const revalidate = 604800;
 
 export const metadata: Metadata = {
   title: "Bulk Trash & Large-Item Pickup Directory",
@@ -119,3 +119,4 @@ export default async function BulkTrashIndexPage() {
     </div>
   );
 }
+

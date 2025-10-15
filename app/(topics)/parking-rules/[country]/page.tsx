@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -11,7 +11,7 @@ import {
 import { buildCanonicalPath } from "@/lib/seo";
 import { formatDate, getCountryName } from "@/lib/utils";
 
-export const revalidate = 60 * 60 * 24 * 7;
+export const revalidate = 604800;
 
 type CountryParams = {
   country: string;
@@ -25,15 +25,16 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: CountryParams;
+  params: Promise<CountryParams>;
 }): Promise<Metadata | undefined> {
+  const p = await params;
   const countries = await getParkingCountries();
-  const match = countries.find((country) => country.countrySlug === params.country);
+  const match = countries.find((country) => country.countrySlug === p.country);
   if (!match) {
     return undefined;
   }
   const countryName = getCountryName(match.country);
-  const path = `/parking-rules/${params.country}`;
+  const path = `/parking-rules/${p.country}`;
   return {
     title: `Parking rules by region in ${countryName}`,
     description: `Find overnight parking bans, permits, and towing enforcement across regions in ${countryName}.`,
@@ -43,14 +44,15 @@ export async function generateMetadata({
   };
 }
 
-export default async function ParkingCountryPage({ params }: { params: CountryParams }) {
+export default async function ParkingCountryPage({ params }: { params: Promise<CountryParams> }) {
+  const p = await params;
   const countries = await getParkingCountries();
-  const match = countries.find((country) => country.countrySlug === params.country);
+  const match = countries.find((country) => country.countrySlug === p.country);
   if (!match) {
     notFound();
   }
 
-  const regions = await getParkingRegionsByCountry(params.country);
+  const regions = await getParkingRegionsByCountry(p.country);
   const countryName = getCountryName(match.country);
 
   return (
@@ -59,7 +61,7 @@ export default async function ParkingCountryPage({ params }: { params: CountryPa
         items={[
           { label: "Home", href: "/" },
           { label: "Parking Rules", href: "/parking-rules" },
-          { label: countryName, href: `/parking-rules/${params.country}` },
+          { label: countryName, href: `/parking-rules/${p.country}` },
         ]}
       />
       <header className="space-y-2">
@@ -84,7 +86,7 @@ export default async function ParkingCountryPage({ params }: { params: CountryPa
                 <time dateTime={region.lastVerified}>{formatDate(region.lastVerified)}</time>
               </p>
               <Link
-                href={`/parking-rules/${params.country}/${region.regionSlug}`}
+                href={`/parking-rules/${p.country}/${region.regionSlug}`}
                 className="font-medium text-primary hover:underline"
               >
                 View cities
@@ -96,3 +98,4 @@ export default async function ParkingCountryPage({ params }: { params: CountryPa
     </div>
   );
 }
+

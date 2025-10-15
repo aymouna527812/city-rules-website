@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -11,7 +11,7 @@ import {
 import { buildCanonicalPath } from "@/lib/seo";
 import { formatDate, getCountryName } from "@/lib/utils";
 
-export const revalidate = 60 * 60 * 24 * 7;
+export const revalidate = 604800;
 
 type CountryParams = {
   country: string;
@@ -25,15 +25,16 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: CountryParams;
+  params: Promise<CountryParams>;
 }): Promise<Metadata | undefined> {
+  const p = await params;
   const countries = await getFireworksCountries();
-  const match = countries.find((country) => country.countrySlug === params.country);
+  const match = countries.find((country) => country.countrySlug === p.country);
   if (!match) {
     return undefined;
   }
   const countryName = getCountryName(match.country);
-  const path = `/fireworks/${params.country}`;
+  const path = `/fireworks/${p.country}`;
   return {
     title: `Fireworks legality by region in ${countryName}`,
     description: `Review whether fireworks are permitted across regions in ${countryName}, including sale periods and enforcement.`,
@@ -43,13 +44,14 @@ export async function generateMetadata({
   };
 }
 
-export default async function FireworksCountryPage({ params }: { params: CountryParams }) {
+export default async function FireworksCountryPage({ params }: { params: Promise<CountryParams> }) {
+  const p = await params;
   const countries = await getFireworksCountries();
-  const match = countries.find((country) => country.countrySlug === params.country);
+  const match = countries.find((country) => country.countrySlug === p.country);
   if (!match) {
     notFound();
   }
-  const regions = await getFireworksRegionsByCountry(params.country);
+  const regions = await getFireworksRegionsByCountry(p.country);
   const countryName = getCountryName(match.country);
 
   return (
@@ -58,7 +60,7 @@ export default async function FireworksCountryPage({ params }: { params: Country
         items={[
           { label: "Home", href: "/" },
           { label: "Fireworks", href: "/fireworks" },
-          { label: countryName, href: `/fireworks/${params.country}` },
+          { label: countryName, href: `/fireworks/${p.country}` },
         ]}
       />
       <header className="space-y-2">
@@ -85,7 +87,7 @@ export default async function FireworksCountryPage({ params }: { params: Country
                 <time dateTime={region.lastVerified}>{formatDate(region.lastVerified)}</time>
               </p>
               <Link
-                href={`/fireworks/${params.country}/${region.regionSlug}`}
+                href={`/fireworks/${p.country}/${region.regionSlug}`}
                 className="font-medium text-primary hover:underline"
               >
                 View details
@@ -97,3 +99,4 @@ export default async function FireworksCountryPage({ params }: { params: Country
     </div>
   );
 }
+

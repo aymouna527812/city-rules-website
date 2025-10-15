@@ -4,12 +4,12 @@
     "private":  true,
     "scripts":  {
                     "dev":  "next dev",
-                    "build":  "pnpm run prebuild \u0026\u0026 next build",
-                    "prebuild":  "pnpm validate \u0026\u0026 pnpm csv2json \u0026\u0026 pnpm fetch:heroes",
+                    "build":  "npm run prebuild \u0026\u0026 next build",
+                    "prebuild":  "npm run validate \u0026\u0026 npm run csv2json \u0026\u0026 npm run fetch:heroes",
                     "start":  "next start",
                     "validate":  "tsx scripts/validate-data.ts",
-                    "csv2json": "tsx scripts/csv-to-json.ts",
-                    "fetch:heroes": "tsx scripts/fetch-hero-images.ts",
+                    "csv2json":  "tsx scripts/csv-to-json.ts",
+                    "fetch:heroes":  "tsx scripts/fetch-hero-images.ts",
                     "pages:cache":  "tsx scripts/build-pages.ts",
                     "test":  "vitest run",
                     "lint":  "eslint . --ext .ts,.tsx"
@@ -62,4 +62,3 @@
                             "vitest":  "^2.1.4"
                         }
 }
-

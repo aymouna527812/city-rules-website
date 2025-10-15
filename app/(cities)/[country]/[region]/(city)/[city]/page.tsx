@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -28,7 +28,7 @@ import { getCityRecord, getDataset, getTopicNavEntries, getHeroImagePath } from 
 import { buildCityMetadata, buildFaqJsonLd, buildBreadcrumbJsonLd, getSiteUrl } from "@/lib/seo";
 import { formatDate, getCountryName } from "@/lib/utils";
 
-export const revalidate = 60 * 60 * 24 * 7;
+export const revalidate = 604800;
 
 type CityPageParams = {
   country: string;
@@ -49,27 +49,29 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: CityPageParams;
+  params: Promise<CityPageParams>;
 }): Promise<Metadata | undefined> {
+  const p = await params;
   const record = await getCityRecord({
-    countrySlug: params.country,
-    regionSlug: params.region,
-    citySlug: params.city,
+    countrySlug: p.country,
+    regionSlug: p.region,
+    citySlug: p.city,
   });
 
   if (!record) {
     return undefined;
   }
 
-  const path = `/${params.country}/${params.region}/${params.city}`;
+  const path = `/${p.country}/${p.region}/${p.city}`;
   return buildCityMetadata(record, path);
 }
 
-export default async function CityPage({ params }: { params: CityPageParams }) {
+export default async function CityPage({ params }: { params: Promise<CityPageParams> }) {
+  const p = await params;
   const record = await getCityRecord({
-    countrySlug: params.country,
-    regionSlug: params.region,
-    citySlug: params.city,
+    countrySlug: p.country,
+    regionSlug: p.region,
+    citySlug: p.city,
   });
 
   if (!record) {
@@ -77,24 +79,24 @@ export default async function CityPage({ params }: { params: CityPageParams }) {
   }
 
   const topicNavEntries = await getTopicNavEntries({
-    countrySlug: params.country,
-    regionSlug: params.region,
-    citySlug: params.city,
+    countrySlug: p.country,
+    regionSlug: p.region,
+    citySlug: p.city,
   });
 
-  const path = `/${params.country}/${params.region}/${params.city}`;
+  const path = `/${p.country}/${p.region}/${p.city}`;
   const canonical = `${getSiteUrl()}${path}`;
   const heroImage = await getHeroImagePath({
-    countrySlug: params.country,
-    regionSlug: params.region,
-    citySlug: params.city,
+    countrySlug: p.country,
+    regionSlug: p.region,
+    citySlug: p.city,
   });
   const faqs = buildFaqItems(record);
   const breadcrumbItems = [
     { label: "Home", href: "/" },
     { label: "Quiet Hours", href: "/quiet-hours" },
-    { label: getCountryName(record.country), href: `/${params.country}` },
-    { label: record.region, href: `/${params.country}/${params.region}` },
+    { label: getCountryName(record.country), href: `/${p.country}` },
+    { label: record.region, href: `/${p.country}/${p.region}` },
     { label: record.city, href: path },
   ];
   const relatedLinks = buildRelatedLinks(record);
@@ -329,6 +331,7 @@ export default async function CityPage({ params }: { params: CityPageParams }) {
     </>
   );
 }
+
 
 
 

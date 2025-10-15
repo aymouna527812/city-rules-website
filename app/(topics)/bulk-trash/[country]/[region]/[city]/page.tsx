@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -31,7 +31,7 @@ import {
 } from "@/lib/dataClient";
 import { formatDate, getCountryName } from "@/lib/utils";
 
-export const revalidate = 60 * 60 * 24 * 7;
+export const revalidate = 604800;
 
 type BulkCityParams = {
   country: string;
@@ -51,25 +51,27 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: BulkCityParams;
+  params: Promise<BulkCityParams>;
 }): Promise<Metadata | undefined> {
+  const p = await params;
   const record = await getBulkTrashBySlug({
-    countrySlug: params.country,
-    regionSlug: params.region,
-    citySlug: params.city,
+    countrySlug: p.country,
+    regionSlug: p.region,
+    citySlug: p.city,
   });
   if (!record) {
     return undefined;
   }
-  const path = `/bulk-trash/${params.country}/${params.region}/${params.city}`;
+  const path = `/bulk-trash/${p.country}/${p.region}/${p.city}`;
   return buildBulkTrashMetadata(record, path);
 }
 
-export default async function BulkTrashCityPage({ params }: { params: BulkCityParams }) {
+export default async function BulkTrashCityPage({ params }: { params: Promise<BulkCityParams> }) {
+  const p = await params;
   const record = await getBulkTrashBySlug({
-    countrySlug: params.country,
-    regionSlug: params.region,
-    citySlug: params.city,
+    countrySlug: p.country,
+    regionSlug: p.region,
+    citySlug: p.city,
   });
 
   if (!record) {
@@ -77,21 +79,21 @@ export default async function BulkTrashCityPage({ params }: { params: BulkCityPa
   }
 
   const countryName = getCountryName(record.country);
-  const path = `/bulk-trash/${params.country}/${params.region}/${params.city}`;
+  const path = `/bulk-trash/${p.country}/${p.region}/${p.city}`;
   const canonical = `${getSiteUrl()}${path}`;
   const faqs = buildBulkTrashFaqItems(record);
   const templates = buildBulkTrashTemplates(record, canonical);
   const topicNavEntries = await getTopicNavEntries({
-    countrySlug: params.country,
-    regionSlug: params.region,
-    citySlug: params.city,
+    countrySlug: p.country,
+    regionSlug: p.region,
+    citySlug: p.city,
   });
 
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: "Bulk Trash", href: "/bulk-trash" },
-    { label: countryName, href: `/bulk-trash/${params.country}` },
-    { label: record.region, href: `/bulk-trash/${params.country}/${params.region}` },
+    { label: countryName, href: `/bulk-trash/${p.country}` },
+    { label: record.region, href: `/bulk-trash/${p.country}/${p.region}` },
     { label: record.city, href: path },
   ];
 
@@ -218,3 +220,4 @@ export default async function BulkTrashCityPage({ params }: { params: BulkCityPa
     </>
   );
 }
+

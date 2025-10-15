@@ -6,6 +6,7 @@ import { createPortal } from "react-dom";
 import { useEffect, useRef, useState } from "react";
 
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { TimeFormatToggle } from "@/components/TimeFormatToggle";
 import { cn } from "@/lib/utils";
 
 export function MobileMenu() {
@@ -105,7 +106,11 @@ export function MobileMenu() {
                   </ul>
                 </nav>
 
-                <div className="mt-auto border-t border-slate-200 px-4 py-3 dark:border-slate-800">
+                <div className="mt-auto space-y-3 border-t border-slate-200 px-4 py-3 dark:border-slate-800">
+                  <div>
+                    <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">Time format</span>
+                    <TimeFormatToggle />
+                  </div>
                   <ThemeToggle />
                 </div>
               </div>

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -8,7 +8,7 @@ import { getCountries, getRegionsByCountry } from "@/lib/dataClient";
 import { buildCanonicalPath } from "@/lib/seo";
 import { formatDate, getCountryName } from "@/lib/utils";
 
-export const revalidate = 60 * 60 * 24 * 7;
+export const revalidate = 604800;
 
 type CountryParams = {
   country: string;
@@ -24,10 +24,11 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: CountryParams;
+  params: Promise<CountryParams>;
 }): Promise<Metadata | undefined> {
+  const p = await params;
   const countries = await getCountries();
-  const match = countries.find((country) => country.countrySlug === params.country);
+  const match = countries.find((country) => country.countrySlug === p.country);
   if (!match) {
     return undefined;
   }
@@ -36,24 +37,25 @@ export async function generateMetadata({
     title: `${countryName} quiet hour rules by region`,
     description: `Browse quiet hour bylaws and enforcement contacts across ${countryName}.`,
     alternates: {
-      canonical: buildCanonicalPath(`/${params.country}`),
+      canonical: buildCanonicalPath(`/${p.country}`),
     },
   };
 }
 
-export default async function CountryPage({ params }: { params: CountryParams }) {
+export default async function CountryPage({ params }: { params: Promise<CountryParams> }) {
+  const p = await params;
   const countries = await getCountries();
-  const match = countries.find((country) => country.countrySlug === params.country);
+  const match = countries.find((country) => country.countrySlug === p.country);
   if (!match) {
     notFound();
   }
 
   const countryName = getCountryName(match.country);
-  const regions = await getRegionsByCountry(params.country);
+  const regions = await getRegionsByCountry(p.country);
 
   return (
     <div className="space-y-8">
-      <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: countryName, href: `/${params.country}` }]} />
+      <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: countryName, href: `/${p.country}` }]} />
       <header className="space-y-2">
         <h1 className="text-3xl font-bold text-slate-900">
           Quiet hours by region in {countryName}
@@ -72,10 +74,10 @@ export default async function CountryPage({ params }: { params: CountryParams })
                 Updated <time dateTime={region.lastVerified}>{formatDate(region.lastVerified)}</time>
               </p>
               <Link
-                href={`/${params.country}/${region.regionSlug}`}
+                href={`/${p.country}/${region.regionSlug}`}
                 className="text-sm font-medium text-primary hover:underline"
               >
-                View cities →
+                View cities â†’
               </Link>
             </CardContent>
           </Card>
@@ -84,6 +86,7 @@ export default async function CountryPage({ params }: { params: CountryParams })
     </div>
   );
 }
+
 
 
 

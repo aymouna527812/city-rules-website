@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -8,7 +8,7 @@ import { getCitiesByRegion, getDataset, getHeroImagePath } from "@/lib/dataClien
 import { buildCanonicalPath } from "@/lib/seo";
 import { formatDate, getCountryName } from "@/lib/utils";
 
-export const revalidate = 60 * 60 * 24 * 7;
+export const revalidate = 604800;
 
 type RegionParams = {
   country: string;
@@ -32,12 +32,12 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: RegionParams;
+  params: Promise<RegionParams>;
 }): Promise<Metadata | undefined> {
+  const p = await params;
   const { records } = await getDataset();
   const match = records.find(
-    (record) =>
-      record.country_slug === params.country && record.region_slug === params.region,
+    (record) => record.country_slug === p.country && record.region_slug === p.region,
   );
   if (!match) {
     return undefined;
@@ -47,28 +47,28 @@ export async function generateMetadata({
     title: `Quiet hours across ${match.region}, ${countryName}`,
     description: `Find city-specific quiet hour rules, construction schedules, and reporting contacts across ${match.region}, ${countryName}.`,
     alternates: {
-      canonical: buildCanonicalPath(`/${params.country}/${params.region}`),
+      canonical: buildCanonicalPath(`/${p.country}/${p.region}`),
     },
   };
 }
 
-export default async function RegionPage({ params }: { params: RegionParams }) {
+export default async function RegionPage({ params }: { params: Promise<RegionParams> }) {
+  const p = await params;
   const { records } = await getDataset();
   const match = records.find(
-    (record) =>
-      record.country_slug === params.country && record.region_slug === params.region,
+    (record) => record.country_slug === p.country && record.region_slug === p.region,
   );
   if (!match) {
     notFound();
   }
   const countryName = getCountryName(match.country);
-  const cities = await getCitiesByRegion(params.country, params.region);
+  const cities = await getCitiesByRegion(p.country, p.region);
   const citiesWithImages = await Promise.all(
     cities.map(async (city) => ({
       ...city,
       image: await getHeroImagePath({
-        countrySlug: params.country,
-        regionSlug: params.region,
+        countrySlug: p.country,
+        regionSlug: p.region,
         citySlug: city.citySlug,
       }),
     })),
@@ -80,8 +80,8 @@ export default async function RegionPage({ params }: { params: RegionParams }) {
         items={[
           { label: "Home", href: "/" },
           { label: "Quiet Hours", href: "/quiet-hours" },
-          { label: countryName, href: `/${params.country}` },
-          { label: match.region, href: `/${params.country}/${params.region}` },
+          { label: countryName, href: `/${p.country}` },
+          { label: match.region, href: `/${p.country}/${p.region}` },
         ]}
       />
       <header className="space-y-2">
@@ -107,10 +107,10 @@ export default async function RegionPage({ params }: { params: RegionParams }) {
                 Updated <time dateTime={city.lastVerified}>{formatDate(city.lastVerified)}</time>
               </p>
               <Link
-                href={`/${params.country}/${params.region}/${city.citySlug}`}
+                href={`/${p.country}/${p.region}/${city.citySlug}`}
                 className="text-sm font-medium text-primary hover:underline"
               >
-                View quiet hours →
+                View quiet hours â†’
               </Link>
             </CardContent>
           </Card>
@@ -119,6 +119,7 @@ export default async function RegionPage({ params }: { params: RegionParams }) {
     </div>
   );
 }
+
 
 
 

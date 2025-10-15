@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -31,7 +31,7 @@ import {
 } from "@/lib/dataClient";
 import { formatDate, getCountryName } from "@/lib/utils";
 
-export const revalidate = 60 * 60 * 24 * 7;
+export const revalidate = 604800;
 
 type FireworksRegionParams = {
   country: string;
@@ -51,23 +51,25 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: FireworksRegionParams;
+  params: Promise<FireworksRegionParams>;
 }): Promise<Metadata | undefined> {
+  const p = await params;
   const record = await getFireworksBySlug({
-    countrySlug: params.country,
-    regionSlug: params.region,
+    countrySlug: p.country,
+    regionSlug: p.region,
   });
   if (!record) {
     return undefined;
   }
-  const path = `/fireworks/${params.country}/${params.region}`;
+  const path = `/fireworks/${p.country}/${p.region}`;
   return buildFireworksMetadata(record, path);
 }
 
-export default async function FireworksRegionPage({ params }: { params: FireworksRegionParams }) {
+export default async function FireworksRegionPage({ params }: { params: Promise<FireworksRegionParams> }) {
+  const p = await params;
   const record = await getFireworksBySlug({
-    countrySlug: params.country,
-    regionSlug: params.region,
+    countrySlug: p.country,
+    regionSlug: p.region,
   });
 
   if (!record) {
@@ -75,15 +77,15 @@ export default async function FireworksRegionPage({ params }: { params: Firework
   }
 
   const countryName = getCountryName(record.country);
-  const path = `/fireworks/${params.country}/${params.region}`;
+  const path = `/fireworks/${p.country}/${p.region}`;
   const canonical = `${getSiteUrl()}${path}`;
   const faqs = buildFireworksFaqItems(record);
   const templates = buildFireworksTemplates(record, canonical);
   const topicNavEntries = await getTopicNavEntries({
-    countrySlug: params.country,
-    regionSlug: params.region,
+    countrySlug: p.country,
+    regionSlug: p.region,
   });
-  const cityOverrides = await getFireworksCitiesByRegion(params.country, params.region);
+  const cityOverrides = await getFireworksCitiesByRegion(p.country, p.region);
 
   const jurisdictionBadge =
     record.jurisdiction_level === "state"
@@ -95,7 +97,7 @@ export default async function FireworksRegionPage({ params }: { params: Firework
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: "Fireworks", href: "/fireworks" },
-    { label: countryName, href: `/fireworks/${params.country}` },
+    { label: countryName, href: `/fireworks/${p.country}` },
     { label: record.region, href: path },
   ];
 
@@ -186,12 +188,12 @@ export default async function FireworksRegionPage({ params }: { params: Firework
               {cityOverrides.map((city) => (
                 <p key={city.citySlug}>
                   <Link
-                    href={`/fireworks/${params.country}/${params.region}/${city.citySlug}`}
+                    href={`/fireworks/${p.country}/${p.region}/${city.citySlug}`}
                     className="font-medium text-primary hover:underline"
                   >
                     {city.city}
                   </Link>{" "}
-                  – updated {formatDate(city.lastVerified)}
+                  â€“ updated {formatDate(city.lastVerified)}
                 </p>
               ))}
             </CardContent>
@@ -251,3 +253,4 @@ export default async function FireworksRegionPage({ params }: { params: Firework
     </>
   );
 }
+

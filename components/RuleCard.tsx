@@ -1,7 +1,9 @@
+
 import type { LucideIcon } from "lucide-react";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { TimeText } from "@/components/TimeText";
 
 type RuleCardProps = {
   icon: LucideIcon;
@@ -24,8 +26,8 @@ export function RuleCard({ icon: Icon, title, value, helper, className, id }: Ru
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-2">
-        <p className="text-lg font-semibold text-slate-900">{value}</p>
-        {helper ? <p className="text-sm text-slate-600">{helper}</p> : null}
+        <p className="text-lg font-semibold text-slate-900"><TimeText value={value} /></p>
+        {helper ? (<p className="text-sm text-slate-600"><TimeText value={helper} /></p>) : null}
       </CardContent>
     </Card>
   );

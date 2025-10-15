@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 
 import { AdPlaceholder } from "@/components/AdPlaceholder";
@@ -8,7 +8,7 @@ import { getParkingCitiesByRegion, getParkingCountries, getParkingRegionsByCount
 import { buildCanonicalPath } from "@/lib/seo";
 import { formatDate, getCountryName } from "@/lib/utils";
 
-export const revalidate = 60 * 60 * 24 * 7;
+export const revalidate = 604800;
 
 export const metadata: Metadata = {
   title: "Overnight Parking & Winter Bans Directory",
@@ -115,3 +115,4 @@ export default async function ParkingIndexPage() {
     </div>
   );
 }
+

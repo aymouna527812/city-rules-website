@@ -1,3 +1,4 @@
+import { TimeFormatToggle } from "@/components/TimeFormatToggle";
 import Link from "next/link";
 
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -49,7 +50,10 @@ export function SiteHeader() {
               </li>
             </ul>
           </nav>
-          {/* Theme toggle (mobile shows cycle button; desktop shows segmented options) */}
+          {/* Time format (desktop) and theme toggle */}
+          <div className="hidden md:block">
+            <TimeFormatToggle />
+          </div>
           <ThemeToggle />
           {/* Mobile burger menu */}
           <MobileMenu />

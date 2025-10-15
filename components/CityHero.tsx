@@ -1,6 +1,7 @@
 import { LastVerified } from "@/components/LastVerified";
 import type { QuietHoursRecord } from "@/lib/types";
 import { getCountryName, getFlagEmoji } from "@/lib/utils";
+import { TimeText } from "@/components/TimeText";
 
 type CityHeroProps = {
   record: QuietHoursRecord;
@@ -43,18 +44,18 @@ export function CityHero({ record, imageSrc }: CityHeroProps) {
         <div className="flex flex-col gap-2 rounded-xl bg-slate-50 p-4 text-sm text-slate-600 dark:bg-slate-800/60 dark:text-slate-200">
           <p className="font-semibold text-slate-800 dark:text-slate-100">Need a quick answer?</p>
           <p>
-            Default quiet hours: <strong>{record.default_quiet_hours}</strong>
+            Default quiet hours: <strong><TimeText value={record.default_quiet_hours} /></strong>
           </p>
           {record.weekend_quiet_hours ? (
             <p>
-              Weekends/holidays: <strong>{record.weekend_quiet_hours}</strong>
+              Weekends/holidays: <strong><TimeText value={record.weekend_quiet_hours} /></strong>
             </p>
           ) : null}
           <p>
-            Construction weekdays: <strong>{record.construction_hours_weekday}</strong>
+            Construction weekdays: <strong><TimeText value={record.construction_hours_weekday} /></strong>
           </p>
           <p>
-            Construction weekends: <strong>{record.construction_hours_weekend}</strong>
+            Construction weekends: <strong><TimeText value={record.construction_hours_weekend} /></strong>
           </p>
         </div>
       </div>

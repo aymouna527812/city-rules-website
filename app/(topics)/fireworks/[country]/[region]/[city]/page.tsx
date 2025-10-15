@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -30,7 +30,7 @@ import {
 } from "@/lib/dataClient";
 import { formatDate, getCountryName } from "@/lib/utils";
 
-export const revalidate = 60 * 60 * 24 * 7;
+export const revalidate = 604800;
 
 type FireworksCityParams = {
   country: string;
@@ -52,25 +52,27 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: FireworksCityParams;
+  params: Promise<FireworksCityParams>;
 }): Promise<Metadata | undefined> {
+  const p = await params;
   const record = await getFireworksBySlug({
-    countrySlug: params.country,
-    regionSlug: params.region,
-    citySlug: params.city,
+    countrySlug: p.country,
+    regionSlug: p.region,
+    citySlug: p.city,
   });
   if (!record) {
     return undefined;
   }
-  const path = `/fireworks/${params.country}/${params.region}/${params.city}`;
+  const path = `/fireworks/${p.country}/${p.region}/${p.city}`;
   return buildFireworksMetadata(record, path);
 }
 
-export default async function FireworksCityPage({ params }: { params: FireworksCityParams }) {
+export default async function FireworksCityPage({ params }: { params: Promise<FireworksCityParams> }) {
+  const p = await params;
   const record = await getFireworksBySlug({
-    countrySlug: params.country,
-    regionSlug: params.region,
-    citySlug: params.city,
+    countrySlug: p.country,
+    regionSlug: p.region,
+    citySlug: p.city,
   });
 
   if (!record) {
@@ -78,21 +80,21 @@ export default async function FireworksCityPage({ params }: { params: FireworksC
   }
 
   const countryName = getCountryName(record.country);
-  const path = `/fireworks/${params.country}/${params.region}/${params.city}`;
+  const path = `/fireworks/${p.country}/${p.region}/${p.city}`;
   const canonical = `${getSiteUrl()}${path}`;
   const faqs = buildFireworksFaqItems(record);
   const templates = buildFireworksTemplates(record, canonical);
   const topicNavEntries = await getTopicNavEntries({
-    countrySlug: params.country,
-    regionSlug: params.region,
-    citySlug: params.city,
+    countrySlug: p.country,
+    regionSlug: p.region,
+    citySlug: p.city,
   });
 
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: "Fireworks", href: "/fireworks" },
-    { label: countryName, href: `/fireworks/${params.country}` },
-    { label: record.region, href: `/fireworks/${params.country}/${params.region}` },
+    { label: countryName, href: `/fireworks/${p.country}` },
+    { label: record.region, href: `/fireworks/${p.country}/${p.region}` },
     { label: record.city ?? "City", href: path },
   ];
 
@@ -227,3 +229,4 @@ export default async function FireworksCityPage({ params }: { params: FireworksC
     </>
   );
 }
+

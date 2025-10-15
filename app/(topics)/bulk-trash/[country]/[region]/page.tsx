@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -13,7 +13,7 @@ import {
 import { buildCanonicalPath } from "@/lib/seo";
 import { formatDate, getCountryName } from "@/lib/utils";
 
-export const revalidate = 60 * 60 * 24 * 7;
+export const revalidate = 604800;
 
 type RegionParams = {
   country: string;
@@ -35,20 +35,21 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: RegionParams;
+  params: Promise<RegionParams>;
 }): Promise<Metadata | undefined> {
-  const regions = await getBulkTrashRegionsByCountry(params.country);
-  const match = regions.find((region) => region.regionSlug === params.region);
+  const p = await params;
+  const regions = await getBulkTrashRegionsByCountry(p.country);
+  const match = regions.find((region) => region.regionSlug === p.region);
   if (!match) {
     return undefined;
   }
   const countries = await getBulkTrashCountries();
-  const country = countries.find((item) => item.countrySlug === params.country);
+  const country = countries.find((item) => item.countrySlug === p.country);
   if (!country) {
     return undefined;
   }
   const countryName = getCountryName(country.country);
-  const path = `/bulk-trash/${params.country}/${params.region}`;
+  const path = `/bulk-trash/${p.country}/${p.region}`;
   return {
     title: `Bulk trash pickup in ${match.region}, ${countryName}`,
     description: `Review accepted items, appointment requirements, and limits across cities in ${match.region}, ${countryName}.`,
@@ -58,23 +59,24 @@ export async function generateMetadata({
   };
 }
 
-export default async function BulkRegionPage({ params }: { params: RegionParams }) {
+export default async function BulkRegionPage({ params }: { params: Promise<RegionParams> }) {
+  const p = await params;
   const countries = await getBulkTrashCountries();
-  const countryMatch = countries.find((country) => country.countrySlug === params.country);
+  const countryMatch = countries.find((country) => country.countrySlug === p.country);
   if (!countryMatch) {
     notFound();
   }
-  const regions = await getBulkTrashRegionsByCountry(params.country);
-  const regionMatch = regions.find((region) => region.regionSlug === params.region);
+  const regions = await getBulkTrashRegionsByCountry(p.country);
+  const regionMatch = regions.find((region) => region.regionSlug === p.region);
   if (!regionMatch) {
     notFound();
   }
 
-  const citiesBase = await getBulkTrashCitiesByRegion(params.country, params.region);
+  const citiesBase = await getBulkTrashCitiesByRegion(p.country, p.region);
   const cities = await Promise.all(
     citiesBase.map(async (c) => ({
       ...c,
-      image: await getHeroImagePath({ countrySlug: params.country, regionSlug: params.region, citySlug: c.citySlug }),
+      image: await getHeroImagePath({ countrySlug: p.country, regionSlug: p.region, citySlug: c.citySlug }),
     })),
   );
   const countryName = getCountryName(countryMatch.country);
@@ -85,8 +87,8 @@ export default async function BulkRegionPage({ params }: { params: RegionParams 
         items={[
           { label: "Home", href: "/" },
           { label: "Bulk Trash", href: "/bulk-trash" },
-          { label: countryName, href: `/bulk-trash/${params.country}` },
-          { label: regionMatch.region, href: `/bulk-trash/${params.country}/${params.region}` },
+          { label: countryName, href: `/bulk-trash/${p.country}` },
+          { label: regionMatch.region, href: `/bulk-trash/${p.country}/${p.region}` },
         ]}
       />
       <header className="space-y-2">
@@ -109,7 +111,7 @@ export default async function BulkRegionPage({ params }: { params: RegionParams 
             {cities.map((city) => (
               <li key={city.citySlug} className="flex items-center justify-between gap-3">
                 <Link
-                  href={`/bulk-trash/${params.country}/${params.region}/${city.citySlug}`}
+                  href={`/bulk-trash/${p.country}/${p.region}/${city.citySlug}`}
                   className="flex items-center gap-3 font-medium text-primary hover:underline"
                 >
                   {city.image ? (
@@ -127,3 +129,4 @@ export default async function BulkRegionPage({ params }: { params: RegionParams 
     </div>
   );
 }
+

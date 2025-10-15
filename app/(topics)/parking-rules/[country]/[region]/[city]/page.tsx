@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -31,7 +31,7 @@ import {
 } from "@/lib/dataClient";
 import { formatDate, getCountryName } from "@/lib/utils";
 
-export const revalidate = 60 * 60 * 24 * 7;
+export const revalidate = 604800;
 
 type ParkingCityParams = {
   country: string;
@@ -51,25 +51,27 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: ParkingCityParams;
+  params: Promise<ParkingCityParams>;
 }): Promise<Metadata | undefined> {
+  const p = await params;
   const record = await getParkingBySlug({
-    countrySlug: params.country,
-    regionSlug: params.region,
-    citySlug: params.city,
+    countrySlug: p.country,
+    regionSlug: p.region,
+    citySlug: p.city,
   });
   if (!record) {
     return undefined;
   }
-  const path = `/parking-rules/${params.country}/${params.region}/${params.city}`;
+  const path = `/parking-rules/${p.country}/${p.region}/${p.city}`;
   return buildParkingMetadata(record, path);
 }
 
-export default async function ParkingCityPage({ params }: { params: ParkingCityParams }) {
+export default async function ParkingCityPage({ params }: { params: Promise<ParkingCityParams> }) {
+  const p = await params;
   const record = await getParkingBySlug({
-    countrySlug: params.country,
-    regionSlug: params.region,
-    citySlug: params.city,
+    countrySlug: p.country,
+    regionSlug: p.region,
+    citySlug: p.city,
   });
 
   if (!record) {
@@ -77,23 +79,23 @@ export default async function ParkingCityPage({ params }: { params: ParkingCityP
   }
 
   const countryName = getCountryName(record.country);
-  const path = `/parking-rules/${params.country}/${params.region}/${params.city}`;
+  const path = `/parking-rules/${p.country}/${p.region}/${p.city}`;
   const canonical = `${getSiteUrl()}${path}`;
   const faqs = buildParkingFaqItems(record);
   const templates = buildParkingTemplates(record, canonical);
   const topicNavEntries = await getTopicNavEntries({
-    countrySlug: params.country,
-    regionSlug: params.region,
-    citySlug: params.city,
+    countrySlug: p.country,
+    regionSlug: p.region,
+    citySlug: p.city,
   });
 
   const breadcrumbs = [
     { label: "Home", href: "/" },
     { label: "Parking Rules", href: "/parking-rules" },
-    { label: countryName, href: `/parking-rules/${params.country}` },
+    { label: countryName, href: `/parking-rules/${p.country}` },
     {
       label: record.region,
-      href: `/parking-rules/${params.country}/${params.region}`,
+      href: `/parking-rules/${p.country}/${p.region}`,
     },
     {
       label: record.city,
@@ -258,3 +260,4 @@ export default async function ParkingCityPage({ params }: { params: ParkingCityP
     </>
   );
 }
+
