@@ -102,7 +102,7 @@ export default async function CountryPage({ params }: { params: Promise<CountryP
                   <li key={city.citySlug}>
                     <Link
                       href={`/quiet-hours/${p.country}/${region.regionSlug}/${city.citySlug}`}
-                      className="group flex items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-sm hover:bg-primary/5 hover:underline dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800"
+                      className="group flex items-center gap-3 overflow-hidden rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-sm hover:bg-primary/5 hover:underline dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800"
                     >
                       {city.image ? (
                         // eslint-disable-next-line @next/next/no-img-element

@@ -106,18 +106,25 @@ export default async function BulkCountryPage({ params }: { params: Promise<Coun
               </Link>
               <ul className="space-y-1 pt-1">
                 {region.cities?.map((city) => (
-                  <li key={city.citySlug} className="flex items-center justify-between gap-3">
+                  <li key={city.citySlug}>
                     <Link
                       href={`/bulk-trash/${p.country}/${region.regionSlug}/${city.citySlug}`}
-                      className="flex items-center gap-3 text-primary hover:underline"
+                      className="group flex items-center gap-3 overflow-hidden rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-slate-300 hover:bg-primary/5 hover:shadow-sm hover:underline dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800"
                     >
                       {city.image ? (
                         // eslint-disable-next-line @next/next/no-img-element
-                        <img src={city.image} alt="" className="h-6 w-9 rounded object-cover" loading="lazy" />
+                        <img
+                          src={city.image}
+                          alt=""
+                          className="h-8 w-12 rounded object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+                          loading="lazy"
+                        />
                       ) : null}
-                      <span>{city.city}</span>
+                      <div className="min-w-0">
+                        <div className="font-medium text-primary">{city.city}</div>
+                        <div className="text-xs text-slate-400">{formatDate(city.lastVerified)}</div>
+                      </div>
                     </Link>
-                    <span className="text-xs text-slate-500">{formatDate(city.lastVerified)}</span>
                   </li>
                 ))}
               </ul>
