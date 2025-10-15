@@ -122,11 +122,16 @@ export default async function FireworksIndexPage() {
                             <li key={city.citySlug} className="flex items-center justify-between gap-3">
                               <Link
                                 href={`/fireworks/${country.countrySlug}/${region.regionSlug}/${city.citySlug}`}
-                                className="flex items-center gap-3 text-primary hover:underline"
+                                className="group flex items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2 text-primary transition-all duration-200 hover:-translate-y-0.5 hover:border-slate-300 hover:bg-primary/5 hover:shadow-sm hover:underline dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800"
                               >
                                 {city.image ? (
                                   // eslint-disable-next-line @next/next/no-img-element
-                                  <img src={city.image} alt="" className="h-8 w-12 rounded object-cover" loading="lazy" />
+                                  <img
+                                    src={city.image}
+                                    alt=""
+                                    className="h-8 w-12 rounded object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+                                    loading="lazy"
+                                  />
                                 ) : null}
                                 <span>{city.city}</span>
                               </Link>

@@ -94,11 +94,19 @@ export default async function RegionPage({ params }: { params: Promise<RegionPar
       </header>
       <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {citiesWithImages.map((city) => (
-          <Card key={city.citySlug}>
+          <Card
+            key={city.citySlug}
+            className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
+          >
             {city.image ? (
               <div className="overflow-hidden rounded-t-xl">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={city.image} alt={`${city.city} preview`} className="h-28 w-full object-cover" loading="lazy" />
+                <img
+                  src={city.image}
+                  alt={`${city.city} preview`}
+                  className="h-28 w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+                  loading="lazy"
+                />
               </div>
             ) : null}
             <CardContent className="space-y-1 p-5">

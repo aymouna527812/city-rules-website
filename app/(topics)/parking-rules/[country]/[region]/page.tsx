@@ -112,11 +112,16 @@ export default async function ParkingRegionPage({ params }: { params: Promise<Re
               <li key={city.citySlug} className="flex items-center justify-between gap-3">
                 <Link
                   href={`/parking-rules/${p.country}/${p.region}/${city.citySlug}`}
-                  className="flex items-center gap-3 font-medium text-primary hover:underline"
+                  className="group flex items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2 font-medium text-primary transition-all duration-200 hover:-translate-y-0.5 hover:border-slate-300 hover:bg-primary/5 hover:shadow-sm hover:underline dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800"
                 >
                   {city.image ? (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img src={city.image} alt="" className="h-8 w-12 rounded object-cover" loading="lazy" />
+                    <img
+                      src={city.image}
+                      alt=""
+                      className="h-8 w-12 rounded object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+                      loading="lazy"
+                    />
                   ) : null}
                   <span>{city.city}</span>
                 </Link>

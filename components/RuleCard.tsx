@@ -16,7 +16,13 @@ type RuleCardProps = {
 
 export function RuleCard({ icon: Icon, title, value, helper, className, id }: RuleCardProps) {
   return (
-    <Card id={id} className={cn("h-full", className)}>
+    <Card
+      id={id}
+      className={cn(
+        "h-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md",
+        className,
+      )}
+    >
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
         <CardTitle className="flex items-center gap-2 text-base font-semibold text-slate-800">
           <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary">
