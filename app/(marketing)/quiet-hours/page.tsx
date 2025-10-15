@@ -122,29 +122,37 @@ export default async function QuietHoursDirectory() {
                       Updated <time dateTime={region.lastVerified}>{formatDate(region.lastVerified)}</time>
                     </p>
                   </div>
-                  <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                     {region.cities.map((city) => (
-                      <li key={city.slug}>
-                        <Link
-                          className="flex items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-primary hover:border-primary hover:bg-primary/5 hover:underline dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800"
-                          href={`/quiet-hours/${country.countrySlug}/${region.slug}/${city.slug}`}
-                        >
-                          {city.image ? (
-                            // eslint-disable-next-line @next/next/no-img-element
-                            <img src={city.image} alt="" className="h-10 w-16 rounded object-cover" />
-                          ) : null}
-                          <span className="flex w-full items-center justify-between">
-                            <span>{city.name}</span>
-                            <span className="text-xs text-slate-400">
-                              <time dateTime={city.lastVerified}>
-                                {formatDate(city.lastVerified)}
-                              </time>
-                            </span>
-                          </span>
-                        </Link>
-                      </li>
+                      <Card
+                        key={city.slug}
+                        className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
+                      >
+                        {city.image ? (
+                          <div className="overflow-hidden rounded-t-xl">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                              src={city.image}
+                              alt={`${city.name} preview`}
+                              className="h-28 w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+                            />
+                          </div>
+                        ) : null}
+                        <CardContent className="space-y-1 p-5">
+                          <CardTitle className="text-lg text-slate-900">{city.name}</CardTitle>
+                          <p className="text-xs uppercase tracking-wide text-slate-400">
+                            Updated <time dateTime={city.lastVerified}>{formatDate(city.lastVerified)}</time>
+                          </p>
+                          <Link
+                            href={`/quiet-hours/${country.countrySlug}/${region.slug}/${city.slug}`}
+                            className="text-sm font-medium text-primary hover:underline"
+                          >
+                            View quiet hours &rarr;
+                          </Link>
+                        </CardContent>
+                      </Card>
                     ))}
-                  </ul>
+                  </div>
                 </div>
               ))}
             </CardContent>
