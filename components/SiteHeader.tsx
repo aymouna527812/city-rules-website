@@ -29,8 +29,8 @@ export function SiteHeader() {
         </div>
 
         {/* Bottom row: primary nav (desktop only) */}
-        <div className="mt-2 hidden md:block">
-          <nav aria-label="Primary">
+        <div className="mt-2 hidden md:flex md:justify-end">
+          <nav aria-label="Primary" className="md:ml-auto">
             <ul className="flex flex-wrap items-center gap-1 rounded-xl bg-slate-100/70 p-1 text-sm font-medium text-slate-800 shadow-sm backdrop-blur dark:bg-slate-800/60 dark:text-slate-100">
               <li>
                 <Link
