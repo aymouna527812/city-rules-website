@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
-import { getCountries, getRegionsByCountry } from "@/lib/dataClient";
+import { getCountries, getRegionsByCountry, getCitiesByRegion, getHeroImagePath } from "@/lib/dataClient";
 import { buildCanonicalPath } from "@/lib/seo";
 import { formatDate, getCountryName } from "@/lib/utils";
 
@@ -51,7 +51,19 @@ export default async function CountryPage({ params }: { params: Promise<CountryP
   }
 
   const countryName = getCountryName(match.country);
-  const regions = await getRegionsByCountry(p.country);
+  const regionsBase = await getRegionsByCountry(p.country);
+  const regions = await Promise.all(
+    regionsBase.map(async (region) => {
+      const citiesBase = await getCitiesByRegion(p.country, region.regionSlug);
+      const cities = await Promise.all(
+        citiesBase.map(async (c) => ({
+          ...c,
+          image: await getHeroImagePath({ countrySlug: p.country, regionSlug: region.regionSlug, citySlug: c.citySlug }),
+        })),
+      );
+      return { ...region, cities } as typeof region & { cities: typeof cities };
+    }),
+  );
 
   return (
     <div className="space-y-8">
@@ -74,7 +86,7 @@ export default async function CountryPage({ params }: { params: Promise<CountryP
       <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {regions.map((region) => (
           <Card key={region.regionSlug}>
-            <CardContent className="space-y-1 p-5">
+            <CardContent className="space-y-2 p-5">
               <CardTitle className="text-lg text-slate-900">{region.region}</CardTitle>
               <p className="text-xs uppercase tracking-wide text-slate-400">
                 Updated <time dateTime={region.lastVerified}>{formatDate(region.lastVerified)}</time>
@@ -85,6 +97,27 @@ export default async function CountryPage({ params }: { params: Promise<CountryP
               >
                 View cities &rarr;
               </Link>
+              <ul className="grid gap-2 pt-1 sm:grid-cols-2">
+                {region.cities?.map((city) => (
+                  <li key={city.citySlug}>
+                    <Link
+                      href={`/quiet-hours/${p.country}/${region.regionSlug}/${city.citySlug}`}
+                      className="flex items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-primary hover:border-primary hover:bg-primary/5 hover:underline dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800"
+                    >
+                      {city.image ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={city.image} alt="" className="h-8 w-12 rounded object-cover" loading="lazy" />
+                      ) : null}
+                      <span className="flex w-full items-center justify-between">
+                        <span>{city.city}</span>
+                        <span className="text-xs text-slate-400">
+                          <time dateTime={city.lastVerified}>{formatDate(city.lastVerified)}</time>
+                        </span>
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </CardContent>
           </Card>
         ))}

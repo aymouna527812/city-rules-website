@@ -28,6 +28,7 @@ import {
   getFireworksCitiesByRegion,
   getTopicNavEntries,
   listFireworksParams,
+  getHeroImagePath,
 } from "@/lib/dataClient";
 import { formatDate, getCountryName } from "@/lib/utils";
 
@@ -86,6 +87,12 @@ export default async function FireworksRegionPage({ params }: { params: Promise<
     regionSlug: p.region,
   });
   const cityOverrides = await getFireworksCitiesByRegion(p.country, p.region);
+  const citiesWithImages = await Promise.all(
+    cityOverrides.map(async (c) => ({
+      ...c,
+      image: await getHeroImagePath({ countrySlug: p.country, regionSlug: p.region, citySlug: c.citySlug }),
+    })),
+  );
 
   const jurisdictionBadge =
     record.jurisdiction_level === "state"
@@ -196,6 +203,33 @@ export default async function FireworksRegionPage({ params }: { params: Promise<
                   â€“ updated {formatDate(city.lastVerified)}
                 </p>
               ))}
+            </CardContent>
+          </Card>
+        ) : null}
+
+        {citiesWithImages.length > 0 ? (
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">Cities in {record.region}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ul className="space-y-2 text-sm">
+                {citiesWithImages.map((city) => (
+                  <li key={city.citySlug} className="flex items-center justify-between gap-3">
+                    <Link
+                      href={`/fireworks/${p.country}/${p.region}/${city.citySlug}`}
+                      className="flex items-center gap-3 font-medium text-primary hover:underline"
+                    >
+                      {city.image ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={city.image} alt="" className="h-8 w-12 rounded object-cover" loading="lazy" />
+                      ) : null}
+                      <span>{city.city}</span>
+                    </Link>
+                    <span className="text-xs text-slate-500">Updated {formatDate(city.lastVerified)}</span>
+                  </li>
+                ))}
+              </ul>
             </CardContent>
           </Card>
         ) : null}

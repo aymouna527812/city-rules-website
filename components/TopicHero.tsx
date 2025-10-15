@@ -9,6 +9,7 @@ type TopicHeroProps = {
   timezone: string;
   jurisdictionLabel?: string;
   children?: React.ReactNode;
+  imageSrc?: string;
 };
 
 export function TopicHero({
@@ -20,6 +21,7 @@ export function TopicHero({
   timezone,
   jurisdictionLabel,
   children,
+  imageSrc,
 }: TopicHeroProps) {
   const countryName = getCountryName(countryCode);
   const flag = getFlagEmoji(countryCode);
@@ -55,6 +57,17 @@ export function TopicHero({
         </div>
         {children ? <div className="flex w-full max-w-xs flex-col gap-2">{children}</div> : null}
       </div>
+      {imageSrc ? (
+        <div className="mt-4 overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={imageSrc}
+            alt={`${city ? `${city}, ${region}` : region} skyline`}
+            className="h-40 w-full object-cover md:h-48"
+            loading="lazy"
+          />
+        </div>
+      ) : null}
     </section>
   );
 }

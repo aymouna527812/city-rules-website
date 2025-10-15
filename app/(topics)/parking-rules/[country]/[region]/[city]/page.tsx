@@ -28,6 +28,7 @@ import {
   getParkingBySlug,
   getTopicNavEntries,
   listParkingParams,
+  getHeroImagePath,
 } from "@/lib/dataClient";
 import { formatDate, getCountryName } from "@/lib/utils";
 
@@ -81,6 +82,11 @@ export default async function ParkingCityPage({ params }: { params: Promise<Park
   const countryName = getCountryName(record.country);
   const path = `/parking-rules/${p.country}/${p.region}/${p.city}`;
   const canonical = `${getSiteUrl()}${path}`;
+  const heroImage = await getHeroImagePath({
+    countrySlug: p.country,
+    regionSlug: p.region,
+    citySlug: p.city,
+  });
   const faqs = buildParkingFaqItems(record);
   const templates = buildParkingTemplates(record, canonical);
   const topicNavEntries = await getTopicNavEntries({
@@ -115,6 +121,7 @@ export default async function ParkingCityPage({ params }: { params: Promise<Park
           city={record.city}
           timezone={record.timezone}
           jurisdictionLabel="City coverage"
+          imageSrc={heroImage}
         >
           <LastVerified date={record.last_verified} />
         </TopicHero>

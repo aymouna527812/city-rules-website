@@ -28,6 +28,7 @@ import {
   getBulkTrashBySlug,
   getTopicNavEntries,
   listBulkTrashParams,
+  getHeroImagePath,
 } from "@/lib/dataClient";
 import { formatDate, getCountryName } from "@/lib/utils";
 
@@ -81,6 +82,11 @@ export default async function BulkTrashCityPage({ params }: { params: Promise<Bu
   const countryName = getCountryName(record.country);
   const path = `/bulk-trash/${p.country}/${p.region}/${p.city}`;
   const canonical = `${getSiteUrl()}${path}`;
+  const heroImage = await getHeroImagePath({
+    countrySlug: p.country,
+    regionSlug: p.region,
+    citySlug: p.city,
+  });
   const faqs = buildBulkTrashFaqItems(record);
   const templates = buildBulkTrashTemplates(record, canonical);
   const topicNavEntries = await getTopicNavEntries({
@@ -109,6 +115,7 @@ export default async function BulkTrashCityPage({ params }: { params: Promise<Bu
           region={record.region}
           city={record.city}
           timezone={record.timezone}
+          imageSrc={heroImage}
         >
           <LastVerified date={record.last_verified} />
         </TopicHero>

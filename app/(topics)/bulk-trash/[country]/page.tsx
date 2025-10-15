@@ -7,6 +7,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   getBulkTrashCountries,
   getBulkTrashRegionsByCountry,
+  getBulkTrashCitiesByRegion,
+  getHeroImagePath,
 } from "@/lib/dataClient";
 import { buildCanonicalPath } from "@/lib/seo";
 import { formatDate, getCountryName } from "@/lib/utils";
@@ -52,7 +54,19 @@ export default async function BulkCountryPage({ params }: { params: Promise<Coun
     notFound();
   }
 
-  const regions = await getBulkTrashRegionsByCountry(p.country);
+  const regionsBase = await getBulkTrashRegionsByCountry(p.country);
+  const regions = await Promise.all(
+    regionsBase.map(async (region) => {
+      const citiesBase = await getBulkTrashCitiesByRegion(p.country, region.regionSlug);
+      const cities = await Promise.all(
+        citiesBase.map(async (c) => ({
+          ...c,
+          image: await getHeroImagePath({ countrySlug: p.country, regionSlug: region.regionSlug, citySlug: c.citySlug }),
+        })),
+      );
+      return { ...region, cities } as typeof region & { cities: typeof cities };
+    }),
+  );
   const countryName = getCountryName(match.country);
 
   return (
@@ -90,6 +104,23 @@ export default async function BulkCountryPage({ params }: { params: Promise<Coun
               >
                 View cities
               </Link>
+              <ul className="space-y-1 pt-1">
+                {region.cities?.map((city) => (
+                  <li key={city.citySlug} className="flex items-center justify-between gap-3">
+                    <Link
+                      href={`/bulk-trash/${p.country}/${region.regionSlug}/${city.citySlug}`}
+                      className="flex items-center gap-3 text-primary hover:underline"
+                    >
+                      {city.image ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={city.image} alt="" className="h-6 w-9 rounded object-cover" loading="lazy" />
+                      ) : null}
+                      <span>{city.city}</span>
+                    </Link>
+                    <span className="text-xs text-slate-500">{formatDate(city.lastVerified)}</span>
+                  </li>
+                ))}
+              </ul>
             </CardContent>
           </Card>
         ))}

@@ -8,6 +8,7 @@ import {
   getFireworksCitiesByRegion,
   getFireworksCountries,
   getFireworksRegionsByCountry,
+  getHeroImagePath,
 } from "@/lib/dataClient";
 import { buildCanonicalPath } from "@/lib/seo";
 import { formatDate, getCountryName } from "@/lib/utils";
@@ -43,7 +44,17 @@ export default async function FireworksIndexPage() {
       const expanded: RegionDetail[] = await Promise.all(
         regions.map(async (region) => {
           const cities = await getFireworksCitiesByRegion(country.countrySlug, region.regionSlug);
-          return { ...region, cities };
+          const citiesWithImages = await Promise.all(
+            cities.map(async (city) => ({
+              ...city,
+              image: await getHeroImagePath({
+                countrySlug: country.countrySlug,
+                regionSlug: region.regionSlug,
+                citySlug: city.citySlug,
+              }),
+            })),
+          );
+          return { ...region, cities: citiesWithImages };
         }),
       );
       return { ...country, countryName: getCountryName(country.country), regions: expanded };
@@ -108,12 +119,16 @@ export default async function FireworksIndexPage() {
                         </p>
                         <ul className="mt-1 space-y-1">
                           {region.cities.map((city) => (
-                            <li key={city.citySlug} className="flex items-center justify-between">
+                            <li key={city.citySlug} className="flex items-center justify-between gap-3">
                               <Link
                                 href={`/fireworks/${country.countrySlug}/${region.regionSlug}/${city.citySlug}`}
-                                className="text-primary hover:underline"
+                                className="flex items-center gap-3 text-primary hover:underline"
                               >
-                                {city.city}
+                                {city.image ? (
+                                  // eslint-disable-next-line @next/next/no-img-element
+                                  <img src={city.image} alt="" className="h-8 w-12 rounded object-cover" loading="lazy" />
+                                ) : null}
+                                <span>{city.city}</span>
                               </Link>
                               <span className="text-xs text-slate-500">
                                 {formatDate(city.lastVerified)}

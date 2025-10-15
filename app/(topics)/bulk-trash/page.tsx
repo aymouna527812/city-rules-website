@@ -8,6 +8,7 @@ import {
   getBulkTrashCitiesByRegion,
   getBulkTrashCountries,
   getBulkTrashRegionsByCountry,
+  getHeroImagePath,
 } from "@/lib/dataClient";
 import { buildCanonicalPath } from "@/lib/seo";
 import { formatDate, getCountryName } from "@/lib/utils";
@@ -43,7 +44,17 @@ export default async function BulkTrashIndexPage() {
       const expanded: RegionWithCities[] = await Promise.all(
         regions.map(async (region) => {
           const cities = await getBulkTrashCitiesByRegion(country.countrySlug, region.regionSlug);
-          return { ...region, cities };
+          const citiesWithImages = await Promise.all(
+            cities.map(async (city) => ({
+              ...city,
+              image: await getHeroImagePath({
+                countrySlug: country.countrySlug,
+                regionSlug: region.regionSlug,
+                citySlug: city.citySlug,
+              }),
+            })),
+          );
+          return { ...region, cities: citiesWithImages };
         }),
       );
       return { ...country, countryName: getCountryName(country.country), regions: expanded };
@@ -94,12 +105,16 @@ export default async function BulkTrashIndexPage() {
                   <CardContent className="space-y-2">
                     <ul className="space-y-2 text-sm">
                       {region.cities.map((city) => (
-                        <li key={city.citySlug} className="flex items-center justify-between">
+                        <li key={city.citySlug} className="flex items-center justify-between gap-3">
                           <Link
                             href={`/bulk-trash/${country.countrySlug}/${region.regionSlug}/${city.citySlug}`}
-                            className="font-medium text-primary hover:underline"
+                            className="flex items-center gap-3 font-medium text-primary hover:underline"
                           >
-                            {city.city}
+                            {city.image ? (
+                              // eslint-disable-next-line @next/next/no-img-element
+                              <img src={city.image} alt="" className="h-8 w-12 rounded object-cover" loading="lazy" />
+                            ) : null}
+                            <span>{city.city}</span>
                           </Link>
                           <span className="text-xs text-slate-500">
                             Updated {formatDate(city.lastVerified)}

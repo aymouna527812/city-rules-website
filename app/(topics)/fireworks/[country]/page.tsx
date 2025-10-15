@@ -7,6 +7,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   getFireworksCountries,
   getFireworksRegionsByCountry,
+  getFireworksCitiesByRegion,
+  getHeroImagePath,
 } from "@/lib/dataClient";
 import { buildCanonicalPath } from "@/lib/seo";
 import { formatDate, getCountryName } from "@/lib/utils";
@@ -51,7 +53,19 @@ export default async function FireworksCountryPage({ params }: { params: Promise
   if (!match) {
     notFound();
   }
-  const regions = await getFireworksRegionsByCountry(p.country);
+  const regionsBase = await getFireworksRegionsByCountry(p.country);
+  const regions = await Promise.all(
+    regionsBase.map(async (region) => {
+      const citiesBase = await getFireworksCitiesByRegion(p.country, region.regionSlug);
+      const cities = await Promise.all(
+        citiesBase.map(async (c) => ({
+          ...c,
+          image: await getHeroImagePath({ countrySlug: p.country, regionSlug: region.regionSlug, citySlug: c.citySlug }),
+        })),
+      );
+      return { ...region, cities } as typeof region & { cities: typeof cities };
+    }),
+  );
   const countryName = getCountryName(match.country);
 
   return (
@@ -92,6 +106,23 @@ export default async function FireworksCountryPage({ params }: { params: Promise
               >
                 View details
               </Link>
+              <ul className="space-y-1 pt-1">
+                {region.cities?.map((city) => (
+                  <li key={city.citySlug} className="flex items-center justify-between gap-3">
+                    <Link
+                      href={`/fireworks/${p.country}/${region.regionSlug}/${city.citySlug}`}
+                      className="flex items-center gap-3 text-primary hover:underline"
+                    >
+                      {city.image ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={city.image} alt="" className="h-6 w-9 rounded object-cover" loading="lazy" />
+                      ) : null}
+                      <span>{city.city}</span>
+                    </Link>
+                    <span className="text-xs text-slate-500">{formatDate(city.lastVerified)}</span>
+                  </li>
+                ))}
+              </ul>
             </CardContent>
           </Card>
         ))}
