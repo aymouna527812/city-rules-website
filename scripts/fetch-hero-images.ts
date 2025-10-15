@@ -47,10 +47,8 @@ async function main(): Promise<void> {
       await download(rec.hero_image_url, outPath);
       const key = buildSlugKey(rec.country_slug, rec.region_slug, rec.city_slug);
       map[key] = `/hero/${file}`;
-      // eslint-disable-next-line no-console
       console.log(`Saved hero for ${rec.city}, ${rec.region} → ${path.relative(process.cwd(), outPath)}`);
     } catch (err) {
-      // eslint-disable-next-line no-console
       console.warn(`Skipping hero for ${rec.city}:`, (err as Error).message);
     }
   }
@@ -59,7 +57,6 @@ async function main(): Promise<void> {
 }
 
 void main().catch((err) => {
-  // eslint-disable-next-line no-console
   console.error(err);
   process.exitCode = 1;
 });
