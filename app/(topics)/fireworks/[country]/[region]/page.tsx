@@ -208,35 +208,38 @@ export default async function FireworksRegionPage({ params }: { params: Promise<
         ) : null}
 
         {citiesWithImages.length > 0 ? (
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-lg">Cities in {record.region}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2 text-sm">
-                {citiesWithImages.map((city) => (
-                  <li key={city.citySlug} className="flex items-center justify-between gap-3">
-                    <Link
-                      href={`/fireworks/${p.country}/${p.region}/${city.citySlug}`}
-                      className="group flex items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2 font-medium text-primary transition-all duration-200 hover:-translate-y-0.5 hover:border-slate-300 hover:bg-primary/5 hover:shadow-sm hover:underline dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800"
-                    >
-                      {city.image ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
-                          src={city.image}
-                          alt=""
-                          className="h-8 w-12 rounded object-cover transition-transform duration-300 ease-out group-hover:scale-105"
-                          loading="lazy"
-                        />
-                      ) : null}
-                      <span>{city.city}</span>
-                    </Link>
-                    <span className="text-xs text-slate-500">Updated {formatDate(city.lastVerified)}</span>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
+          <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {citiesWithImages.map((city) => (
+              <Card
+                key={city.citySlug}
+                className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
+              >
+                {city.image ? (
+                  <div className="overflow-hidden rounded-t-xl">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={city.image}
+                      alt={`${city.city} preview`}
+                      className="h-28 w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </div>
+                ) : null}
+                <CardContent className="space-y-1 p-5">
+                  <CardTitle className="text-lg text-slate-900">{city.city}</CardTitle>
+                  <p className="text-xs uppercase tracking-wide text-slate-400">
+                    Updated <time dateTime={city.lastVerified}>{formatDate(city.lastVerified)}</time>
+                  </p>
+                  <Link
+                    href={`/fireworks/${p.country}/${p.region}/${city.citySlug}`}
+                    className="text-sm font-medium text-primary hover:underline"
+                  >
+                    View fireworks &rarr;
+                  </Link>
+                </CardContent>
+              </Card>
+            ))}
+          </section>
         ) : null}
 
         <AdPlaceholder slot="fireworks-region-mid" />
