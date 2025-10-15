@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 
 import { CitySearch } from "@/components/CitySearch";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -49,7 +49,7 @@ export default async function MarketingHome() {
             </p>
           </div>
           <Link href="/quiet-hours" className="text-sm font-medium text-primary hover:underline dark:text-sky-400">
-            View all cities â†’
+            View all cities &rarr;
           </Link>
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
@@ -74,10 +74,10 @@ export default async function MarketingHome() {
                   Enforcement: <strong>{city.complaint_channel}</strong>
                 </p>
                 <Link
-                  href={`/${city.country_slug}/${city.region_slug}/${city.city_slug}`}
+                  href={`/quiet-hours/${city.country_slug}/${city.region_slug}/${city.city_slug}`}
                   className="font-medium text-primary hover:underline dark:text-sky-400"
                 >
-                  Open city guide â†’
+                  Open city guide &rarr;
                 </Link>
               </CardContent>
             </Card>
@@ -102,7 +102,7 @@ export default async function MarketingHome() {
               <CardTitle>Plain-language staging</CardTitle>
             </CardHeader>
             <CardContent className="text-sm text-slate-600 dark:text-slate-300">
-              Every page condenses what mattersâ€”quiet hours, decibel charts, complaint steps, and
+              Every page condenses what matters&mdash;quiet hours, decibel charts, complaint steps, and
               ready-to-send messages for neighbours or landlords.
             </CardContent>
           </Card>
@@ -112,7 +112,7 @@ export default async function MarketingHome() {
             </CardHeader>
             <CardContent className="text-sm text-slate-600 dark:text-slate-300">
               We recheck each jurisdiction at least quarterly and whenever a bylaw amendment is
-              published. Suggest an update anytimeâ€”we respond fast.
+              published. Suggest an update anytime&mdash;we respond fast.
             </CardContent>
           </Card>
         </div>
@@ -129,6 +129,8 @@ export default async function MarketingHome() {
     </div>
   );
 }
+
+
 
 
 

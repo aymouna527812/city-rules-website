@@ -1,4 +1,4 @@
-import { promises as fs } from "node:fs";
+﻿import { promises as fs } from "node:fs";
 import path from "node:path";
 import { parse } from "csv-parse/sync";
 
@@ -808,7 +808,7 @@ export async function getSearchIndex(): Promise<
     city: record.city,
     region: record.region,
     country: record.country,
-    path: `/${record.country_slug}/${record.region_slug}/${record.city_slug}`,
+    path: `/quiet-hours/${record.country_slug}/${record.region_slug}/${record.city_slug}`,
   }));
 }
 
@@ -1157,7 +1157,7 @@ export async function getTopicNavEntries({
       entries.push({
         topic: "quiet-hours",
         label: TOPIC_LABELS["quiet-hours"],
-        href: `/${countrySlug}/${regionSlug}/${citySlug}`,
+        href: `/quiet-hours/${countrySlug}/${regionSlug}/${citySlug}`,
         level: "city",
         lastVerified: quiet.last_verified,
       });
@@ -1223,7 +1223,7 @@ export async function getTopicNavEntries({
     entries.unshift({
       topic: "quiet-hours",
       label: TOPIC_LABELS["quiet-hours"],
-      href: `/${countrySlug}/${regionSlug}`,
+      href: `/quiet-hours/${countrySlug}/${regionSlug}`,
       level: "region",
       lastVerified: regionEntry.lastVerified,
     });
@@ -1257,7 +1257,7 @@ export async function getTopicSearchIndex(): Promise<TopicSearchEntry[]> {
     country: record.country,
     region: record.region,
     city: record.city,
-    path: `/${record.country_slug}/${record.region_slug}/${record.city_slug}`,
+    path: `/quiet-hours/${record.country_slug}/${record.region_slug}/${record.city_slug}`,
     lastVerified: record.last_verified,
     label: `${record.city}, ${record.region}`,
     level: "city",
@@ -1343,4 +1343,6 @@ export async function getHeroImagePath(params: {
     return undefined;
   }
 }
+
+
 

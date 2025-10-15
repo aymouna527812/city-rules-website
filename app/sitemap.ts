@@ -40,7 +40,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   const quietCityPaths: MetadataRoute.Sitemap = quiet.records.map((record) => ({
-    url: `${siteUrl}/${record.country_slug}/${record.region_slug}/${record.city_slug}`,
+    url: `${siteUrl}/quiet-hours/${record.country_slug}/${record.region_slug}/${record.city_slug}`,
     lastModified: new Date(record.last_verified).toISOString(),
     changeFrequency: "monthly" as const,
     priority: 0.9,
@@ -59,7 +59,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const quietCountryPaths: MetadataRoute.Sitemap = Array.from(quietCountryMap.entries()).map(
     ([countrySlug, lastVerified]) => ({
-      url: `${siteUrl}/${countrySlug}`,
+      url: `${siteUrl}/quiet-hours/${countrySlug}`,
       lastModified: new Date(lastVerified).toISOString(),
       changeFrequency: "monthly" as const,
       priority: 0.6,
@@ -68,7 +68,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const quietRegionPaths: MetadataRoute.Sitemap = Array.from(quietRegionMap.entries()).map(
     ([slug, lastVerified]) => ({
-      url: `${siteUrl}/${slug}`,
+      url: `${siteUrl}/quiet-hours/${slug}`,
       lastModified: new Date(lastVerified).toISOString(),
       changeFrequency: "monthly" as const,
       priority: 0.65,

@@ -37,7 +37,7 @@ export async function generateMetadata({
     title: `${countryName} quiet hour rules by region`,
     description: `Browse quiet hour bylaws and enforcement contacts across ${countryName}.`,
     alternates: {
-      canonical: buildCanonicalPath(`/${p.country}`),
+      canonical: buildCanonicalPath(`/quiet-hours/${p.country}`),
     },
   };
 }
@@ -55,7 +55,13 @@ export default async function CountryPage({ params }: { params: Promise<CountryP
 
   return (
     <div className="space-y-8">
-      <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: countryName, href: `/${p.country}` }]} />
+      <Breadcrumbs
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Quiet Hours", href: "/quiet-hours" },
+          { label: countryName, href: `/quiet-hours/${p.country}` },
+        ]}
+      />
       <header className="space-y-2">
         <h1 className="text-3xl font-bold text-slate-900">
           Quiet hours by region in {countryName}
@@ -74,10 +80,10 @@ export default async function CountryPage({ params }: { params: Promise<CountryP
                 Updated <time dateTime={region.lastVerified}>{formatDate(region.lastVerified)}</time>
               </p>
               <Link
-                href={`/${p.country}/${region.regionSlug}`}
+                href={`/quiet-hours/${p.country}/${region.regionSlug}`}
                 className="text-sm font-medium text-primary hover:underline"
               >
-                View cities â†’
+                View cities &rarr;
               </Link>
             </CardContent>
           </Card>
@@ -86,10 +92,3 @@ export default async function CountryPage({ params }: { params: Promise<CountryP
     </div>
   );
 }
-
-
-
-
-
-
-

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -127,7 +127,7 @@ export default async function QuietHoursDirectory() {
                       <li key={city.slug}>
                         <Link
                           className="flex items-center gap-3 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-primary hover:border-primary hover:bg-primary/5 hover:underline dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800"
-                          href={`/${country.countrySlug}/${region.slug}/${city.slug}`}
+                          href={`/quiet-hours/${country.countrySlug}/${region.slug}/${city.slug}`}
                         >
                           {city.image ? (
                             // eslint-disable-next-line @next/next/no-img-element
@@ -154,3 +154,7 @@ export default async function QuietHoursDirectory() {
     </div>
   );
 }
+
+
+
+

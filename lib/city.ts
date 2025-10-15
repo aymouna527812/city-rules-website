@@ -1,4 +1,4 @@
-import type { FAQItem } from "@/lib/seo";
+﻿import type { FAQItem } from "@/lib/seo";
 import type { QuietHoursRecord } from "@/lib/types";
 import { buildMailtoLink, formatDate, getCountryName } from "@/lib/utils";
 
@@ -94,11 +94,11 @@ export type RelatedLink = {
 export function buildRelatedLinks(record: QuietHoursRecord): RelatedLink[] {
   return [
     {
-      href: `/${record.country_slug}/${record.region_slug}/${record.city_slug}#construction-hours`,
+      href: `/quiet-hours/${record.country_slug}/${record.region_slug}/${record.city_slug}#construction-hours`,
       title: `Construction hours in ${record.city}`,
     },
     {
-      href: `/${record.country_slug}/${record.region_slug}/${record.city_slug}#lawn-equipment`,
+      href: `/quiet-hours/${record.country_slug}/${record.region_slug}/${record.city_slug}#lawn-equipment`,
       title: `Lawn-mowing hours across ${record.region}`,
     },
     {
@@ -107,3 +107,4 @@ export function buildRelatedLinks(record: QuietHoursRecord): RelatedLink[] {
     },
   ];
 }
+

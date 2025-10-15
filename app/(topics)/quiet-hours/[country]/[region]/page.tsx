@@ -47,7 +47,7 @@ export async function generateMetadata({
     title: `Quiet hours across ${match.region}, ${countryName}`,
     description: `Find city-specific quiet hour rules, construction schedules, and reporting contacts across ${match.region}, ${countryName}.`,
     alternates: {
-      canonical: buildCanonicalPath(`/${p.country}/${p.region}`),
+      canonical: buildCanonicalPath(`/quiet-hours/${p.country}/${p.region}`),
     },
   };
 }
@@ -80,8 +80,8 @@ export default async function RegionPage({ params }: { params: Promise<RegionPar
         items={[
           { label: "Home", href: "/" },
           { label: "Quiet Hours", href: "/quiet-hours" },
-          { label: countryName, href: `/${p.country}` },
-          { label: match.region, href: `/${p.country}/${p.region}` },
+          { label: countryName, href: `/quiet-hours/${p.country}` },
+          { label: match.region, href: `/quiet-hours/${p.country}/${p.region}` },
         ]}
       />
       <header className="space-y-2">
@@ -107,10 +107,10 @@ export default async function RegionPage({ params }: { params: Promise<RegionPar
                 Updated <time dateTime={city.lastVerified}>{formatDate(city.lastVerified)}</time>
               </p>
               <Link
-                href={`/${p.country}/${p.region}/${city.citySlug}`}
+                href={`/quiet-hours/${p.country}/${p.region}/${city.citySlug}`}
                 className="text-sm font-medium text-primary hover:underline"
               >
-                View quiet hours â†’
+                View quiet hours &rarr;
               </Link>
             </CardContent>
           </Card>
@@ -119,10 +119,3 @@ export default async function RegionPage({ params }: { params: Promise<RegionPar
     </div>
   );
 }
-
-
-
-
-
-
-

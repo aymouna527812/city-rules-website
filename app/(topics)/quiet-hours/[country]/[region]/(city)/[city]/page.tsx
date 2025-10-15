@@ -62,7 +62,7 @@ export async function generateMetadata({
     return undefined;
   }
 
-  const path = `/${p.country}/${p.region}/${p.city}`;
+  const path = `/quiet-hours/${p.country}/${p.region}/${p.city}`;
   return buildCityMetadata(record, path);
 }
 
@@ -84,7 +84,7 @@ export default async function CityPage({ params }: { params: Promise<CityPagePar
     citySlug: p.city,
   });
 
-  const path = `/${p.country}/${p.region}/${p.city}`;
+  const path = `/quiet-hours/${p.country}/${p.region}/${p.city}`;
   const canonical = `${getSiteUrl()}${path}`;
   const heroImage = await getHeroImagePath({
     countrySlug: p.country,
@@ -95,8 +95,8 @@ export default async function CityPage({ params }: { params: Promise<CityPagePar
   const breadcrumbItems = [
     { label: "Home", href: "/" },
     { label: "Quiet Hours", href: "/quiet-hours" },
-    { label: getCountryName(record.country), href: `/${p.country}` },
-    { label: record.region, href: `/${p.country}/${p.region}` },
+    { label: getCountryName(record.country), href: `/quiet-hours/${p.country}` },
+    { label: record.region, href: `/quiet-hours/${p.country}/${p.region}` },
     { label: record.city, href: path },
   ];
   const relatedLinks = buildRelatedLinks(record);
@@ -331,6 +331,7 @@ export default async function CityPage({ params }: { params: Promise<CityPagePar
     </>
   );
 }
+
 
 
 
