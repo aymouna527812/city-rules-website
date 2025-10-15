@@ -14,6 +14,24 @@ export function SiteHeader() {
             href="/"
             className="flex items-center gap-2 text-lg font-semibold text-slate-900 dark:text-slate-100"
           >
+            <span className="relative flex h-12 w-12 shrink-0 items-center justify-center">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/CityRulesLightMode.png"
+                alt=""
+                aria-hidden
+                className="block h-full w-auto dark:hidden"
+                loading="lazy"
+              />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/CityRulesDarkMode.png"
+                alt=""
+                aria-hidden
+                className="hidden h-full w-auto dark:block"
+                loading="lazy"
+              />
+            </span>
             Quiet Hours & City Rules
           </Link>
           <div className="flex items-center gap-2">
