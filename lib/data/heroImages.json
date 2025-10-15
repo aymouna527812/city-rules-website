@@ -1,6 +1,15 @@
 {
-  "united-states__new-york__new-york": "/hero/hero-united-states-new-york-new-york.jpg",
+  "canada__alberta__edmonton": "/hero/hero-canada-alberta-edmonton.jpg",
+  "canada__ontario__hamilton": "/hero/hero-canada-ontario-hamilton.jpg",
+  "canada__quebec__montreal": "/hero/hero-canada-quebec-montreal.jpg",
+  "canada__ontario__toronto": "/hero/hero-canada-ontario-toronto.jpg",
+  "canada__manitoba__winnipeg": "/hero/hero-canada-manitoba-winnipeg.jpg",
+  "united-states__texas__dallas": "/hero/hero-united-states-texas-dallas.jpg",
   "united-states__texas__houston": "/hero/hero-united-states-texas-houston.jpg",
+  "united-states__new-york__new-york": "/hero/hero-united-states-new-york-new-york.jpg",
+  "united-states__pennsylvania__philadelphia": "/hero/hero-united-states-pennsylvania-philadelphia.jpg",
   "united-states__arizona__phoenix": "/hero/hero-united-states-arizona-phoenix.jpg",
-  "united-states__pennsylvania__philadelphia": "/hero/hero-united-states-pennsylvania-philadelphia.jpg"
+  "united-states__texas__san-antonio": "/hero/hero-united-states-texas-san-antonio.jpg",
+  "united-states__california__san-diego": "/hero/hero-united-states-california-san-diego.jpg",
+  "united-states__california__san-jose": "/hero/hero-united-states-california-san-jose.jpg"
 }
