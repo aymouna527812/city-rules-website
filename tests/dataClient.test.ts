@@ -38,6 +38,9 @@ describe("dataClient", () => {
 
     const cities = await getCitiesByRegion("canada", "ontario");
     expect(cities).toEqual([
+      expect.objectContaining({ citySlug: "hamilton", city: "Hamilton" }),
+      expect.objectContaining({ citySlug: "mississauga", city: "Mississauga" }),
+      expect.objectContaining({ citySlug: "ottawa", city: "Ottawa" }),
       expect.objectContaining({ citySlug: "toronto", city: "Toronto" }),
     ]);
   });
