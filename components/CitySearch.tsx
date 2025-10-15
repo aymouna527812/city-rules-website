@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Fuse from "fuse.js";
+import type { IFuseOptions } from "fuse.js";
 import { Search } from "lucide-react";
 import Link from "next/link";
 
@@ -23,7 +24,7 @@ const TOPIC_BADGE_CLASSES: Record<TopicId, string> = {
   fireworks: "bg-rose-100 text-rose-700 dark:bg-rose-500/20 dark:text-rose-200",
 };
 
-const fuseOptions: Fuse.IFuseOptions<TopicSearchEntry> = {
+const fuseOptions: IFuseOptions<TopicSearchEntry> = {
   includeScore: false,
   keys: [
     { name: "city", weight: 0.6 },
@@ -137,6 +138,4 @@ export function CitySearch({
     </div>
   );
 }
-
-
 

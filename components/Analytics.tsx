@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect } from "react";
@@ -9,7 +8,10 @@ function isTrackingAllowed(): boolean {
   if (typeof window === "undefined") {
     return false;
   }
-  const dnt = window.doNotTrack ?? navigator.doNotTrack ?? (navigator as unknown as { msDoNotTrack?: string }).msDoNotTrack;
+
+  const win = window as Window & { doNotTrack?: string };
+  const nav = navigator as Navigator & { doNotTrack?: string; msDoNotTrack?: string };
+  const dnt = win.doNotTrack ?? nav.doNotTrack ?? nav.msDoNotTrack;
   return dnt !== "1" && dnt !== "yes";
 }
 
