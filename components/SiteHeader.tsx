@@ -20,14 +20,14 @@ export function SiteHeader() {
               src="/CityRulesLightMode.png"
               alt=""
               aria-hidden
-              className="h-7 w-auto dark:hidden"
+              className="h-8 sm:h-9 md:h-10 lg:h-11 w-auto shrink-0 dark:hidden"
             />
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/CityRulesDarkMode.png"
               alt=""
               aria-hidden
-              className="hidden h-7 w-auto dark:block"
+              className="hidden h-8 sm:h-9 md:h-10 lg:h-11 w-auto shrink-0 dark:block"
             />
             Quiet Hours & City Rules
           </Link>
