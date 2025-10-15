@@ -14,7 +14,7 @@ import {
 describe("dataClient", () => {
   it("loads dataset from JSON source", async () => {
     const { records, source } = await getDataset();
-    expect(records).toHaveLength(2);
+    expect(records).toHaveLength(5);
     expect(source).toBe("json");
     const toronto = records.find((record) => record.city_slug === "toronto");
     expect(toronto?.country).toBe("CA");
@@ -47,7 +47,7 @@ describe("dataClient", () => {
     expect(searchIndex).toContainEqual(
       expect.objectContaining({
         city: "Toronto",
-        path: "/canada/ontario/toronto",
+        path: "/quiet-hours/canada/ontario/toronto",
       }),
     );
   });
