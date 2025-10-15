@@ -14,6 +14,21 @@ export function SiteHeader() {
             href="/"
             className="flex items-center gap-2 text-lg font-semibold text-slate-900 dark:text-slate-100"
           >
+            {/* Site logo: light vs dark */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/CityRulesLightMode.png"
+              alt=""
+              aria-hidden
+              className="h-7 w-auto dark:hidden"
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/CityRulesDarkMode.png"
+              alt=""
+              aria-hidden
+              className="hidden h-7 w-auto dark:block"
+            />
             Quiet Hours & City Rules
           </Link>
           <div className="flex items-center gap-2">
