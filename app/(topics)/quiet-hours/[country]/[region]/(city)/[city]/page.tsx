@@ -26,7 +26,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { buildFaqItems, buildRelatedLinks, buildSuggestUpdateEmail } from "@/lib/city";
 import { getCityRecord, getDataset, getTopicNavEntries, getHeroImagePath } from "@/lib/dataClient";
 import { buildCityMetadata, buildFaqJsonLd, buildBreadcrumbJsonLd, getSiteUrl } from "@/lib/seo";
-import { formatDate, getCountryName } from "@/lib/utils";
+import {
+  formatDate,
+  getCountryName,
+  getExternalLinkProps,
+  withExternalLinkTargets,
+} from "@/lib/utils";
 
 export const revalidate = 604800;
 
@@ -110,7 +115,7 @@ export default async function CityPage({ params }: { params: Promise<CityPagePar
 
         {record.seo_text ? (
           <section className="rounded-2xl border border-slate-200 bg-white p-4 text-base text-slate-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">
-            <div dangerouslySetInnerHTML={{ __html: record.seo_text }} />
+            <div dangerouslySetInnerHTML={{ __html: withExternalLinkTargets(record.seo_text) }} />
           </section>
         ) : null}
 
@@ -211,6 +216,7 @@ export default async function CityPage({ params }: { params: Promise<CityPagePar
                   <Link
                     href={record.complaint_url}
                     className="font-medium text-primary hover:underline"
+                    {...getExternalLinkProps(record.complaint_url)}
                   >
                     {record.complaint_url}
                   </Link>{" "}
@@ -265,8 +271,7 @@ export default async function CityPage({ params }: { params: Promise<CityPagePar
               <Link
                 href={record.bylaw_url}
                 className="font-medium text-primary hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
+                {...getExternalLinkProps(record.bylaw_url)}
               >
                 {record.bylaw_title}
               </Link>

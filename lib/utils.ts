@@ -90,3 +90,55 @@ export function buildMailtoLink(email: string, subject: string, body: string): s
   });
   return `mailto:${email}?${params.toString()}`;
 }
+
+const EXTERNAL_URL_PATTERN = /^https?:\/\//i;
+
+export function isExternalUrl(href: string | null | undefined): href is string {
+  return typeof href === "string" && EXTERNAL_URL_PATTERN.test(href);
+}
+
+export function getExternalLinkProps(
+  href: string | null | undefined,
+): { target?: "_blank"; rel?: string } {
+  if (!isExternalUrl(href)) {
+    return {};
+  }
+  return { target: "_blank", rel: "noopener noreferrer" };
+}
+
+export function withExternalLinkTargets(html: string): string {
+  if (!html) {
+    return html;
+  }
+
+  return html.replace(/<a\s+([^>]*href="[^"]+"[^>]*)>/gi, (match, attrs) => {
+    const hrefMatch = attrs.match(/href="([^"]+)"/i);
+    if (!hrefMatch) {
+      return match;
+    }
+
+    const href = hrefMatch[1];
+    if (!isExternalUrl(href)) {
+      return match;
+    }
+
+    let newAttrs = attrs;
+
+    if (!/\btarget=/i.test(newAttrs)) {
+      newAttrs = `${newAttrs} target="_blank"`;
+    }
+
+    if (/\brel=/i.test(newAttrs)) {
+      newAttrs = newAttrs.replace(/\brel="([^"]*)"/i, (_relMatch, relValue: string) => {
+        const tokens = new Set(relValue.split(/\s+/).filter(Boolean));
+        tokens.add("noopener");
+        tokens.add("noreferrer");
+        return `rel="${Array.from(tokens).join(" ")}"`;
+      });
+    } else {
+      newAttrs = `${newAttrs} rel="noopener noreferrer"`;
+    }
+
+    return `<a ${newAttrs}>`;
+  });
+}

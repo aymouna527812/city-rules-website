@@ -30,7 +30,12 @@ import {
   listParkingParams,
   getHeroImagePath,
 } from "@/lib/dataClient";
-import { formatDate, getCountryName } from "@/lib/utils";
+import {
+  formatDate,
+  getCountryName,
+  getExternalLinkProps,
+  withExternalLinkTargets,
+} from "@/lib/utils";
 
 export const revalidate = 604800;
 
@@ -128,7 +133,7 @@ export default async function ParkingCityPage({ params }: { params: Promise<Park
 
         {record.seo_text ? (
           <section className="rounded-2xl border border-slate-200 bg-white p-4 text-base text-slate-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">
-            <div dangerouslySetInnerHTML={{ __html: record.seo_text }} />
+            <div dangerouslySetInnerHTML={{ __html: withExternalLinkTargets(record.seo_text) }} />
           </section>
         ) : null}
 
@@ -151,7 +156,11 @@ export default async function ParkingCityPage({ params }: { params: Promise<Park
             value={record.permit_required ? "Permit required" : "No permit required"}
             helper={
               record.permit_required && record.permit_url ? (
-                <Link href={record.permit_url} className="font-medium text-primary hover:underline">
+                <Link
+                  href={record.permit_url}
+                  className="font-medium text-primary hover:underline"
+                  {...getExternalLinkProps(record.permit_url)}
+                >
                   Apply for a residential permit
                 </Link>
               ) : undefined
@@ -174,6 +183,7 @@ export default async function ParkingCityPage({ params }: { params: Promise<Park
                 <Link
                   href={record.tow_zones_map_url}
                   className="font-medium text-primary hover:underline"
+                  {...getExternalLinkProps(record.tow_zones_map_url)}
                 >
                   View tow zone map
                 </Link>
@@ -231,8 +241,7 @@ export default async function ParkingCityPage({ params }: { params: Promise<Park
                 <Link
                   href={record.source_url}
                   className="font-medium text-primary hover:underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  {...getExternalLinkProps(record.source_url)}
                 >
                   {record.source_title}
                 </Link>

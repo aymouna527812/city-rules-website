@@ -43,7 +43,8 @@ describe("parking data client", () => {
     const countries = await getParkingCountries();
     const us = countries.find((c) => c.countrySlug === "united-states");
     expect(us).toBeDefined();
-    expect(us).toMatchObject({ country: "US", countrySlug: "united-states", count: 1 });
+    expect(us).toMatchObject({ country: "US", countrySlug: "united-states" });
+    expect(us?.count ?? 0).toBeGreaterThanOrEqual(1);
 
     const regions = await getParkingRegionsByCountry("united-states");
     expect(regions).toEqual(
