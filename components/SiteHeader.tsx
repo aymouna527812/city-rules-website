@@ -10,12 +10,35 @@ export function SiteHeader() {
       <div className="mx-auto w-full max-w-5xl px-4 py-3 sm:px-6">
         {/* Top row: brand + primary nav (md+) and mobile controls */}
         <div className="flex items-center justify-between gap-3">
-          <Link
-            href="/"
-            className="flex items-center gap-2 text-lg font-semibold text-slate-900 dark:text-slate-100"
-          >
-            Quiet Hours & City Rules
-          </Link>
+          <div className="relative inline-flex items-center pl-24 sm:pl-28 md:pl-32">
+            {/* Absolutely positioned logo to the left of the brand text, does not affect layout */}
+            <Link
+              href="/"
+              aria-label="CityRules home"
+              className="absolute left-0 top-1/2 -translate-y-1/2"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/CityRulesLightMode.png"
+                alt="CityRules"
+                className="block h-24 w-auto dark:hidden sm:h-28"
+                loading="eager"
+              />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/CityRulesDarkMode.png"
+                alt="CityRules"
+                className="hidden h-24 w-auto dark:block sm:h-28"
+                loading="eager"
+              />
+            </Link>
+            <Link
+              href="/"
+              className="flex items-center gap-2 text-lg font-semibold text-slate-900 dark:text-slate-100"
+            >
+              Quiet Hours & City Rules
+            </Link>
+          </div>
           <div className="flex items-center gap-2">
             {/* Primary nav on desktop */}
             <div className="hidden md:block">
