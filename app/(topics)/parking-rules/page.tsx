@@ -93,7 +93,7 @@ export default async function ParkingIndexPage() {
                     <CardTitle className="text-lg text-slate-900">
                       {region.region}
                       <span className="ml-2 text-xs font-normal text-slate-500">
-                        {region.cities.length} city{region.cities.length === 1 ? "" : "ies"}
+                        {region.cities.length} {region.cities.length === 1 ? "city" : "cities"}
                       </span>
                     </CardTitle>
                   </CardHeader>
