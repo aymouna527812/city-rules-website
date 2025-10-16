@@ -452,6 +452,7 @@ export function normalizeParkingRecord(record: Record<string, unknown>): Parking
     towing_enforced: toBoolean(record.towing_enforced, "towing_enforced"),
     tow_zones_map_url: toOptionalUrl(record.tow_zones_map_url),
     ticket_amounts: requireString(record.ticket_amounts, "ticket_amounts"),
+    seo_text: maybeString(record.seo_text),
     notes_public: maybeString(record.notes_public),
   };
   const parsed = ParkingRulesRecordSchema.safeParse(candidate);

@@ -122,6 +122,7 @@ const ParkingRulesRecordObject = CityTopicRecordBase.extend({
   towing_enforced: z.boolean(),
   tow_zones_map_url: UrlSchema.optional(),
   ticket_amounts: NonEmptyString,
+  seo_text: NonEmptyString.optional(),
   notes_public: z.string().trim().optional(),
 });
 
