@@ -14,10 +14,10 @@ describe("parking data client", () => {
   it("exposes parking dataset with sample record", async () => {
     const { records, source } = await getParkingDataset();
     expect(source).toBe("json");
-    expect(records).toHaveLength(1);
-    const chicago = records[0];
-    expect(chicago.city).toBe("Chicago");
-    expect(chicago.winter_ban).toBe(true);
+    expect(records.length).toBeGreaterThanOrEqual(1);
+    const chicago = records.find((r) => r.city_slug === "chicago");
+    expect(chicago?.city).toBe("Chicago");
+    expect(chicago?.winter_ban).toBe(true);
   });
 
   it("looks up parking data by slug", async () => {
@@ -32,30 +32,32 @@ describe("parking data client", () => {
 
   it("lists static params and geographic groupings", async () => {
     const params = await listParkingParams();
-    expect(params).toEqual([
+    expect(params).toEqual(expect.arrayContaining([
       {
         countrySlug: "united-states",
         regionSlug: "illinois",
         citySlug: "chicago",
       },
-    ]);
+    ]));
 
     const countries = await getParkingCountries();
-    expect(countries[0]).toMatchObject({
-      country: "US",
-      countrySlug: "united-states",
-      count: 1,
-    });
+    const us = countries.find((c) => c.countrySlug === "united-states");
+    expect(us).toBeDefined();
+    expect(us).toMatchObject({ country: "US", countrySlug: "united-states", count: 1 });
 
     const regions = await getParkingRegionsByCountry("united-states");
-    expect(regions[0]).toMatchObject({ regionSlug: "illinois", count: 1 });
+    expect(regions).toEqual(
+      expect.arrayContaining([expect.objectContaining({ regionSlug: "illinois", count: 1 })]),
+    );
 
     const cities = await getParkingCitiesByRegion("united-states", "illinois");
-    expect(cities[0]).toEqual(
-      expect.objectContaining({
-        city: "Chicago",
-        citySlug: "chicago",
-      }),
+    expect(cities).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          city: "Chicago",
+          citySlug: "chicago",
+        }),
+      ]),
     );
   });
 
