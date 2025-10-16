@@ -13,7 +13,7 @@ const DEFAULT_DESCRIPTION =
   "Understand residential quiet hours, noise bylaws, and enforcement guidance for cities across North America.";
 
 export function getSiteUrl(): string {
-  const url = process.env.SITE_URL ?? "https://quiet-hours.example.com";
+  const url = process.env.SITE_URL ?? "https://cityrules.info";
   return url.endsWith("/") ? url.slice(0, -1) : url;
 }
 
@@ -31,6 +31,11 @@ export function buildBaseMetadata(): Metadata {
     metadataBase: new URL(getSiteUrl()),
     title: SITE_NAME,
     description: DEFAULT_DESCRIPTION,
+    icons: {
+      icon: "/FavIconCityRulesDarkMode.png",
+      shortcut: "/FavIconCityRulesDarkMode.png",
+      apple: "/FavIconCityRulesDarkMode.png",
+    },
     alternates: {
       canonical,
     },
