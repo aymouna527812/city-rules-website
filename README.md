@@ -144,6 +144,19 @@ Source files live in `lib/data/`:
 
 Run `pnpm validate` to parse each dataset with Zod, verify unique slugs, and surface unknown timezones or future `last_verified` dates. The script prints a per-topic summary and exits with a non-zero code if any dataset fails validation.
 
+When hand-editing JSON (for example, `quiet_hours.json`), sanity-check the file before committing:
+
+```bash
+python - <<'PY'
+import json, pathlib
+path = pathlib.Path("city-rules-website/lib/data/quiet_hours.json")
+json.loads(path.read_text())
+print("quiet_hours.json OK")
+PY
+```
+
+If the parser raises an error, fix the offending line before running `pnpm validate`.
+
 ### Sitemap spot-check
 
 After deployment, confirm new routes are emitted by the sitemap:
