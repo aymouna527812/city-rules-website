@@ -30,7 +30,7 @@ import {
   listBulkTrashParams,
   getHeroImagePath,
 } from "@/lib/dataClient";
-import { formatDate, getCountryName } from "@/lib/utils";
+import { formatDate, getCountryName, withExternalLinkTargets } from "@/lib/utils";
 
 export const revalidate = 604800;
 
@@ -119,6 +119,12 @@ export default async function BulkTrashCityPage({ params }: { params: Promise<Bu
         >
           <LastVerified date={record.last_verified} />
         </TopicHero>
+
+        {record.seo_text ? (
+          <section className="rounded-2xl border border-slate-200 bg-white p-4 text-base text-slate-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">
+            <div dangerouslySetInnerHTML={{ __html: withExternalLinkTargets(record.seo_text) }} />
+          </section>
+        ) : null}
 
         <TopicNav activeTopic="bulk-trash" entries={topicNavEntries} />
 

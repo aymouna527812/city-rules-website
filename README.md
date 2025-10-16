@@ -114,6 +114,7 @@ Source files live in `lib/data/`:
 | `eligible_items`, `not_accepted_items` | string[] | Accepted / prohibited items |
 | `limits` | string | Quantity, size, or weight limits |
 | `fees` | string | Fee schedule |
+| `seo_text?` | string (HTML allowed) | Optional SEO copy shown under the header image on city pages |
 | `holiday_shifts` | string | How holidays affect service |
 | `illegal_dumping_reporting` | string | Hotline or URL |
 | `notes_public?` | string | Optional resident guidance |
@@ -129,6 +130,7 @@ Source files live in `lib/data/`:
 | `age_restrictions` | string | Minimum age or documentation |
 | `prohibited_types` | string[] | Banned devices |
 | `enforcement_notes` | string | Additional enforcement information |
+| `seo_text?` | string (HTML allowed) | Optional SEO copy shown under the header image on topic pages |
 | `fine_range?` | string | Optional range of fines |
 | `county_overrides?`, `city_overrides?` | array | Local overrides with message text |
 | `notes_public?` | string | Optional advisory |

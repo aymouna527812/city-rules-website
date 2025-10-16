@@ -138,6 +138,8 @@ const BulkTrashRecordObject = CityTopicRecordBase.extend({
   not_accepted_items: z.array(NonEmptyString).min(1),
   limits: NonEmptyString,
   fees: NonEmptyString,
+  // Optional SEO copy rendered under the header image on city pages
+  seo_text: NonEmptyString.optional(),
   holiday_shifts: NonEmptyString,
   illegal_dumping_reporting: z.union([NonEmptyString, UrlSchema]),
   notes_public: z.string().trim().optional(),
@@ -167,6 +169,8 @@ const FireworksRecordObject = BaseTopicRecordObject.extend({
   prohibited_types: z.array(NonEmptyString).min(1),
   fine_range: NonEmptyString.optional(),
   enforcement_notes: NonEmptyString,
+  // Optional SEO copy rendered under the header image on topic pages
+  seo_text: NonEmptyString.optional(),
   county_overrides: z.array(OverrideSchema).optional(),
   city_overrides: z.array(CityOverrideSchema).optional(),
   notes_public: z.string().trim().optional(),

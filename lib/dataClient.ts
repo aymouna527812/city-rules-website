@@ -483,6 +483,7 @@ export function normalizeBulkTrashRecord(record: Record<string, unknown>): BulkT
     not_accepted_items: notAccepted,
     limits: requireString(record.limits, "limits"),
     fees: requireString(record.fees, "fees"),
+    seo_text: maybeString(record.seo_text),
     holiday_shifts: requireString(record.holiday_shifts, "holiday_shifts"),
     illegal_dumping_reporting: requireString(
       record.illegal_dumping_reporting,
@@ -526,6 +527,7 @@ export function normalizeFireworksRecord(record: Record<string, unknown>): Firew
     prohibited_types: toStringArray(record.prohibited_types),
     fine_range: maybeString(record.fine_range) ?? base.fine_range,
     enforcement_notes: requireString(record.enforcement_notes, "enforcement_notes"),
+    seo_text: maybeString(record.seo_text),
     county_overrides: toOverrideArray(record.county_overrides, "county"),
     city_overrides: toOverrideArray(record.city_overrides, "city"),
     notes_public: maybeString(record.notes_public),
