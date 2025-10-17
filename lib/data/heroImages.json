@@ -4,6 +4,7 @@
   "canada__ontario__toronto": "/hero/hero-canada-ontario-toronto.jpg",
   "canada__manitoba__winnipeg": "/hero/hero-canada-manitoba-winnipeg.jpg",
   "united-states__texas__dallas": "/hero/hero-united-states-texas-dallas.jpg",
+  "united-states__new-york__new-york": "/hero/hero-united-states-new-york-new-york.jpg",
   "canada__quebec__montreal": "/hero/hero-canada-quebec-montreal.jpg",
   "united-states__pennsylvania__philadelphia": "/hero/hero-united-states-pennsylvania-philadelphia.jpg",
   "united-states__arizona__phoenix": "/hero/hero-united-states-arizona-phoenix.jpg",
@@ -50,6 +51,8 @@
   "canada__ontario__richmond-hill": "/hero/hero-canada-ontario-richmond-hill.jpg",
   "canada__ontario__oakville": "/hero/hero-canada-ontario-oakville.jpg",
   "canada__ontario__burlington": "/hero/hero-canada-ontario-burlington.jpg",
+  "canada__ontario__st-catharines": "/hero/hero-canada-ontario-st-catharines.jpg",
   "canada__british-columbia__victoria": "/hero/hero-canada-british-columbia-victoria.jpg",
-  "canada__alberta__edmonton-metro": "/hero/hero-canada-alberta-edmonton-metro.jpg"
+  "canada__alberta__edmonton-metro": "/hero/hero-canada-alberta-edmonton-metro.jpg",
+  "canada__british-columbia__richmond": "/hero/hero-canada-british-columbia-richmond.jpg"
 }

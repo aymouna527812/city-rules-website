@@ -32,8 +32,10 @@ export const metadata: Metadata = {
   },
 };
 
+type FireworksCityBase = Awaited<ReturnType<typeof getFireworksCitiesByRegion>>[number];
+type FireworksCityWithImage = FireworksCityBase & { image?: string };
 type RegionDetail = Awaited<ReturnType<typeof getFireworksRegionsByCountry>>[number] & {
-  cities: Awaited<ReturnType<typeof getFireworksCitiesByRegion>>;
+  cities: FireworksCityWithImage[];
 };
 
 export default async function FireworksIndexPage() {

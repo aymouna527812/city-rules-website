@@ -27,8 +27,10 @@ export const metadata: Metadata = {
   },
 };
 
+type ParkingCityBase = Awaited<ReturnType<typeof getParkingCitiesByRegion>>[number];
+type ParkingCityWithImage = ParkingCityBase & { image?: string };
 type RegionWithCities = Awaited<ReturnType<typeof getParkingRegionsByCountry>>[number] & {
-  cities: Awaited<ReturnType<typeof getParkingCitiesByRegion>>;
+  cities: ParkingCityWithImage[];
 };
 
 export default async function ParkingIndexPage() {

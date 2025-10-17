@@ -129,7 +129,7 @@ export function withExternalLinkTargets(html: string): string {
     }
 
     if (/\brel=/i.test(newAttrs)) {
-      newAttrs = newAttrs.replace(/\brel="([^"]*)"/i, (_relMatch, relValue: string) => {
+      newAttrs = newAttrs.replace(/\\brel=\"([^"]*)\"/i, (_relMatch: string, relValue: string) =>  {
         const tokens = new Set(relValue.split(/\s+/).filter(Boolean));
         tokens.add("noopener");
         tokens.add("noreferrer");

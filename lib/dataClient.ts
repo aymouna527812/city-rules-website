@@ -53,24 +53,27 @@ type DatasetLoaderResult<TDataset extends ReadonlyArray<TRecord>, TRecord> = {
 const TRUE_VALUES = new Set(["true", "1", "yes", "y", "on"]);
 const FALSE_VALUES = new Set(["false", "0", "no", "n", "off"]);
 
+function notNull<T>(value: T | null | undefined): value is T {
+  return value != null;
+}
+
 // In test runs, constrain large datasets to a tiny, stable sample so
 // assertions remain deterministic without modifying production data files.
 type WithSlugs = { country_slug: string; region_slug: string; city_slug?: string };
-function filterDatasetForTests<TRecord>(topic: string, dataset: ReadonlyArray<TRecord>) {
+function filterDatasetForTests<TRecord extends WithSlugs>(
+  topic: string,
+  dataset: ReadonlyArray<TRecord>,
+) {
   if (process.env.NODE_ENV !== "test") return dataset;
   if (topic === "bulk trash") {
     // Keep only Phoenix, Arizona (United States)
-    const arr = dataset as ReadonlyArray<WithSlugs>;
-    return arr.filter(
+    return dataset.filter(
       (r) => r.country_slug === "united-states" && r.region_slug === "arizona" && r.city_slug === "phoenix",
-    ) as ReadonlyArray<TRecord>;
+    );
   }
   if (topic === "fireworks") {
     // Keep only state-level Massachusetts (United States) entry
-    const arr = dataset as ReadonlyArray<WithSlugs>;
-    return arr.filter((r) => r.country_slug === "united-states" && r.region_slug === "massachusetts" && !r.city_slug) as ReadonlyArray<
-      TRecord
-    >;
+    return dataset.filter((r) => r.country_slug === "united-states" && r.region_slug === "massachusetts" && !r.city_slug);
   }
   return dataset;
 }
@@ -211,7 +214,7 @@ function toOverrideArray(
   if (Array.isArray(value)) {
     const normalized = value
       .map((item) => (typeof item === "object" && item !== null ? normalizeEntry(item) : null))
-      .filter((item): item is { county?: string; city?: string; rules: string } => Boolean(item));
+      .filter(notNull);
     return normalized.length > 0 ? normalized : undefined;
   }
 
@@ -233,7 +236,7 @@ function toOverrideArray(
           ? { county: name.trim(), rules }
           : { city: name.trim(), rules };
       })
-      .filter((item): item is { county?: string; city?: string; rules: string } => Boolean(item));
+      .filter(notNull);
     return entries.length > 0 ? entries : undefined;
   }
 
@@ -315,7 +318,7 @@ function normalizeBaseRecord(
   return parsed.data as BaseRecord;
 }
 
-function createDatasetLoader<TDataset extends ReadonlyArray<TRecord>, TRecord>({
+function createDatasetLoader<TDataset extends ReadonlyArray<TRecord>, TRecord extends WithSlugs>({
   topic,
   jsonFilename,
   csvFilename,

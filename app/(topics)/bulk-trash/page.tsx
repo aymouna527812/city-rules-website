@@ -32,8 +32,10 @@ export const metadata: Metadata = {
   },
 };
 
+type CityBase = Awaited<ReturnType<typeof getBulkTrashCitiesByRegion>>[number];
+type CityWithImage = CityBase & { image?: string };
 type RegionWithCities = Awaited<ReturnType<typeof getBulkTrashRegionsByCountry>>[number] & {
-  cities: Awaited<ReturnType<typeof getBulkTrashCitiesByRegion>>;
+  cities: CityWithImage[];
 };
 
 export default async function BulkTrashIndexPage() {

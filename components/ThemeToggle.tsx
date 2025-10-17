@@ -10,6 +10,7 @@ const OPTIONS = [
   { value: "light", label: "Light", icon: SunMedium },
   { value: "dark", label: "Dark", icon: MoonStar },
 ] as const;
+type ThemeValue = (typeof OPTIONS)[number]["value"]; // 'light' | 'dark'
 
 export function ThemeToggle() {
   const { theme, setTheme, resolvedTheme } = useTheme();
@@ -33,8 +34,12 @@ export function ThemeToggle() {
   }
 
   // When theme is "system", highlight the resolved value (light/dark)
-  const active = theme === "system" ? resolvedTheme ?? "light" : theme ?? resolvedTheme ?? "light";
-  const values = OPTIONS.map((option) => option.value);
+  const determineActive = (t?: string | null, r?: string | null): ThemeValue => {
+    const raw = t === "system" ? r : t ?? r;
+    return raw === "dark" ? "dark" : "light";
+  };
+  const active: ThemeValue = determineActive(theme, resolvedTheme);
+  const values: ThemeValue[] = OPTIONS.map((option) => option.value);
   const currentIndex = Math.max(values.indexOf(active), 0);
   const CycleIcon = OPTIONS[currentIndex]?.icon ?? SunMedium;
 
@@ -61,8 +66,8 @@ export function ThemeToggle() {
 }
 
 type ThemeOptionsProps = {
-  current: string;
-  onSelect: (value: string) => void;
+  current: ThemeValue;
+  onSelect: (value: ThemeValue) => void;
 };
 
 function ThemeOptions({ current, onSelect }: ThemeOptionsProps) {
