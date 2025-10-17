@@ -10,13 +10,22 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-        working-directory: city-rules-website
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Determine app directory
+        id: appdir
+        shell: bash
+        run: |
+          if [ -f package.json ]; then
+            echo "APP_DIR=." >> "$GITHUB_ENV"
+          elif [ -f city-rules-website/package.json ]; then
+            echo "APP_DIR=city-rules-website" >> "$GITHUB_ENV"
+          else
+            echo "::error::No package.json found at repo root or city-rules-website/"
+            exit 1
+          fi
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -28,19 +37,24 @@ jobs:
         with:
           node-version: 20
           cache: pnpm
-          cache-dependency-path: city-rules-website/pnpm-lock.yaml
+          cache-dependency-path: ${{ env.APP_DIR }}/pnpm-lock.yaml
 
       - name: Verify working directory
+        working-directory: ${{ env.APP_DIR }}
         run: pwd && ls -la
 
       - name: Install dependencies
+        working-directory: ${{ env.APP_DIR }}
         run: pnpm install --frozen-lockfile
 
       - name: Lint
+        working-directory: ${{ env.APP_DIR }}
         run: pnpm lint
 
       - name: Run tests
+        working-directory: ${{ env.APP_DIR }}
         run: pnpm test
 
       - name: Validate data
+        working-directory: ${{ env.APP_DIR }}
         run: pnpm validate

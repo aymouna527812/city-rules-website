@@ -15,6 +15,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Determine app directory
+        id: appdir
+        shell: bash
+        run: |
+          if [ -f package.json ]; then
+            echo "APP_DIR=." >> "$GITHUB_ENV"
+          elif [ -f city-rules-website/package.json ]; then
+            echo "APP_DIR=city-rules-website" >> "$GITHUB_ENV"
+          else
+            echo "::error::No package.json found at repo root or city-rules-website/"
+            exit 1
+          fi
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
@@ -27,13 +40,13 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
+        working-directory: ${{ env.APP_DIR }}
         run: pnpm install --frozen-lockfile
-        working-directory: city-rules-website
 
       - name: Restore IndexNow cache
         uses: actions/cache/restore@v4
         with:
-          path: city-rules-website/.cache/indexnow.json
+          path: ${{ env.APP_DIR }}/.cache/indexnow.json
           key: indexnow-${{ github.sha }}
           restore-keys: |
             indexnow-
@@ -43,10 +56,10 @@ jobs:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
           SITE_URL: https://www.cityrules.info
         run: pnpm run indexnow
-        working-directory: city-rules-website
+        working-directory: ${{ env.APP_DIR }}
 
       - name: Save IndexNow cache
         uses: actions/cache/save@v4
         with:
-          path: city-rules-website/.cache/indexnow.json
+          path: ${{ env.APP_DIR }}/.cache/indexnow.json
           key: indexnow-${{ github.sha }}
