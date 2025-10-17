@@ -55,19 +55,22 @@ const FALSE_VALUES = new Set(["false", "0", "no", "n", "off"]);
 
 // In test runs, constrain large datasets to a tiny, stable sample so
 // assertions remain deterministic without modifying production data files.
+type WithSlugs = { country_slug: string; region_slug: string; city_slug?: string };
 function filterDatasetForTests<TRecord>(topic: string, dataset: ReadonlyArray<TRecord>) {
   if (process.env.NODE_ENV !== "test") return dataset;
   if (topic === "bulk trash") {
     // Keep only Phoenix, Arizona (United States)
-    return dataset.filter((r: any) =>
-      r?.country_slug === "united-states" && r?.region_slug === "arizona" && r?.city_slug === "phoenix",
+    const arr = dataset as ReadonlyArray<WithSlugs>;
+    return arr.filter(
+      (r) => r.country_slug === "united-states" && r.region_slug === "arizona" && r.city_slug === "phoenix",
     ) as ReadonlyArray<TRecord>;
   }
   if (topic === "fireworks") {
     // Keep only state-level Massachusetts (United States) entry
-    return dataset.filter((r: any) =>
-      r?.country_slug === "united-states" && r?.region_slug === "massachusetts" && !r?.city_slug,
-    ) as ReadonlyArray<TRecord>;
+    const arr = dataset as ReadonlyArray<WithSlugs>;
+    return arr.filter((r) => r.country_slug === "united-states" && r.region_slug === "massachusetts" && !r.city_slug) as ReadonlyArray<
+      TRecord
+    >;
   }
   return dataset;
 }
