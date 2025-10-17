@@ -16,7 +16,7 @@ export default function AboutPage() {
         <p className="text-sm font-semibold uppercase tracking-wide text-primary">Editorial policy</p>
         <h1 className="text-4xl font-bold text-slate-900">Built for evidence-based noise guidance</h1>
         <p className="max-w-2xl text-sm text-slate-600">
-          Quiet Hours &amp; Noise Rules distils the parts of municipal bylaws that residents lean on
+          Quiet Hours &amp; City Rules distils the parts of municipal bylaws that residents lean on
           most—quiet hours, construction schedules, decibel thresholds, and how to escalate politely. We
           double-check every data point before it goes live.
         </p>
@@ -69,7 +69,7 @@ export default function AboutPage() {
       <section className="space-y-4 rounded-2xl border border-slate-200 bg-white p-6 text-sm text-slate-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">
         <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Coverage roadmap</h2>
         <ul className="list-disc space-y-1 pl-5">
-          <li>Phase 1: 100+ Canadian and US cities with population over 200,000.</li>
+          <li>Phase 1: 50+ Canadian and US cities with population over 200,000.</li>
           <li>Phase 2: Suburban hubs and fast-growing commuter regions.</li>
           <li>Phase 3: Expanded coverage for EU noise directives and APAC mega-cities.</li>
         </ul>

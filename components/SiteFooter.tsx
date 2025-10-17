@@ -10,6 +10,11 @@ export function SiteFooter() {
         <nav aria-label="Footer navigation">
           <ul className="flex items-center gap-4">
             <li>
+              <Link className="hover:text-primary dark:hover:text-sky-400" href="/privacy">
+                Privacy policy
+              </Link>
+            </li>
+            <li>
               <Link className="hover:text-primary dark:hover:text-sky-400" href="/about">
                 Editorial policy
               </Link>
