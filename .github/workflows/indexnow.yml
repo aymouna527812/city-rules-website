@@ -30,6 +30,14 @@ jobs:
         run: pnpm install --frozen-lockfile
         working-directory: city-rules-website
 
+      - name: Restore IndexNow cache
+        uses: actions/cache/restore@v4
+        with:
+          path: city-rules-website/.cache/indexnow.json
+          key: indexnow-${{ github.sha }}
+          restore-keys: |
+            indexnow-
+
       - name: Submit URLs via IndexNow
         env:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
@@ -37,3 +45,8 @@ jobs:
         run: pnpm run indexnow
         working-directory: city-rules-website
 
+      - name: Save IndexNow cache
+        uses: actions/cache/save@v4
+        with:
+          path: city-rules-website/.cache/indexnow.json
+          key: indexnow-${{ github.sha }}
