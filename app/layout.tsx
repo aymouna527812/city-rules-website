@@ -5,6 +5,7 @@ import Script from "next/script";
 import "./globals.css";
 
 import { Analytics, RouteAnalytics } from "@/components/Analytics";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
 import { Suspense } from "react";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -35,6 +36,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </main>
           <SiteFooter />
           <Analytics />
+          {/* Vercel Web Analytics */}
+          <VercelAnalytics />
           <Suspense fallback={null}>
             <RouteAnalytics />
           </Suspense>

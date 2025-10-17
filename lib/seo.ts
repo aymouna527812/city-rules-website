@@ -8,12 +8,12 @@ import type {
 } from "@/lib/types";
 import { getCountryName } from "@/lib/utils";
 
-const SITE_NAME = "Quiet Hours & Noise Rules";
+const SITE_NAME = "Quiet Hours & City Rules";
 const DEFAULT_DESCRIPTION =
   "Understand residential quiet hours, noise bylaws, and enforcement guidance for cities across North America.";
 
 export function getSiteUrl(): string {
-  const url = process.env.SITE_URL ?? "https://cityrules.info";
+  const url = process.env.SITE_URL ?? "https://www.cityrules.info";
   return url.endsWith("/") ? url.slice(0, -1) : url;
 }
 
