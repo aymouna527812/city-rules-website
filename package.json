@@ -2,7 +2,7 @@
     "name":  "quiet-hours",
     "version":  "1.0.0",
     "private":  true,
-    "scripts":  {
+  "scripts":  {
                     "dev":  "next dev",
                     "build":  "npm run prebuild \u0026\u0026 next build",
                     "prebuild":  "npm run validate \u0026\u0026 npm run csv2json \u0026\u0026 npm run fetch:heroes",
@@ -12,7 +12,8 @@
                     "fetch:heroes":  "tsx scripts/fetch-hero-images.ts",
                     "pages:cache":  "tsx scripts/build-pages.ts",
                     "test":  "vitest run",
-                    "lint":  "eslint . --ext .ts,.tsx"
+                    "lint":  "eslint . --ext .ts,.tsx",
+                    "indexnow": "tsx scripts/submit-indexnow.ts"
                 },
     "dependencies":  {
                          "@radix-ui/react-accordion":  "^1.2.1",
