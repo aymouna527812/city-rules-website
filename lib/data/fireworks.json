@@ -1371,7 +1371,9 @@
     "use_hours": "Permitted only on Victoria Day and Canada Day and the day immediately before and after; other dates require a City permit.",
     "permit_required": false,
     "age_restrictions": "No sales to persons under 18; an adult must ignite fireworks and supervise children.",
-    "prohibited_types": [],
+    "prohibited_types": [
+      "Use of fireworks on City property or outside permitted dates without a City permit"
+    ],
     "enforcement_notes": "Use is limited to private property with consent; never on City property. Outside permitted holiday dates, obtain a City permit. Vendors require a permit and may only sell during the pre-holiday windows.",
     "seo_text": "Richmond Hill fireworks laws allow consumer fireworks on private property only on Victoria Day and Canada Day, plus the day before and after; permits are required otherwise. Vendors may sell only in the seven days preceding each holiday, sales to anyone under 18 are prohibited, and fireworks are never allowed on City property.",
     "notes_public": "Choose a clear area, keep water nearby, and follow manufacturer instructions. For other dates or public events, apply for a fireworks or pyrotechnics permit in advance.",
