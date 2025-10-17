@@ -552,7 +552,7 @@
       "Consumer fireworks used outside the designated holidays named in F.S. 791.08 unless otherwise authorized by law"
     ],
     "enforcement_notes": "Enforced under Florida Statute chapter 791 and City Parks Rules Section 28.711. Report non-emergency violations to JSO at 904-630-0500; dial 911 for fire or injury emergencies.",
-    "seo_text": "Jacksonville fireworks laws follow Florida Statute 791.08: consumer fireworks are only allowed on Dec 31, Jan 1, and Jul 4. Fireworks are banned in city parks and on beaches; report issues to the Sheriff’s Office non-emergency line.",
+    "seo_text": "Jacksonville fireworks laws follow Florida Statute 791.08: consumer fireworks are only allowed on Dec 31, Jan 1, and Jul 4. Fireworks are banned in city parks and on beaches; report issues to the Sheriff's Office non-emergency line.",
     "notes_public": "Only use consumer fireworks on the three designated holidays and never in City parks or on beaches. Call the JSO non-emergency line at 904-630-0500 for complaints and 911 for emergencies."
   },
   {
@@ -564,7 +564,7 @@
     "city_slug": "oklahoma-city",
     "timezone": "America/Chicago",
     "last_verified": "2025-10-17",
-    "source_title": "Don’t call 911 to report illegal fireworks (City of OKC)",
+    "source_title": "Don't call 911 to report illegal fireworks (City of OKC)",
     "source_url": "https://www.okc.gov/News-articles/Don%E2%80%99t-call-911-to-report-illegal-fireworks-6.10.25",
     "complaint_channel": "City of OKC Fireworks Hotline / Action Center (non-emergency)",
     "complaint_url": "https://www.okc.gov/News-articles/Don%E2%80%99t-call-911-to-report-illegal-fireworks-6.10.25",
@@ -580,7 +580,7 @@
       "All consumer fireworks, including sparklers, snakes, bottle rockets, Roman candles, and similar devices within city limits"
     ],
     "enforcement_notes": "Violations may result in confiscation, fines up to $500, and possible jail. Report routine violations via the Fireworks Hotline or Action Center and call 911 only for injuries or fires.",
-    "seo_text": "Oklahoma City fireworks rules are strict: buying, selling, or using any consumer fireworks—including sparklers—is illegal in city limits. Report violations to the City’s hotline or Action Center; only professional, permitted public displays are allowed.",
+    "seo_text": "Oklahoma City fireworks rules are strict: buying, selling, or using any consumer fireworks, including sparklers, is illegal in city limits. Report violations to the City's hotline or Action Center; only professional, permitted public displays are allowed.",
     "notes_public": "Do not light, buy, or transport fireworks inside Oklahoma City. Use the seasonal hotline or Action Center for complaints and call 911 for fire or medical emergencies.",
     "county_overrides": [
       {
@@ -614,7 +614,7 @@
       "All fireworks, including firecrackers, rockets, Roman candles, sparklers, and caps, are illegal to sell, possess, or use within Milwaukee"
     ],
     "enforcement_notes": "Milwaukee Police enforce Ordinance 105.47; violations can result in forfeitures up to $1,000 and seizure of fireworks. Use the MPD non-emergency line (414-933-4444) for complaints and 911 for emergencies.",
-    "seo_text": "Milwaukee fireworks laws ban the sale, possession, and use of all fireworks—including sparklers—within city limits. Report violations to the MPD non-emergency line; only professional permitted displays are allowed.",
+    "seo_text": "Milwaukee fireworks laws ban the sale, possession, and use of all fireworks, including sparklers, within city limits. Report violations to the MPD non-emergency line; only professional permitted displays are allowed.",
     "notes_public": "Do not buy or use fireworks in Milwaukee. Even sparklers are illegal. Report non-emergency violations to 414-933-4444 and call 911 for fires or injuries."
   },
   {
@@ -635,16 +635,16 @@
     "jurisdiction_level": "city",
     "allowed_consumer_fireworks": "restricted",
     "sale_periods": "Retail sale periods are governed by Michigan law; the City does not list additional local windows.",
-    "use_hours": "Use is allowed only during Michigan’s statutory holiday windows: 11:00 a.m.-11:45 p.m. on the Saturday and Sunday before Memorial Day, June 29-July 4, July 5 if it falls on a Friday or Saturday, and the Saturday and Sunday before Labor Day, plus 11:00 a.m.-1:00 a.m. on Dec 31-Jan 1.",
+    "use_hours": "Use is allowed only during Michigan's statutory holiday windows: 11:00 a.m.-11:45 p.m. on the Saturday and Sunday before Memorial Day, June 29-July 4, July 5 if it falls on a Friday or Saturday, and the Saturday and Sunday before Labor Day, plus 11:00 a.m.-1:00 a.m. on Dec 31-Jan 1.",
     "permit_required": false,
     "age_restrictions": "18+ to purchase consumer fireworks; sales to minors are prohibited under MCL 28.462.",
     "prohibited_types": [
-      "Use of consumer fireworks on public, school, or church property or on another person’s property without permission",
+      "Use of consumer fireworks on public, school, or church property or on another person's property without permission",
       "Use of consumer fireworks outside the state-authorized holiday windows"
     ],
-    "enforcement_notes": "Detroit prohibits use on public property and from midnight to 8:00 a.m. on national holidays (1:00-8:00 a.m. on New Year’s Day). Violations carry a mandatory $1,000 civil fine, with $500 remitted to the enforcing agency.",
-    "seo_text": "Detroit fireworks laws allow consumer fireworks only on Michigan’s holiday windows and on private property with permission. Public property use is banned, and violations carry a $1,000 fine.",
-    "notes_public": "Outside the listed holiday windows, consumer fireworks are prohibited in Detroit. Only use fireworks on private property with the owner’s consent and keep water nearby."
+    "enforcement_notes": "Detroit prohibits use on public property and from midnight to 8:00 a.m. on national holidays (1:00-8:00 a.m. on New Year's Day). Violations carry a mandatory $1,000 civil fine, with $500 remitted to the enforcing agency.",
+    "seo_text": "Detroit fireworks laws allow consumer fireworks only on Michigan's holiday windows and on private property with permission. Public property use is banned, and violations carry a $1,000 fine.",
+    "notes_public": "Outside the listed holiday windows, consumer fireworks are prohibited in Detroit. Only use fireworks on private property with the owner's consent and keep water nearby."
   },
   {
     "country": "US",
@@ -707,8 +707,597 @@
     "enforcement_notes": "It is illegal to set off fireworks on streets, sidewalks, parks, trails, schools, or City and federal lands. Public displays of family or display fireworks require a City permit and certified operator.",
     "seo_text": "Hamilton fireworks by-law allows family fireworks only on Victoria Day and Canada Day between dusk and 11 p.m. on private property. Public spaces are off limits, sale is limited to the week before each holiday, and firecrackers and flying lanterns are banned.",
     "notes_public": "Purchase from permitted vendors during the designated sale windows and use fireworks only on your property between dusk and 11 p.m. on Victoria Day or Canada Day. Other days require a permit and certified operator."
+  },
+  {
+    "country": "CA",
+    "region": "Ontario",
+    "city": "Mississauga",
+    "country_slug": "canada",
+    "region_slug": "ontario",
+    "city_slug": "mississauga",
+    "timezone": "America/Toronto",
+    "last_verified": "2025-10-17",
+    "source_title": "Everything you need to know about using fireworks in Mississauga",
+    "source_url": "https://www.mississauga.ca/city-of-mississauga-news/news/everything-you-need-to-know-about-using-fireworks-in-mississauga/",
+    "complaint_channel": "Call 311 (or 905-615-4311 outside city limits) or submit a complaint via the City fireworks page; emergencies to 911",
+    "complaint_url": "https://www.mississauga.ca/services-and-programs/health-and-safety/fire-and-emergency-services/fireworks/",
+    "fine_range": "Up to $100,000 for illegal use (City enforcement)",
+    "notes_admin": "Hours and permitted days confirmed on City news page; licensing and the ban on selling firecrackers confirmed by Fireworks Licensing and Use By-law 0182-2023. Retail sale windows not stated on official sources and require verification.",
+    "jurisdiction_level": "city",
+    "allowed_consumer_fireworks": "restricted",
+    "sale_periods": "No additional city sale windows are published; retailers must comply with provincial licensing requirements.",
+    "use_hours": "Consumer fireworks may be set off on private residential property from dusk until 11:00 p.m. on Lunar New Year, Victoria Day, Canada Day, and Diwali, and from dusk until 1:00 a.m. on New Year's Eve/Day. Public property use requires a City permit.",
+    "permit_required": false,
+    "age_restrictions": "18+ to purchase or discharge consumer fireworks; display fireworks on public or private property require a City permit.",
+    "prohibited_types": [
+      "Firecrackers"
+    ],
+    "enforcement_notes": "Use is limited to the designated holidays and permitted only on private property with owner consent. Public property, streets, and sidewalks are off limits without a permit. Report misuse to 311 and call 911 for emergencies.",
+    "seo_text": "Mississauga fireworks laws allow backyard fireworks on Lunar New Year, Victoria Day, Canada Day, Diwali, and New Year's Eve (until 1 a.m.) on private property. Firecrackers are banned and permits are required for parks or public displays.",
+    "notes_public": "Buy from licensed vendors, keep water nearby, and notify neighbours. Apply for a City permit before setting off fireworks in parks or hosting a public display."
+  },
+  {
+    "country": "US",
+    "region": "Ohio",
+    "city": "Columbus",
+    "country_slug": "united-states",
+    "region_slug": "ohio",
+    "city_slug": "columbus",
+    "timezone": "America/New_York",
+    "last_verified": "2025-10-17",
+    "source_title": "Columbus Code of Ordinances (Fireworks prohibition)",
+    "source_url": "https://library.municode.com/oh/columbus/codes/code_of_ordinances?nodeId=COCOTADILI&showChanges=true",
+    "complaint_channel": "Columbus 311 (non-emergency service requests); 911 for emergencies",
+    "complaint_url": "https://www.columbus.gov/Services/Submit-a-Request-or-Report-311",
+    "notes_admin": "City ordinance updated June 11, 2022 reaffirmed the prohibition on possession or use of fireworks. Park rules also prohibit fireworks without approval. Specific penalty amounts were not surfaced on official code pages and need verification.",
+    "jurisdiction_level": "city",
+    "allowed_consumer_fireworks": false,
+    "sale_periods": "Consumer fireworks sales are prohibited within Columbus city limits unless expressly authorized.",
+    "use_hours": "Consumer fireworks may not be discharged within Columbus; only permitted public displays are allowed.",
+    "permit_required": true,
+    "age_restrictions": "18+ to purchase consumer fireworks under Ohio law; discharge is prohibited within Columbus city limits.",
+    "prohibited_types": [
+      "All consumer fireworks (1.4G) use within Columbus city limits"
+    ],
+    "enforcement_notes": "Possessing or using fireworks without City approval violates the Columbus Code of Ordinances. Parks and Recreation rules prohibit fireworks unless approved under Chapter 2556. Report violations through 311.",
+    "seo_text": "Columbus fireworks rules ban consumer fireworks regardless of Ohio's statewide holiday allowances. Only permitted public displays may operate inside city limits.",
+    "notes_public": "Do not set off fireworks anywhere in Columbus, including parks and streets. Submit non-emergency complaints via 311 and call 911 for fires or injuries."
+  },
+  {
+    "country": "CA",
+    "region": "Ontario",
+    "city": "Kitchener",
+    "country_slug": "canada",
+    "region_slug": "ontario",
+    "city_slug": "kitchener",
+    "timezone": "America/Toronto",
+    "last_verified": "2025-10-17",
+    "source_title": "Bylaw guide - fireworks hours and complaint routing",
+    "source_url": "https://www.kitchener.ca/en/bylaws-and-enforcement/bylaw-guide.aspx",
+    "complaint_channel": "City of Kitchener Contact Centre 519-741-2345; WRPS non-emergency 519-570-9777 for fireworks complaints",
+    "complaint_url": "https://www.kitchener.ca/en/bylaws-and-enforcement/how-to-report-a-problem-or-make-a-bylaw-complaint.aspx",
+    "notes_admin": "Designated hours confirmed via City bylaw guide. Council approved a retail sales ban taking effect in 2026; specific fines and prohibited devices need verification.",
+    "jurisdiction_level": "city",
+    "allowed_consumer_fireworks": "restricted",
+    "sale_periods": "Retail fireworks sales are scheduled to be banned in 2026; until then, confirm current licensing with the City.",
+    "use_hours": "Family fireworks are permitted on private property from 9:00-11:00 p.m. on Victoria Day and Canada Day, and from 8:00-10:00 p.m. on Diwali. No use is allowed outside these windows without a permit.",
+    "permit_required": false,
+    "age_restrictions": "18+ to buy or set off fireworks; children should not handle fireworks.",
+    "prohibited_types": [
+      "Fireworks discharged on City property such as streets, parks, woodlots, or schools"
+    ],
+    "enforcement_notes": "Fireworks must be used only on private property with the owner's consent and within posted hours. The upcoming retail sales ban requires residents to check City guidance before purchasing in-city.",
+    "seo_text": "Kitchener fireworks rules allow family fireworks only on Victoria Day, Canada Day, and Diwali within strict evening hours on private property. No use is allowed on City lands, and a retail sales ban begins in 2026.",
+    "notes_public": "Notify neighbours, keep water nearby, and follow label directions. A permit is required for displays on other dates or locations."
+  },
+  {
+    "country": "US",
+    "region": "New York",
+    "city": "New York",
+    "country_slug": "united-states",
+    "region_slug": "new-york",
+    "city_slug": "new-york",
+    "timezone": "America/New_York",
+    "last_verified": "2025-10-17",
+    "source_title": "NYC Administrative Code 109.2.4 - Civil penalty for use of fireworks without a permit",
+    "source_url": "https://codelibrary.amlegal.com/codes/newyorkcity/latest/NYCadmin/0-0-0-140438",
+    "complaint_channel": "NYC 311 - Fireworks Complaint",
+    "complaint_url": "https://on.nyc.gov/FireworksComplaint",
+    "fine_range": "$750 civil penalty for use without a permit",
+    "notes_admin": "NYC311 guidance confirms all consumer fireworks are illegal. Administrative Code 109.2.4 lists the $750 civil penalty; additional state penalties may apply.",
+    "jurisdiction_level": "city",
+    "allowed_consumer_fireworks": false,
+    "sale_periods": "Consumer fireworks sales are prohibited within New York City.",
+    "use_hours": "Consumer fireworks use is prohibited; only FDNY-permitted public displays may operate.",
+    "permit_required": true,
+    "age_restrictions": "Not applicable; consumer fireworks are banned in NYC.",
+    "prohibited_types": [
+      "All consumer fireworks, including sparklers and novelty sparkling devices"
+    ],
+    "enforcement_notes": "Using or possessing fireworks without an FDNY permit triggers a $750 civil penalty and possible criminal charges under state law. Report illegal activity via NYC311 and call 911 for immediate hazards.",
+    "seo_text": "New York City bans all consumer fireworks, including sparklers. Only FDNY-permitted public displays are legal, and violators face $750 civil penalties and potential criminal charges.",
+    "notes_public": "Do not buy, transport, or light fireworks in NYC. Attend permitted public displays and report illegal fireworks through NYC311."
+  },
+  {
+    "country": "CA",
+    "region": "Quebec",
+    "city": "Montreal",
+    "country_slug": "canada",
+    "region_slug": "quebec",
+    "city_slug": "montreal",
+    "timezone": "America/Toronto",
+    "last_verified": "2025-10-17",
+    "source_title": "Pi ces pyrotechniques - Service de securite incendie de Montreal",
+    "source_url": "https://sim.montreal.ca/pieces-pyrotechniques",
+    "complaint_channel": "Montreal 311 (Ville de Montreal)",
+    "complaint_url": "https://montreal.ca/en/contact-us",
+    "notes_admin": "SIM page confirms authorization requirements for any pyrotechnics and the prohibition on sales to minors. Specific fine amounts were not located and need verification.",
+    "jurisdiction_level": "city",
+    "allowed_consumer_fireworks": false,
+    "sale_periods": "Consumer fireworks sales require SIM authorization; no seasonal sale windows are published.",
+    "use_hours": "Consumer fireworks use is prohibited without authorization from the Montreal Fire Department (SIM).",
+    "permit_required": true,
+    "age_restrictions": "18+ to purchase pyrotechnic items; sales to minors are prohibited.",
+    "prohibited_types": [
+      "All consumer pyrotechnic items without SIM authorization"
+    ],
+    "enforcement_notes": "Any pyrotechnic use requires approval from SIM and the local borough. Unauthorized fireworks may be seized and fines applied per municipal bylaws.",
+    "seo_text": "Montreal prohibits consumer fireworks citywide unless the Fire Department authorizes a display. Permits and professional operators are required; sales to minors are banned.",
+    "notes_public": "Apply to SIM before planning any fireworks. Without authorization, do not purchase or light fireworks; use 311 for complaints and 911 for emergencies."
+  },
+  {
+    "country": "US",
+    "region": "Texas",
+    "city": "Houston",
+    "country_slug": "united-states",
+    "region_slug": "texas",
+    "city_slug": "houston",
+    "timezone": "America/Chicago",
+    "last_verified": "2025-10-17",
+    "source_title": "Houston Fire Department - Fireworks Safety",
+    "source_url": "https://houstontx.gov/fire/safetyinfo/fireworks.html",
+    "complaint_channel": "HPD non-emergency line (713-884-3131) or Houston 311",
+    "complaint_url": "https://www.houstontx.gov/fire/FAQs.html",
+    "fine_range": "$500-$2,000 per firework",
+    "notes_admin": "Official HFD page confirms fireworks are illegal within Houston city limits and provides the fine range and reporting instructions. Age restrictions and exceptions require verification.",
+    "jurisdiction_level": "city",
+    "allowed_consumer_fireworks": false,
+    "sale_periods": "Consumer fireworks sales are prohibited in Houston city limits.",
+    "use_hours": "Consumer fireworks use and possession are illegal within Houston; only licensed public displays are allowed.",
+    "permit_required": true,
+    "age_restrictions": "Not applicable; consumer fireworks are prohibited in Houston.",
+    "prohibited_types": [
+      "All consumer fireworks within Houston city limits"
+    ],
+    "enforcement_notes": "Possessing or discharging fireworks can result in fines of $500-$2,000 per firework. Report violations to HPD's non-emergency line or Houston 311, and call 911 for emergencies.",
+    "seo_text": "Houston fireworks laws prohibit possession and use inside city limits. Violations can bring $500-$2,000 fines per firework, and only licensed, permitted public displays are allowed.",
+    "notes_public": "Do not buy, bring, or light fireworks in Houston. Attend permitted professional shows and report illegal fireworks through HPD's non-emergency line."
+  },
+  {
+    "country": "US",
+    "region": "California",
+    "city": "San Diego",
+    "country_slug": "united-states",
+    "region_slug": "california",
+    "city_slug": "san-diego",
+    "timezone": "America/Los_Angeles",
+    "last_verified": "2025-10-17",
+    "source_title": "Fireworks | City of San Diego Official Website",
+    "source_url": "https://www.sandiego.gov/fire/community-outreach/safety-tips/fireworks",
+    "complaint_channel": "San Diego Police non-emergency (619-531-2000 or 858-484-3154)",
+    "complaint_url": "https://www.sandiego.gov/police/contact",
+    "notes_admin": "City page states all consumer fireworks are illegal in both the City and County of San Diego. Specific fine amounts were not listed and need verification.",
+    "jurisdiction_level": "city",
+    "allowed_consumer_fireworks": false,
+    "sale_periods": "Consumer fireworks sales are prohibited in the City and County of San Diego.",
+    "use_hours": "Consumer fireworks use is prohibited; only permitted professional displays may occur with Fire-Rescue Department approval.",
+    "permit_required": true,
+    "age_restrictions": "Not applicable; consumer fireworks are prohibited.",
+    "prohibited_types": [
+      "All consumer fireworks, including sparklers, firecrackers, rockets, missiles, poppers, and novelties"
+    ],
+    "enforcement_notes": "Only licensed, permitted displays arranged through San Diego Fire-Rescue are legal. Report illegal fireworks to SDPD's non-emergency numbers and call 911 for immediate threats.",
+    "seo_text": "San Diego bans all consumer fireworks citywide and countywide; only permitted public displays are legal. Report illegal fireworks to the police non-emergency line.",
+    "notes_public": "Do not transport or use fireworks in San Diego. Enjoy professional shows and report violations through SDPD."
+  },
+  {
+    "country": "US",
+    "region": "California",
+    "city": "San Jose",
+    "country_slug": "united-states",
+    "region_slug": "california",
+    "city_slug": "san-jose",
+    "timezone": "America/Los_Angeles",
+    "last_verified": "2025-10-17",
+    "source_title": "Fireworks Are Illegal | City of San Jose",
+    "source_url": "https://www.sanjoseca.gov/your-government/departments-offices/fire-department/public-education/seasonal-holiday-safety/fireworks-rules-laws",
+    "complaint_channel": "San Jose 311 (online reporting form)",
+    "complaint_url": "https://311.sanjoseca.gov",
+    "fine_range": "$1,000 first violation; $2,000 second; $3,000 third within 18 months; dangerous fireworks may incur fines up to $100,000 plus jail",
+    "notes_admin": "Page cites SJMC 10.17.100 and related social host provisions. All fireworks are illegal, including safe and sane devices.",
+    "jurisdiction_level": "city",
+    "allowed_consumer_fireworks": false,
+    "sale_periods": "Consumer fireworks sales are prohibited in San Jose.",
+    "use_hours": "Consumer fireworks use is prohibited; only licensed professional displays with City permits are allowed.",
+    "permit_required": true,
+    "age_restrictions": "Not applicable; all consumer fireworks are illegal in San Jose.",
+    "prohibited_types": [
+      "All fireworks including safe and sane devices, sparklers, Roman candles, rockets, and firecrackers"
+    ],
+    "enforcement_notes": "Violations trigger escalating administrative fines starting at $1,000, and social host liability applies. Dangerous illegal fireworks can lead to criminal charges and fines up to $100,000.",
+    "seo_text": "San Jose bans all fireworks, including safe and sane devices. Fines start at $1,000 and increase for repeat offenses, while dangerous fireworks can bring criminal penalties.",
+    "notes_public": "Do not possess or use fireworks in San Jose. Report violations through the always-on 311 form and attend permitted professional shows instead."
+  },
+  {
+    "country": "US",
+    "region": "Indiana",
+    "city": "Indianapolis",
+    "country_slug": "united-states",
+    "region_slug": "indiana",
+    "city_slug": "indianapolis",
+    "timezone": "America/Indiana/Indianapolis",
+    "last_verified": "2025-10-17",
+    "source_title": "Indiana Department of Homeland Security - Fireworks Safety",
+    "source_url": "https://www.in.gov/dhs/get-prepared/fire-safety/fireworks-safety/",
+    "complaint_channel": "IMPD non-emergency (317-327-3811)",
+    "complaint_url": "https://www.indy.gov/activity/request-an-incident-report",
+    "notes_admin": "Using statewide rules for consumer use times; local Indianapolis/Marion County ordinances may further limit hours and require verification. Retail sale periods are governed by state certification requirements.",
+    "jurisdiction_level": "city",
+    "allowed_consumer_fireworks": "restricted",
+    "sale_periods": "Retail sales require a state certificate of compliance under Indiana Code 22-11-14-11; no additional local sale windows published.",
+    "use_hours": "State law allows consumer fireworks on private property 5:00 p.m. until two hours after sunset from June 29-July 3 and July 5-July 9, 10:00 a.m.-midnight on July 4, and 10:00 a.m.-1:00 a.m. on December 31-January 1, unless further restricted locally.",
+    "permit_required": false,
+    "age_restrictions": "18+ to purchase consumer fireworks under Indiana law.",
+    "prohibited_types": [
+      "Special (1.3G) display fireworks without a state permit",
+      "Consumer fireworks used outside the state-protected dates and times or on public property without approval"
+    ],
+    "enforcement_notes": "Indiana law protects specific holiday windows for consumer use on private property with owner permission. Public displays require a State Fire Marshal permit and local fire chief approval.",
+    "seo_text": "Indianapolis follows Indiana's fireworks schedule: consumer fireworks are allowed only during state-protected holiday windows on private property. Public displays need state and local fire approvals.",
+    "notes_public": "Use fireworks only during the legal windows and only where you have permission. Call IMPD's non-emergency line for complaints and 911 for immediate hazards."
+  },
+  {
+    "country": "US",
+    "region": "Louisiana",
+    "city": "New Orleans",
+    "country_slug": "united-states",
+    "region_slug": "louisiana",
+    "city_slug": "new-orleans",
+    "timezone": "America/Chicago",
+    "last_verified": "2025-10-17",
+    "source_title": "NOFD press release: Consumer fireworks are illegal in Orleans Parish",
+    "source_url": "https://nola.gov/next/nofd/press-releases/2025/20250703-the-nofd-wishes-everyone-a-safe-and-happy-4th-of-july/",
+    "complaint_channel": "NOLA 311 (non-emergency)",
+    "complaint_url": "https://nola311.org/",
+    "notes_admin": "NOFD confirms consumer fireworks are illegal parish-wide. Specific fine amounts are not published on the cited source and require verification.",
+    "jurisdiction_level": "city",
+    "allowed_consumer_fireworks": false,
+    "sale_periods": "Consumer fireworks sales are prohibited within Orleans Parish.",
+    "use_hours": "Consumer fireworks use is illegal in New Orleans; only permitted professional displays may occur.",
+    "permit_required": true,
+    "age_restrictions": "Not applicable; consumer fireworks are banned in New Orleans.",
+    "prohibited_types": [
+      "All consumer fireworks within Orleans Parish"
+    ],
+    "enforcement_notes": "New Orleans Fire Department and NOPD enforce the citywide ban. Report non-emergency violations via NOLA 311 and call 911 for fires or injuries.",
+    "seo_text": "New Orleans fireworks laws ban all consumer fireworks in Orleans Parish. Only permitted professional displays are allowed; report violations to NOLA 311 and call 911 for emergencies.",
+    "notes_public": "Do not use consumer fireworks anywhere in New Orleans. Enjoy permitted displays and report issues to NOLA 311."
+  },
+  {
+    "country": "US",
+    "region": "Missouri",
+    "city": "Kansas City",
+    "country_slug": "united-states",
+    "region_slug": "missouri",
+    "city_slug": "kansas-city",
+    "timezone": "America/Chicago",
+    "last_verified": "2025-10-17",
+    "source_title": "KCPD: Fireworks and celebratory gunfire are prohibited in city limits",
+    "source_url": "https://kcpolice.org/media/news-releases/residents-reminded-that-fireworks-and-celebratory-gunfire-are-prohibited/",
+    "complaint_channel": "KCMO 311 (non-emergency)",
+    "complaint_url": "https://www.kcmo.gov/city-hall/311",
+    "notes_admin": "KCPD confirms fireworks are prohibited citywide. Specific ordinance citations and fine amounts were not located on Municode and require verification.",
+    "jurisdiction_level": "city",
+    "allowed_consumer_fireworks": false,
+    "sale_periods": "Consumer fireworks sales are prohibited within Kansas City, Missouri city limits.",
+    "use_hours": "Consumer fireworks use is prohibited on public and private property without a permit.",
+    "permit_required": true,
+    "age_restrictions": "Not applicable; consumer fireworks are banned in Kansas City, Missouri.",
+    "prohibited_types": [
+      "All fireworks within Kansas City, Missouri city limits"
+    ],
+    "enforcement_notes": "Kansas City Police Department and Fire Marshal enforce the ban. Report non-emergency complaints to 311 and call 911 for fires or injuries.",
+    "seo_text": "Kansas City, Missouri bans the sale, possession, and use of consumer fireworks within city limits. Only permitted professional displays are allowed; report violations via 311.",
+    "notes_public": "Do not buy or use fireworks inside Kansas City, Missouri. Report routine complaints to 311 and emergencies to 911."
+  },
+  {
+    "country": "CA",
+    "region": "Quebec",
+    "city": "Quebec City",
+    "country_slug": "canada",
+    "region_slug": "quebec",
+    "city_slug": "quebec-city",
+    "timezone": "America/Toronto",
+    "last_verified": "2025-10-17",
+    "source_title": "Feux d'artifice - Ville de Quebec (Fire Prevention guidance)",
+    "source_url": "https://www.ville.quebec.qc.ca/citoyens/incendie/prevention/conseils/conseils-feux-artifices.aspx",
+    "complaint_channel": "311 Ville de Quebec",
+    "complaint_url": "https://www.ville.quebec.qc.ca/nous_joindre/311/",
+    "notes_admin": "Fire Prevention guidance indicates authorization is required. Exact fine amounts and set hours were not found on the cited page and need verification.",
+    "jurisdiction_level": "city",
+    "allowed_consumer_fireworks": "restricted",
+    "sale_periods": "Retail sale information is not published; authorization must be obtained from Fire Prevention.",
+    "use_hours": "Consumer fireworks may only be used during the times specified in the Fire Prevention authorization.",
+    "permit_required": true,
+    "age_restrictions": "Not specified; follow provincial and federal requirements for fireworks handling.",
+    "prohibited_types": [
+      "Firecrackers and federally prohibited novelty items",
+      "Fireworks used during provincial fire bans or municipal restrictions"
+    ],
+    "enforcement_notes": "Ville de Quebec Fire Prevention Division issues authorizations and ensures compliance with provincial (SOPFEU) and federal rules. Report concerns via 311.",
+    "seo_text": "Quebec City requires prior authorization from Fire Prevention before using fireworks, especially on public property. Firecrackers are banned federally and provincial fire bans can halt use.",
+    "notes_public": "Obtain authorization from Ville de Quebec before using fireworks. Follow SOPFEU fire bans and federal prohibitions such as the ban on firecrackers."
+  },
+  {
+    "country": "CA",
+    "region": "Ontario",
+    "city": "Windsor",
+    "country_slug": "canada",
+    "region_slug": "ontario",
+    "city_slug": "windsor",
+    "timezone": "America/Toronto",
+    "last_verified": "2025-10-17",
+    "source_title": "City of Windsor - Fireworks By-law 136-2004 (consolidated)",
+    "source_url": "https://citywindsor.ca/Documents/city-hall/by-laws-online/By-law%20136-2004.pdf",
+    "complaint_channel": "Windsor 311 (by-law enforcement) for non-emergency complaints; Windsor Fire non-emergency 519-258-4444; 911 for emergencies",
+    "complaint_url": "https://www.citywindsor.ca/city-hall/customer-service/311",
+    "notes_admin": "Sale and use days confirmed in By-law 136-2004 sections 3(3) and 5(1); public place prohibitions in section 5(5); age and supervision rules in sections 5(2) and 5(6)-(7). Fine amounts reference the Provincial Offences Act and need verification; no explicit daily hours are stated.",
+    "jurisdiction_level": "city",
+    "allowed_consumer_fireworks": "restricted",
+    "sale_periods": [
+      {
+        "window": "Retail sales permitted on Victoria Day, Canada Day, Fourth of July, and New Year's Eve"
+      },
+      {
+        "window": "Ten business days immediately preceding Victoria Day and the Fourth of July"
+      },
+      {
+        "window": "Seven business days preceding New Year's Eve"
+      }
+    ],
+    "use_hours": "Consumer fireworks may be discharged on Victoria Day (and the day before and after), from the day before Canada Day through July 4, and on New Year's Eve. Hours are not specified in the by-law.",
+    "permit_required": false,
+    "age_restrictions": "18+ may conduct a consumer fireworks display on their property or with owner consent; individuals under 18 must be directly supervised by an adult.",
+    "prohibited_types": [
+      "Firecrackers (except under a display permit)",
+      "Prohibited fireworks as defined by federal regulations"
+    ],
+    "enforcement_notes": "Discharge on streets, parks, and other public places is prohibited. Firecracker use or public displays require a permit from the Chief Fire Official. Enforcement handled via by-law officers and Windsor Fire.",
+    "seo_text": "Windsor allows consumer fireworks only on Victoria Day, the period around Canada Day through July 4, and New Year's Eve, and only on private property. Firecrackers are banned without a permit and public spaces are off-limits.",
+    "notes_public": "Buy fireworks only during permitted sale windows and use them on your own property with owner consent. Keep water nearby, follow label instructions, and apply for a permit for public displays."
+  },
+  {
+    "country": "CA",
+    "region": "Saskatchewan",
+    "city": "Saskatoon",
+    "country_slug": "canada",
+    "region_slug": "saskatchewan",
+    "city_slug": "saskatoon",
+    "timezone": "America/Regina",
+    "last_verified": "2025-10-17",
+    "source_title": "City of Saskatoon - Fireworks (permitted hours and contacts)",
+    "source_url": "https://www.saskatoon.ca/services-residents/fire-emergency/education-awareness/lifefire-safety-education/fireworks",
+    "complaint_channel": "Saskatoon Fire Department non-emergency 306-975-3030; Service Saskatoon for by-law concerns; 911 for emergencies",
+    "complaint_url": "https://www.saskatoon.ca/services-residents/fire-emergency/education-awareness/lifefire-safety-education/fireworks",
+    "notes_admin": "Permitted days, hours, and 18+ restriction confirmed on the City page referencing By-law 7990. Fine schedule and retail licensing details are not provided on the cited page and require verification.",
+    "jurisdiction_level": "city",
+    "allowed_consumer_fireworks": "restricted",
+    "sale_periods": "Retail sale details are not summarized on the City site; check By-law 7990 licensing provisions.",
+    "use_hours": [
+      {
+        "days": "Victoria Day",
+        "start": "dusk",
+        "end": "23:00"
+      },
+      {
+        "days": "Canada Day",
+        "start": "dusk",
+        "end": "23:00"
+      },
+      {
+        "days": "Labour Day",
+        "start": "dusk",
+        "end": "23:00"
+      },
+      {
+        "days": "Diwali (third day of the festival)",
+        "start": "dusk",
+        "end": "23:00"
+      },
+      {
+        "days": "New Year's Eve/New Year's Day",
+        "start": "dusk",
+        "end": "00:15"
+      },
+      {
+        "days": "Chinese New Year's Eve/Day",
+        "start": "dusk",
+        "end": "00:15"
+      }
+    ],
+    "permit_required": false,
+    "age_restrictions": "Persons under 18 may not use fireworks.",
+    "prohibited_types": [
+      "Fireworks used on civic property without a permit"
+    ],
+    "enforcement_notes": "Use outside listed days/hours is prohibited under By-law 7990. Fireworks on civic property require a permit; violations may result in enforcement by the Saskatoon Fire Department.",
+    "seo_text": "Saskatoon permits low-hazard fireworks on private property only during specific holidays, including Victoria Day, Canada Day, Labour Day, Diwali, and New Year celebrations. Under-18 use is prohibited, and civic property requires a permit.",
+    "notes_public": "Follow manufacturer directions, keep water nearby, and notify neighbours. Do not use fireworks in parks or streets; obtain a civic permit for public events."
+  },
+  {
+    "country": "US",
+    "region": "Georgia",
+    "city": "Atlanta",
+    "country_slug": "united-states",
+    "region_slug": "georgia",
+    "city_slug": "atlanta",
+    "timezone": "America/New_York",
+    "last_verified": "2025-10-17",
+    "source_title": "Use of Consumer Fireworks in the City of Atlanta (ATL311) and Georgia Rules 120-3-22-.13",
+    "source_url": "https://www.atl311.com/en-us/knowledgearticle/?code=KB10000056",
+    "complaint_channel": "ATL311 routes to the E911 non-emergency center; Atlanta Fire Rescue Fire Marshal 404-546-7000; dial 911 for emergencies",
+    "complaint_url": "https://www.atl311.com/en-us/knowledgearticle/?code=KB10000056",
+    "notes_admin": "Use hours and prohibitions confirmed via ATL311 and Georgia Rules 120-3-22-.13. City park prohibitions are referenced on City parks pages. Fine amounts were not located and require verification.",
+    "jurisdiction_level": "city",
+    "allowed_consumer_fireworks": "restricted",
+    "sale_periods": "Retail sale periods follow Georgia state law; no additional Atlanta-specific windows are published.",
+    "use_hours": [
+      {
+        "days": "Any day (subject to local noise ordinance)",
+        "start": "10:00",
+        "end": "23:59"
+      },
+      {
+        "days": "December 31",
+        "start": "10:00",
+        "end": "23:59"
+      },
+      {
+        "days": "January 1",
+        "start": "00:00",
+        "end": "01:00"
+      },
+      {
+        "days": "Last Saturday and Sunday in May",
+        "start": "10:00",
+        "end": "23:59"
+      },
+      {
+        "days": "July 3-4",
+        "start": "10:00",
+        "end": "23:59"
+      },
+      {
+        "days": "First Monday in September",
+        "start": "10:00",
+        "end": "23:59"
+      }
+    ],
+    "permit_required": false,
+    "age_restrictions": "18+ to purchase consumer fireworks under Georgia law; valid ID required.",
+    "prohibited_types": [
+      "Use indoors or within the right-of-way of a road, street, highway, or railroad",
+      "Use in City of Atlanta parks or other prohibited public properties"
+    ],
+    "enforcement_notes": "Atlanta follows state hours; users must comply with noise ordinances and location bans. Fireworks are prohibited in parks, rights-of-way, and other restricted locations. Report non-emergencies via ATL311 and emergencies via 911.",
+    "seo_text": "Atlanta fireworks rules follow Georgia law, allowing consumer fireworks 10 a.m. to 11:59 p.m. most days, with New Year's extended to 1 a.m. Fireworks are banned in parks, on roads, and indoors, and only adults may purchase them.",
+    "notes_public": "Keep clear of buildings, crowds, and dry brush. Never use fireworks in parks or streets. For complaints, call 311 for non-emergencies; public exhibitions require separate permits."
+  },
+  {
+    "country": "CA",
+    "region": "Nova Scotia",
+    "city": "Halifax",
+    "country_slug": "canada",
+    "region_slug": "nova-scotia",
+    "city_slug": "halifax",
+    "timezone": "America/Halifax",
+    "last_verified": "2025-10-17",
+    "source_title": "Fireworks - Halifax Regional Municipality",
+    "source_url": "https://www.halifax.ca/safety-security/fire-emergency/fire-prevention-safety/resident-safety/fireworks",
+    "complaint_channel": "Halifax 311 (HRM) for non-emergency complaints; call 911 for emergencies",
+    "complaint_url": "https://www.halifax.ca/home/311",
+    "notes_admin": "HRM states there is no fireworks-specific by-law; consumer fireworks are regulated through the Noise By-law and limited to exempt dates. Specific hours and fines are not posted and require verification.",
+    "jurisdiction_level": "city",
+    "allowed_consumer_fireworks": "restricted",
+    "sale_periods": "Retail sale periods are not specified; vendors must comply with provincial rules.",
+    "use_hours": "Consumer fireworks may be used on Canada Day, Natal Day, New Year's Eve, and recognized religious holidays unless a Noise By-law exemption is granted.",
+    "permit_required": false,
+    "age_restrictions": "Not specified; follow provincial guidance and vendor requirements.",
+    "prohibited_types": [
+      "Fireworks used during provincial burn bans or outside exempt dates"
+    ],
+    "enforcement_notes": "Display fireworks require municipal approval. Noise By-law N-200 treats fireworks as a noise offence outside exempt days. Provincial burn bans prohibit fireworks regardless of local rules.",
+    "seo_text": "Halifax allows consumer fireworks only on exempt days like Canada Day, Natal Day, New Year's Eve, and recognized religious holidays. Burn bans override local allowances, and displays require approval.",
+    "notes_public": "Use fireworks only on exempt dates and on private property with owner consent. Apply for a Noise By-law exemption for other dates and check provincial burn bans before use."
+  },
+  {
+    "country": "CA",
+    "region": "Ontario",
+    "city": "London",
+    "country_slug": "canada",
+    "region_slug": "ontario",
+    "city_slug": "london",
+    "timezone": "America/Toronto",
+    "last_verified": "2025-10-17",
+    "source_title": "Fireworks By-law PW-11 - City of London",
+    "source_url": "https://london.ca/by-laws/fireworks-law-pw-11",
+    "complaint_channel": "Licensing and Municipal Law Enforcement (City of London)",
+    "complaint_url": "https://london.ca/living-london/community-services/laws-compliance/municipal-compliance",
+    "notes_admin": "By-law PW-11 lists sale windows, discharge times, and 18+ restrictions. Specific fine amounts were not posted and require verification.",
+    "jurisdiction_level": "city",
+    "allowed_consumer_fireworks": "restricted",
+    "sale_periods": [
+      "Sales allowed on Victoria Day, Canada Day, Diwali, and Lunar New Year, and the five days immediately preceding each holiday"
+    ],
+    "use_hours": [
+      "Dusk to 23:00 on Victoria Day, Canada Day, Diwali, and Lunar New Year"
+    ],
+    "permit_required": false,
+    "age_restrictions": "18+ to purchase; individuals under 18 may discharge only under direct supervision of an adult.",
+    "prohibited_types": [
+      "Firecrackers",
+      "Prohibited fireworks defined by the by-law",
+      "Discharge in public places without a display permit"
+    ],
+    "enforcement_notes": "Consumer fireworks are allowed only on listed holidays and times on private property. Public displays require a Fire Chief permit. Municipal Compliance handles complaints; after-hours noise issues go to the police non-emergency line.",
+    "seo_text": "London allows consumer fireworks only at dusk to 11 p.m. on Victoria Day, Canada Day, Diwali, and Lunar New Year, with sales limited to those holidays and the five days before. Firecrackers are banned and public displays need permits.",
+    "notes_public": "Use fireworks only on the permitted dates and times with owner permission. For after-hours noise complaints call 519-661-5670; other concerns go to Municipal Compliance."
+  },
+  {
+    "country": "CA",
+    "region": "Ontario",
+    "city": "Vaughan",
+    "country_slug": "canada",
+    "region_slug": "ontario",
+    "city_slug": "vaughan",
+    "timezone": "America/Toronto",
+    "last_verified": "2025-10-17",
+    "source_title": "Fireworks and Pyrotechnics By-law 089-2022 (consolidated) - City of Vaughan",
+    "source_url": "https://www.vaughan.ca/sites/default/files/2024-08/089-2022%20%28consolidated%29.pdf",
+    "complaint_channel": "Service Vaughan / By-law Enforcement",
+    "complaint_url": "https://www.vaughan.ca/residential/by-laws-and-enforcement/property-by-laws/noise",
+    "notes_admin": "The by-law permits consumer fireworks only on Victoria Day and Canada Day unless a City permit is obtained. Specific fines are not listed and require verification.",
+    "jurisdiction_level": "city",
+    "allowed_consumer_fireworks": "restricted",
+    "sale_periods": [
+      "Retail sale windows are not detailed in the by-law; vendors must comply with municipal licensing requirements."
+    ],
+    "use_hours": [
+      "Consumer fireworks may be discharged only on Victoria Day and Canada Day unless the City issues a permit for another date."
+    ],
+    "permit_required": false,
+    "age_restrictions": "No person under 18 may set off consumer fireworks; adults must maintain fire extinguishing equipment on site.",
+    "prohibited_types": [
+      "Firecrackers",
+      "Prohibited fireworks identified by federal or municipal regulation",
+      "Flying lanterns",
+      "Discharge from windows, balconies, or common areas of multi-residential properties"
+    ],
+    "enforcement_notes": "Use on days other than Victoria Day or Canada Day requires a City permit. Discharge is limited to private property with owner permission and safety equipment. Complaints are handled through Service Vaughan or By-law Enforcement.",
+    "seo_text": "Vaughan allows consumer fireworks only on Victoria Day and Canada Day on private property. Firecrackers, sky lanterns, and multi-residential common areas are banned; other days require a City permit.",
+    "notes_public": "Light fireworks only on your own property on Victoria Day or Canada Day. For any other date apply for a permit, and report concerns to Service Vaughan. Emergencies require calling 911."
   }
 ]
+
+
+
+
+
+
+
+
+
+
 
 
 
