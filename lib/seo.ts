@@ -31,6 +31,10 @@ export function buildBaseMetadata(): Metadata {
     metadataBase: new URL(getSiteUrl()),
     title: SITE_NAME,
     description: DEFAULT_DESCRIPTION,
+    // Add Google site verification meta if provided via env var
+    verification: {
+      google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    },
     icons: {
       icon: "/FavIconCityRulesDarkMode.png",
       shortcut: "/FavIconCityRulesDarkMode.png",
