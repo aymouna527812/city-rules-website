@@ -19,14 +19,14 @@ export default function ContactPage() {
         <h1 className="text-4xl font-bold text-slate-900">Contact Quiet Hours &amp; Noise Rules</h1>
         <p className="max-w-2xl text-sm text-slate-600">
           Use the form below or email us directly at{" "}
-          <Link className="font-medium text-primary hover:underline" href="mailto:hello@quiet-hours.app">
-            hello@quiet-hours.app
+          <Link className="font-medium text-primary hover:underline" href="mailto:hello@cityrules.info">
+            hello@cityrules.info
           </Link>
           . We aim to respond within two business days.
         </p>
       </header>
 
-      <form className="grid gap-4 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8 dark:border-slate-800 dark:bg-slate-900" aria-describedby="form-help">
+      <form className="grid gap-4 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8 dark:border-slate-800 dark:bg-slate-900">
         <div className="grid gap-2">
           <label className="text-sm font-medium text-slate-700" htmlFor="name">
             Name
@@ -67,11 +67,7 @@ export default function ContactPage() {
           />
         </div>
 
-        <div className="flex items-center justify-between">
-          <p id="form-help" className="text-xs text-slate-500">
-            This demo form doesn’t send emails yet. Connect it to your preferred ESP or serverless
-            function, then remove this notice.
-          </p>
+        <div className="flex items-center justify-end">
           <Button type="submit" disabled title="Connect this form to your backend to enable submissions">
             Send message
           </Button>
@@ -83,14 +79,14 @@ export default function ContactPage() {
         <ul className="list-disc space-y-1 pl-5">
           <li>
             Data corrections:{" "}
-            <Link className="text-primary hover:underline" href="mailto:updates@quiet-hours.app">
-              updates@quiet-hours.app
+            <Link className="text-primary hover:underline" href="mailto:updates@cityrules.info">
+              updates@cityrules.info
             </Link>
           </li>
           <li>
             Press and partnerships:{" "}
-            <Link className="text-primary hover:underline" href="mailto:press@quiet-hours.app">
-              press@quiet-hours.app
+            <Link className="text-primary hover:underline" href="mailto:press@cityrules.info">
+              press@cityrules.info
             </Link>
           </li>
         </ul>
@@ -98,3 +94,5 @@ export default function ContactPage() {
     </div>
   );
 }
+
+

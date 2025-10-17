@@ -68,7 +68,7 @@ export function buildPoliteNeighborEmail(record: QuietHoursRecord, pageUrl: stri
     "",
     `Reference: ${pageUrl}`,
   ].join("\n");
-  return buildMailtoLink("hello@quiet-hours.app", subject, body);
+  return buildMailtoLink("hello@cityrules.info", subject, body);
 }
 
 export function buildSuggestUpdateEmail(record: QuietHoursRecord, pageUrl: string): string {
@@ -83,7 +83,7 @@ export function buildSuggestUpdateEmail(record: QuietHoursRecord, pageUrl: strin
     "Suggested change:",
     "",
   ].join("\n");
-  return buildMailtoLink("updates@quiet-hours.app", subject, body);
+  return buildMailtoLink("updates@cityrules.info", subject, body);
 }
 
 export type RelatedLink = {
