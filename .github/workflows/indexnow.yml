@@ -1,0 +1,39 @@
+name: Submit IndexNow after Vercel deploy
+
+on:
+  deployment_status:
+
+jobs:
+  submit-indexnow:
+    if: >-
+      ${{ github.event.deployment_status.state == 'success' &&
+          (github.event.deployment.environment == 'Production' || github.event.deployment.environment == 'production') }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        working-directory: city-rules-website
+
+      - name: Submit URLs via IndexNow
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+          SITE_URL: https://www.cityrules.info
+        run: pnpm run indexnow
+        working-directory: city-rules-website
+
