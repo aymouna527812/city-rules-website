@@ -447,7 +447,7 @@
     "limits": "City of Phoenix residential solid waste customers receive four appointments per year. One pile per appointment, maximum 10 cubic yards, placed within 5 feet of the curb and clear of obstacles. Yard waste must be securely bagged and limbs trimmed to less than 12 inches in diameter and 4 feet long. No combined piles between neighbors.",
     "fees": "Included with regular residential solid waste service; there is no separate fee for the four yearly appointments.",
     "holiday_shifts": "No bulk appointments are scheduled on Halloween, Thanksgiving, Christmas, or New Year's Day; the scheduler also blocks the seven days following each holiday.",
-    "illegal_dumping_reporting": "If dumping is in progress call Crime Stop at 602-262-6151 or 911 for emergencies; report after-the-fact dumping to Public Works at 602-262-6251.",
+    "illegal_dumping_reporting": "https://www.phoenix.gov/solid-waste/residential-trash/illegal-dumping",
     "notes_public": "Phoenix bulk trash is by appointment only. Schedule online or by phone, set items at the front curb within seven days of service, and keep piles within size and clearance limits. Bag loose yard waste, cut limbs to size, and exclude hazardous waste, glass, tires, concrete, and refrigerant appliances.",
     "seo_text": "<p>Phoenix bulk trash pickup is appointment-based. Schedule online, set piles at the front curb within the size limit, bag yard waste, and skip prohibited items like hazardous waste, tires, concrete, and refrigerant appliances.</p>"
   },
