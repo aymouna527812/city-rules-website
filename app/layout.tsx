@@ -4,7 +4,8 @@ import { Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
-import { Analytics } from "@/components/Analytics";
+import { Analytics, RouteAnalytics } from "@/components/Analytics";
+import { Suspense } from "react";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -34,6 +35,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </main>
           <SiteFooter />
           <Analytics />
+          <Suspense fallback={null}>
+            <RouteAnalytics />
+          </Suspense>
           <Script
             id="website-json-ld"
             type="application/ld+json"

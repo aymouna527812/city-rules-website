@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
@@ -40,6 +41,22 @@ export function Analytics() {
       document.head.removeChild(inlineScript);
     };
   }, []);
+
+  return null;
+}
+
+// Separate route-change tracker to allow wrapping with Suspense in the layout
+export function RouteAnalytics() {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    if (!GA_ID || typeof window === "undefined") return;
+    const query = searchParams?.toString();
+    const url = pathname + (query ? `?${query}` : "");
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (window as any).gtag?.("config", GA_ID, { page_path: url });
+  }, [pathname, searchParams]);
 
   return null;
 }
