@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -216,8 +216,7 @@ export default async function CityPage({ params }: { params: Promise<CityPagePar
                   <Link
                     href={record.complaint_url}
                     className="font-medium text-primary hover:underline"
-                    {...getExternalLinkProps(record.complaint_url)}
-                  >
+                    {...getExternalLinkProps(record.complaint_url)}>
                     {record.complaint_url}
                   </Link>{" "}
                   or call {record.complaint_channel}. Ask for the incident number for reference.
@@ -271,8 +270,7 @@ export default async function CityPage({ params }: { params: Promise<CityPagePar
               <Link
                 href={record.bylaw_url}
                 className="font-medium text-primary hover:underline"
-                {...getExternalLinkProps(record.bylaw_url)}
-              >
+                {...getExternalLinkProps(record.bylaw_url)}>
                 {record.bylaw_title}
               </Link>
             </p>
@@ -316,7 +314,10 @@ export default async function CityPage({ params }: { params: Promise<CityPagePar
           <ul className="space-y-2 text-sm text-primary">
             {relatedLinks.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="hover:underline">
+                <Link
+                  href={link.href}
+                  className="hover:underline"
+                  {...getExternalLinkProps(link.href)}>
                   {link.title}
                 </Link>
               </li>
@@ -336,9 +337,3 @@ export default async function CityPage({ params }: { params: Promise<CityPagePar
     </>
   );
 }
-
-
-
-
-
-

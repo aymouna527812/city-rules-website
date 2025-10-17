@@ -44,18 +44,18 @@ export function CityHero({ record, imageSrc }: CityHeroProps) {
         <div className="flex flex-col gap-2 rounded-xl bg-slate-50 p-4 text-sm text-slate-600 dark:bg-slate-800/60 dark:text-slate-200">
           <p className="font-semibold text-slate-800 dark:text-slate-100">Need a quick answer?</p>
           <p>
-            Default quiet hours: <strong><TimeText value={record.default_quiet_hours} /></strong>
+            <strong>Default quiet hours:</strong> <TimeText value={record.default_quiet_hours} />
           </p>
           {record.weekend_quiet_hours ? (
             <p>
-              Weekends/holidays: <strong><TimeText value={record.weekend_quiet_hours} /></strong>
+              <strong>Weekends/holidays:</strong> <TimeText value={record.weekend_quiet_hours} />
             </p>
           ) : null}
           <p>
-            Construction weekdays: <strong><TimeText value={record.construction_hours_weekday} /></strong>
+            <strong>Construction weekdays:</strong> <TimeText value={record.construction_hours_weekday} />
           </p>
           <p>
-            Construction weekends: <strong><TimeText value={record.construction_hours_weekend} /></strong>
+            <strong>Construction weekends:</strong> <TimeText value={record.construction_hours_weekend} />
           </p>
         </div>
       </div>
@@ -73,5 +73,3 @@ export function CityHero({ record, imageSrc }: CityHeroProps) {
     </section>
   );
 }
-
-

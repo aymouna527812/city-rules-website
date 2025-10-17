@@ -832,10 +832,7 @@
     ],
     "limits": "Cut and roll carpet to a maximum of 1.2 meters long and 76 centimeters wide. Toilets are limited to two per pickup and must have tanks removed. Remove propane tanks from barbecues and place items at the curb without blocking access.",
     "fees": "Curbside bulky pickup is free. Community Recycling Centre drop-off fees apply for certain materials, with dedicated loads of metals, electronics, and appliances accepted at no charge.",
-    "holiday_shifts": [
-      "No collection on major holidays such as Family Day, Good Friday, Victoria Day, Canada Day, Civic Holiday, Labour Day, Thanksgiving, Christmas, Boxing Day, and New Year's Day.",
-      "During holiday weeks, collection is delayed     typically one day later. Check the Collection Calendar for specifics."
-    ],
+    "holiday_shifts": "No collection on major holidays such as Family Day, Good Friday, Victoria Day, Canada Day, Civic Holiday, Labour Day, Thanksgiving, Christmas, Boxing Day, and New Year's Day; during those weeks collection is typically one day later, so confirm the schedule in the Collection Calendar.",
     "illegal_dumping_reporting": "Report illegal dumping through Mississauga 311 or the Region of Peel's waste enforcement services.",
     "notes_public": "Mississauga curbside bulky service is handled by the Region of Peel. Set eligible items out by 7 a.m. on your garbage day, bundle carpets within size limits, remove propane tanks from barbecues, and take appliances or electronics to a Community Recycling Centre.",
     "seo_text": "<p>Mississauga bulky pickup offers free curbside service on your garbage day. Set out furniture, mattresses, and other accepted items by 7 a.m., follow preparation rules, and take appliances and electronics to Peel's Community Recycling Centres.</p>"
@@ -1308,7 +1305,7 @@
     ],
     "limits": "Houses and duplexes can place three items per pickup. Multi-family complexes can place six items per appointment and must use the designated setout location. Mattresses must be wrapped and mirrors must be protected.",
     "fees": "No cost for eligible City customers.",
-    "holiday_shifts": null,
+    "holiday_shifts": "Large item appointments do not occur on City-recognized statutory holidays; if your booking overlaps a holiday, the confirmation notice will provide the rescheduled pickup date.",
     "illegal_dumping_reporting": "Report issues to Solid Waste and Recycling at 604-294-7972 or through the BurnabyConnect app.",
     "notes_public": "Burnaby's large item pickup is by appointment. Schedule online or by phone, follow the City's setout instructions, wrap mattresses, and use other disposal options for electronics or renovation debris.",
     "seo_text": "<p>Burnaby offers free on-call large item pickup for furniture, mattresses, and appliances. Houses can set out three items, multi-family complexes six items. Wrap mattresses, follow setout directions, and contact Solid Waste and Recycling for help.</p>"

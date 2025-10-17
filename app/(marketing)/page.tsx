@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 
 import { CitySearch } from "@/components/CitySearch";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -21,6 +21,16 @@ export default async function MarketingHome() {
     })),
   );
 
+  const nextRefreshIso = (() => {
+    const base = records[0]?.last_verified;
+    const baseDate = base ? new Date(base) : new Date();
+    if (Number.isNaN(baseDate.getTime())) {
+      return new Date().toISOString().slice(0, 10);
+    }
+    const next = new Date(baseDate);
+    next.setUTCDate(next.getUTCDate() + 90);
+    return next.toISOString().slice(0, 10);
+  })();
   return (
     <div className="space-y-16">
       <section className="space-y-6 rounded-3xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900 px-6 py-10 shadow-sm sm:px-10">
@@ -36,7 +46,7 @@ export default async function MarketingHome() {
         <CitySearch items={searchItems} />
         <div className="text-sm text-slate-500 dark:text-slate-400">
           Cities are verified at least every quarter. Next refresh:{" "}
-          <strong>{formatDate(records[0]?.last_verified ?? new Date().toISOString().slice(0, 10))}</strong>
+          <strong>{formatDate(nextRefreshIso)}</strong>
         </div>
       </section>
 
@@ -68,10 +78,10 @@ export default async function MarketingHome() {
               </CardHeader>
               <CardContent className="space-y-2 text-sm text-slate-600 dark:text-slate-300">
                 <p>
-                  Quiet hours: <strong><TimeText value={city.default_quiet_hours} /></strong>
+                  <strong>Quiet hours:</strong> <TimeText value={city.default_quiet_hours} />
                 </p>
                 <p>
-                  Enforcement: <strong>{city.complaint_channel}</strong>
+                  <strong>Enforcement:</strong> {city.complaint_channel}
                 </p>
                 <Link
                   href={`/quiet-hours/${city.country_slug}/${city.region_slug}/${city.city_slug}`}
@@ -129,6 +139,12 @@ export default async function MarketingHome() {
     </div>
   );
 }
+
+
+
+
+
+
 
 
 
